@@ -16,3 +16,4 @@
         <li><a href="index.php?cuerpo=rejilla_situacion_laboral.php">sitiacion_laboral</a></li>         
     </ul>    
 </div>
+<!-- Esto es otra prueba de modificación de un archivo en github-->
