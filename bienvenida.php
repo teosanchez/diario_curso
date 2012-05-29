@@ -1,4 +1,4 @@
-
+<!-- esto es un saludo -->
 
 <div id="main">
     <h1>Bienvenido a Diario de clases 1.0</h1>
