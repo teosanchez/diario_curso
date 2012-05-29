@@ -1,3 +1,4 @@
+
 <div id="main">
     <h1>Bienvenido a Diario de clases 1.0</h1>
 
@@ -10,5 +11,6 @@
 </div>
 
     <p>Soy un usuario de tipo  <strong> </strong></p>
+
 </div>
 
