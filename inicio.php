@@ -52,7 +52,7 @@
                         <span>Administración General</span>
                         <img class="" src="images/admin.png"  alt=""/>
                     </a>
-                    <a class="portfolio_item float " href="portfolio_single.html">
+                    <a class="portfolio_item float " href="index.php?cuerpo=diario.php">
                         <span>Diario de clase</span>
                         <img class="" src="images/diario.png"  alt=""/>
                     </a>
@@ -71,7 +71,7 @@
 
             <!-- Footer -->
             <p class="grid_12 footer clearfix">
-                <span class="float"><b>&copy; Copyright</b> Paco & Papita.</span>
+                <span class="float"><b>&copy; Copyright</b> PHP-Tropical 2012 <b>Design by</b> Paco & Papita.</span>
                 <a class="float right" href="#">top</a>
             </p>
             
