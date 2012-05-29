@@ -1,4 +1,4 @@
-<!--Archivo Bienvenida de ERNESTO-->
+<!--Archivo Bienvenida de ERNESTO 1983-->
 
 <div id="main">
     <h1>Bienvenido a Diario de clases 1.0</h1>
