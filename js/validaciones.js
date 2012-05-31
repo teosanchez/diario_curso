@@ -34,7 +34,7 @@ function validacion()
                 }
                 else
                 {
-                    indice = document.getElementById("Provincias").selectedIndex;
+                    indice = document.getElementsByTagName(select)("Provincias").selectedIndex;
                     if( indice == null || indice == 0 ) 
                     {
                         alert('ERROR: Tiene que seleccionar una Provincia.');
@@ -275,4 +275,4 @@ function limitaCaracteres(elemento, maximoCaracteres, minCaracteres) {
         validaCaracteres = false;
     }    
     return validaCaracteres;
-  
+}
