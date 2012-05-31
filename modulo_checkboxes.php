@@ -3,10 +3,10 @@ include ("clase_modulo_curso.php");
 include ("utilidadesIU.php");
 include_once ("clase_bd.php");
 
-$bd = new bd;
+$bd = new bd();
 $util = new utilidadesIU();
 $modulo_curso = new modulo_curso();
-print_r($_GET);
+//print_r($_GET);
 if (isset($_GET["ID_CURSO"])) 
     {
         $modulo_curso->ID_CURSO = ($_GET["ID_CURSO"]);
@@ -16,7 +16,11 @@ if (isset($_GET["ID_CURSO"]))
             $modulo_curso->cargar($arrayEntidad[0]);
         }
     }
-
+$c="";
+if (isset($_GET["c"]))
+{
+    $c="nuevo"; // Se viene de form_curso con un curso nuevo (sin módulos)
+}
 ?>
 <!-- Titulo de pagina -->
 
@@ -33,7 +37,8 @@ if (isset($_GET["ID_CURSO"]))
 
     <form name="form_modulo_checkboxes" method="get" action="procesar_modulo_checkboxes.php"/>
         <input type="hidden" name="ID_CURSO" id="ID_CURSO" value="<?php echo $modulo_curso->ID_CURSO; ?>"/>
-        <input type="hidden" name="ID" id="ID" value="<?php echo $modulo_curso->ID_CURSO; ?>"/>
+        <input type="hidden" name="ID" id="ID" value="<?php echo $modulo_curso->ID; ?>"/>
+        <input type="hidden" name="c" id="c" value="<?php echo $c; ?>"/>
         <table>
             <tr>
                 <!--<td>M&oacute;dulos</td>-->
