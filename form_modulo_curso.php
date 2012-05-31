@@ -12,6 +12,7 @@ if (isset($_GET["ID"])) {
     if ($arrayEntidad) {
         $modulo_curso->cargar($arrayEntidad[0]);
     }
+ 
 }
 ?>
 <!-- Titulo de pÃ¡gina -->
@@ -29,27 +30,30 @@ if (isset($_GET["nuevo"])) {
 
 <form name="form_modulo_curso" id="MyForm" method="get" action="procesar_modulo_curso.php"/>
 <input type="hidden" name="ID" id="ID" value="<?php echo $modulo_curso->ID; ?>"/>
+<input type="hidden" name="ID_CURSO" id="ID_CURSO" value="<?php echo $modulo_curso->ID_CURSO; ?>"/>
+<input type="hidden" name="ID_MODULO" id="ID_MODULO" value="<?php echo $modulo_curso->ID_MODULO; ?>"/>
 <table>
     <tr>
-        <td class="form_td text_right">Curso</td>
+        <td class="form_td text_right">Curso :</td>
         <td class="form_td">
             <?php
-            $datosLista = $bd->consultar("select ESPECIALIDAD,ID from vw_curso_especialidad where ID ='" . $modulo_curso->ID_CURSO . "'");
-            echo $util->pinta_selection($datosLista, "ID_ESPECIALIDAD", "ESPECIALIDAD", $modulo_curso->ID_CURSO);
+            $curso = $bd->consultarArray("select ESPECIALIDAD 
+                                 from vw_curso_especialidad 
+                                 where ID ='" . $modulo_curso->ID_CURSO . "'");
+            echo ($curso[0]["ESPECIALIDAD"]);
             ?>
         </td>
     </tr>
     <tr>
-        <td class="form_td text_right">M&oacute;dulos</td>
+        <td class="form_td text_right">M&oacute;dulo :</td>
         <td class="form_td">
             <?php
-            $modulos_seleccionados = $bd->consultarArray("Select MODULO  
-                                                    from vw_modulo_curso where ID_CURSO='" . $modulo_curso->ID_CURSO . "'");
-            echo $util->pinta_modulos($modulos_seleccionados);
+            $modulo = $bd->consultarArray("Select MODULO  
+                                   from vw_modulo_curso 
+                                   where ID_CURSO='" . $modulo_curso->ID_CURSO . "'");
+            echo ($modulo[0]["MODULO"]);
             ?>    
         </td>
-        <td>
-            <input type="submit" name="Seleccionar_Modulos" value="Seleccionar M&oacute;dulos"/></td>
     </tr>
     <tr>
         <td class="text_right">Horas</td>
@@ -64,8 +68,13 @@ if (isset($_GET["nuevo"])) {
         </td>
     </tr>
     <tr>
-        <td><input type="submit" name="Enviar" value="Enviar"></td>
-        <td><input type="button" onClick="parent.location='index.php?cuerpo=rejilla_modulo_curso.php'" name="Cancelar" value="Cancelar"></td>
+        <td><input type="submit" name="Enviar" value="Enviar"/></td>
+        <!--<td><input type="button" 
+                   onClick="parent.location='index.php?cuerpo=rejilla_modulo_curso.php&ID='
+                            <?php echo $modulo_curso->ID_CURSO; ?>"
+                   name="Cancelar" value="Cancelar"/>
+        </td>-->
+        <td><input type="submit" name="Cancelar" value="Cancelar"/></td>                          
     </tr>
 </table>
 </form>
