@@ -1,4 +1,4 @@
-
+<script type="text/javascript" src="validaciones.js"></script>
     
 <?php
 include ("clase_direccion.php");
@@ -52,7 +52,7 @@ if(isset($municipio->ID_PROVINCIA))
         });
         </script>
 
-<form name="form_direccion" method="get" action="procesar_direccion.php">
+<form name="form_direccion" method="get" id="MyForm" action="procesar_direccion.php">
 <input type="hidden" name="ID" id="ID" value="<?php echo $direccion->ID; ?>"/>
 <table>
 <tr>
@@ -79,19 +79,19 @@ if(isset($municipio->ID_PROVINCIA))
 <tr>
 <td>Calle</td>
 <td>
-<input type="text" name="CALLE" ID="CALLE" value="<?php echo  $direccion->CALLE; ?>"/>
+<input type="text" name="CALLE" require="true" label="CALLE" ID="CALLE" value="<?php echo  $direccion->CALLE; ?>"/>
 </td>
 </tr>
 <tr>
 <td>Numero</td>
 <td>
-<input type="text" name="NUMERO" ID="NUMERO" value="<?php echo  $direccion->NUMERO; ?>"/>
+<input type="text" name="NUMERO" require="true" label="NUMERO" ID="NUMERO" value="<?php echo  $direccion->NUMERO; ?>"/>
 </td>
 </tr>
 <tr>
 	<td><input type="submit" name="Enviar" value="Enviar"></td>
-	<td><input type="submit" name="Borrar" value="Borrar"></td>
-	<td><input type="submit" name="Cancelar" value="Cancelar"></td>
+	
+	<td><input type="button" onClick="parent.location='index.php?cuerpo=rejilla_direccion.php'" name="Cancelar" value="Cancelar"></td>
         </tr>
      </table>
      </form>

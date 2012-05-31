@@ -1,3 +1,4 @@
+<script type="text/javascript" src="validaciones.js"></script>
 <?php
 include ("clase_modulo.php");
 include ("utilidadesIU.php");
@@ -33,7 +34,7 @@ if (isset($_GET["nuevo"])) {
     <tr>    
         <td class="text_right">M&oacute;dulo</td>
         <td>
-            <input type="text" name="NOMBRE" id="NOMBRE" value="<?php echo $modulo->NOMBRE; ?>"/>
+            <input type="text" require="true" label="MODULO" name="NOMBRE" id="NOMBRE" value="<?php echo $modulo->NOMBRE; ?>"/>
         </td>
     </tr>
     <tr>
