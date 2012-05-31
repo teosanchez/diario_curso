@@ -7,13 +7,14 @@ $bd = new bd;
 $util = new utilidadesIU();
 $modulo_curso = new modulo_curso();
 print_r($_GET);
-if (isset($_GET["ID_MODULO_CURSO"])) 
+if (isset($_GET["ID_CURSO"])) 
     {
-    $modulo_curso->ID = ($_GET["ID_MODULO_CURSO"]);
-    }
-if (isset($_GET["ID"])) 
-    {
-    $modulo_curso->ID_CURSO = ($_GET["ID"]);
+        $modulo_curso->ID_CURSO = ($_GET["ID_CURSO"]);
+        $arrayEntidad = $bd->buscar($modulo_curso);
+        if ($arrayEntidad) 
+        {
+            $modulo_curso->cargar($arrayEntidad[0]);
+        }
     }
 
 ?>
@@ -21,7 +22,8 @@ if (isset($_GET["ID"]))
 
     <div class="titulo">
         <div class="grid_9 alpha"">
-             <h2 class="caption">Edici&oacute;n M&oacute;dulo <span>Chekboxes</span></h2>
+             <h2 class="caption">Edici&oacute;n M&oacute;dulos 
+                <span>ID_CURSO = <?php echo($modulo_curso->ID_CURSO); ?></span></h2>
         </div>
         <div class="grid_3 omega">            
         </div> 
@@ -30,11 +32,11 @@ if (isset($_GET["ID"]))
     <!-- Fin Titulo de pÃ¡gina -->
 
     <form name="form_modulo_checkboxes" method="get" action="procesar_modulo_checkboxes.php"/>
-        <input type="hidden" name="ID_MODULO_CURSO" id="ID_MODULO_CURSO" value="<?php echo $modulo_curso->ID; ?>"/>
+        <input type="hidden" name="ID_CURSO" id="ID_CURSO" value="<?php echo $modulo_curso->ID_CURSO; ?>"/>
         <input type="hidden" name="ID" id="ID" value="<?php echo $modulo_curso->ID_CURSO; ?>"/>
         <table>
             <tr>
-                <td>M&oacute;dulos</td>
+                <!--<td>M&oacute;dulos</td>-->
                 <td>
                     <?php
                     $modulos = $bd->consultarArray("SELECT * FROM modulo ORDER BY NOMBRE asc");
