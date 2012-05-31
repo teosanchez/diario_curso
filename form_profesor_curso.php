@@ -40,19 +40,19 @@ if (isset($_GET["ID"])) {
         <tr>
             <td class="text_right">ID_PROFESOR</td>
             <td>
-                <input type="text" label="ID_PROFESOR" name="ID_PROFESOR" ID="ID_PROFESOR" value="<?php echo $profesor_curso->ID_PROFESOR; ?>"/>
+                <input type="text" label="ID_PROFESOR" require="true" name="ID_PROFESOR" ID="ID_PROFESOR" value="<?php echo $profesor_curso->ID_PROFESOR; ?>"/>
             </td>
         </tr>
         <tr>
             <td class="text_right">ID_CURSO</td>
             <td>
-                <input type="text" label="ID_CURSO" name="ID_CURSO" ID="ID_CURSO" value="<?php echo $profesor_curso->ID_CURSO; ?>"/>
+                <input type="text" label="ID_CURSO" require="true" name="ID_CURSO" ID="ID_CURSO" value="<?php echo $profesor_curso->ID_CURSO; ?>"/>
             </td>
         </tr>
         <tr>
             <td class="text_right">FECHA_ALTA</td>
             <td>
-                <input type="text" label="FECHA_ALTA" name="FECHA_ALTA" ID="FECHA_ALTA" value="<?php echo $profesor_curso->FECHA_ALTA; ?>"/>
+                <input type="text" label="FECHA_ALTA" require="true" name="FECHA_ALTA" ID="FECHA_ALTA" value="<?php echo $profesor_curso->FECHA_ALTA; ?>"/>
             </td>
         </tr>
         <tr>

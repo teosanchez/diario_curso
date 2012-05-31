@@ -33,7 +33,7 @@ if (isset($_GET["ID"])) {
         <tr>
             <td class="text_right">Nivel de Estudios</td>
             <td>
-                <input type="text" label="Nivel de Estudios" require="true" name="NOMBRE" ID="NOMBRE" value="<?php echo $nivel_estudios->NOMBRE; ?>"/>
+                <input type="text" label="NIVEL DE ESTUDIOS" require="true" name="NOMBRE" ID="NOMBRE" value="<?php echo $nivel_estudios->NOMBRE; ?>"/>
             </td>
         </tr>
         <tr>

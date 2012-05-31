@@ -5,7 +5,8 @@
     $curso=new curso();
     $bd=new bd();
 
-    if(isset($_GET["Enviar"]) || isset($_GET["Programa_del_curso"])) 
+    if(isset($_GET["Enviar"]) || isset($_GET["Programa_del_curso"]) || isset($_GET["Profesores_del_curso"])
+            || isset($_GET["Alumnos_del_curso"]))
     {
         if(isset($_GET["ID"]))
         {
@@ -24,7 +25,7 @@
                     $bd->insertar($curso);
                 }
             }
-             else
+            else
             {
                     $bd->actualizar($curso);
             }
@@ -44,6 +45,16 @@
         if (isset($_GET["Programa_del_curso"]))
         {
             header('Location: index.php?cuerpo=rejilla_modulo_curso.php&ID='.$curso->ID);
+        }
+        
+        if (isset($_GET["Profesores_del_curso"]))
+        {
+            header('Location: index.php?cuerpo=rejilla_profesor_curso.php&ID='.$curso->ID);
+        }
+        
+        if (isset($_GET["Alumnos_del_curso"]))
+        {
+            header('Location: index.php?cuerpo=rejilla_alumno_curso.php&ID='.$curso->ID);
         }
     }
 ?>

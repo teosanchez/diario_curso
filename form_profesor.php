@@ -91,13 +91,13 @@ if (isset($_GET["ID"])) {
         <tr>
             <td>Calle</td>
             <td>
-                <input type="text" label="Calle" require="true" name="CALLE" ID="CALLE" value="<?php echo $direccion->CALLE; ?>"/>
+                <input type="text" label="Calle" name="CALLE" ID="CALLE" value="<?php echo $direccion->CALLE; ?>"/>
             </td>
         </tr>
         <tr>
             <td>N&uacute;mero</td>
             <td>
-                <input type="text" label="N&uacute;mero" require="true" name="NUMERO" ID="NUMERO" value="<?php echo $direccion->NUMERO; ?>"/>
+                <input type="text" label="N&uacute;mero" name="NUMERO" ID="NUMERO" value="<?php echo $direccion->NUMERO; ?>"/>
             </td>
         </tr>
         <tr>

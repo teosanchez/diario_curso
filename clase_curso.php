@@ -33,3 +33,4 @@
                  isset($arrayValores['HORA_FIN'])?$this->HORA_FIN=date("H:i",strtotime($arrayValores['HORA_FIN'])):$this->HORA_FIN=null;
 	}
 }
+?>
