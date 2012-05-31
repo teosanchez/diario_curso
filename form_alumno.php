@@ -90,13 +90,13 @@ if (isset($municipio->ID_PROVINCIA)) {
         <tr>
             <td class="text_right">Calle</td>
             <td>
-                <input type="text" label="Calle" name="CALLE" require="true" ID="CALLE" value="<?php echo $direccion->CALLE; ?>"/>
+                <input type="text" label="Calle" name="CALLE" ID="CALLE" value="<?php echo $direccion->CALLE; ?>"/>
             </td>
         </tr>
         <tr>
             <td class="text_right">N&uacute;mero</td>
             <td>
-                <input type="text" label="Número" name="NUMERO" require="true" ID="NUMERO" value="<?php echo $direccion->NUMERO; ?>"/>
+                <input type="text" label="Número" name="NUMERO" ID="NUMERO" value="<?php echo $direccion->NUMERO; ?>"/>
             </td>
         </tr>
 

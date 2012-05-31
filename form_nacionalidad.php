@@ -33,7 +33,7 @@ if (isset($_GET["nuevo"])) {
         <tr>
             <td class="text_right">Nacionalidad</td>
             <td>
-                <input type="text" name="NOMBRE" ID="NOMBRE" value="<?php echo $nacionalidad->NOMBRE; ?>"/>
+                <input type="text" name="NOMBRE" require="true" label="NACIONALIDAD" ID="NOMBRE" value="<?php echo $nacionalidad->NOMBRE; ?>"/>
             </td>
         </tr>
         <tr>

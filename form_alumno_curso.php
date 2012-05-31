@@ -58,13 +58,13 @@ echo $util->pinta_selection($datosLista, "ID_CURSO", "NOMBRE", $alumno_curso->ID
         <tr>
             <td>Fecha de baja</td>
             <td>
-                <input type="text" label="Fecha de Baja" require="true" name="FECHA_BAJA" ID="FECHA_BAJA" value="<?php echo $alumno_curso->FECHA_BAJA; ?>"/>
+                <input type="text" label="Fecha de Baja"  name="FECHA_BAJA" ID="FECHA_BAJA" value="<?php echo $alumno_curso->FECHA_BAJA; ?>"/>
             </td>
         </tr>
         <tr>
             <td>Suplente</td>
             <td>
-                <input type="text" label="Suplente" require="true" name="SUPLENTE" ID="SUPLENTE" value="<?php echo $alumno_curso->SUPLENTE; ?>"/>
+                <input type="text" label="Suplente"  name="SUPLENTE" ID="SUPLENTE" value="<?php echo $alumno_curso->SUPLENTE; ?>"/>
             </td>
         </tr>
         <tr>

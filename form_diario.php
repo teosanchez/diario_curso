@@ -34,7 +34,7 @@ if (isset($_GET["ID"])) {
         <tr>
             <td class="text_right">T&iacute;tulo</td>
             <td>
-                <input type="text" name="TITULO" ID="TITULO" value="<?php echo $diario->TITULO; ?>"/>
+                <input type="text" require="true" label="TITULO" name="TITULO" ID="TITULO" value="<?php echo $diario->TITULO; ?>"/>
             </td>
         </tr>
         <tr>
