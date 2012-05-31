@@ -21,7 +21,7 @@ $result = $bd->consultarArray("select * from vw_curso_especialidad_nivel_estudio
         <div class="clear"></div>
     </div>
 </form>
-    <!-- Fin Titulo de pÃ¡gina -->
+<!-- Fin Titulo de pÃƒÂ¡gina -->
 
     <?php
     if ($result) {
