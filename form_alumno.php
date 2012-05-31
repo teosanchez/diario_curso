@@ -1,4 +1,4 @@
-<script type="text/javascript" src="validaciones.js"></script>
+<script type="text/javascript" src="validaciones.js"></script> 
 
 <script>
     $(document).ready(function(){
@@ -7,9 +7,18 @@
             {ID_PROVINCIA:  e.target.options[e.target.selectedIndex].value }); // El método load, carga lo que se le indica
         });
     });
+    $.ajaxSetup({
+    'beforeSend' : function(xhr) {
+    try{
+    xhr.overrideMimeType('text/html; charset=iso-8859-1');
+    }
+    catch(e){
+        
+    }
+    }});
 </script>
 
-
+	
 <?php
 include ("clase_alumno.php");
 include ("utilidadesIU.php");
