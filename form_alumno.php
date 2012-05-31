@@ -1,4 +1,5 @@
 <script type="text/javascript" src="validaciones.js"></script>
+<script src="js/jquery_1.4.js" type="text/javascript"><!--mce:0--><!--mce:0--></script>
 
 <script>
     $(document).ready(function(){
