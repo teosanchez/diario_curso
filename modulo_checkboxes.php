@@ -27,7 +27,14 @@ if (isset($_GET["c"]))
     <div class="titulo">
         <div class="grid_9 alpha"">
              <h2 class="caption">Edici&oacute;n M&oacute;dulos 
-                <span>ID_CURSO = <?php echo($modulo_curso->ID_CURSO); ?></span></h2>
+                <span>del curso:  
+                     <?php
+                        $curso = $bd->consultarArray("select ESPECIALIDAD 
+                                from vw_curso_especialidad 
+                                where ID ='" . $modulo_curso->ID_CURSO . "'");
+                        echo ($curso[0]["ESPECIALIDAD"]);
+                     ?>
+                </span></h2>
         </div>
         <div class="grid_3 omega">            
         </div> 
