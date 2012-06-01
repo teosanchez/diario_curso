@@ -36,8 +36,8 @@ if (isset($_GET["ID"])) {
             <td class="form_td">
                 <?php
                 $profesor_curso = $bd->consultar("SELECT PROFESOR
-                            FROM vw_nombre_profesor_curso_especialidad");
-                echo $util->pinta_selection($profesor_curso, "PROFESOR",  $profesor_curso->ID_PROFESOR);
+                            FROM ");
+                echo $util->pinta_selection($profesor_curso, "PROFESOR", "ID_PROFESOR", $profesor_curso->ID_PROFESOR);
                 ?>
                 <input type="text" label="ID_PROFESOR" require="true" name="ID_PROFESOR" ID="ID_PROFESOR" value="<?php echo $profesor_curso->ID_PROFESOR; ?>"/>
             </td>

@@ -5,6 +5,12 @@ include_once ("clase_bd.php");
 print_r($_GET);
 $bd = new bd();
 $modulo_curso = new modulo_curso();
+$c="";
+if (isset($_GET["c"]))
+{
+    $c="nuevo"; // Se viene de form_curso con un curso nuevo (sin módulos)
+}
+
 if (isset($_GET["Enviar"])) 
 {
     if (isset($_GET["ID_CURSO"])) 
@@ -35,7 +41,14 @@ if (isset($_GET["Cancelar"]))
     if (isset($_GET["ID_CURSO"])) 
     {
         $modulo_curso->ID_CURSO = $_GET["ID_CURSO"];
-        header('Location: index.php?cuerpo=rejilla_modulo_curso.php&ID='.$modulo_curso->ID_CURSO); //Incluir en Generador
+        if ($c=="nuevo")
+        {
+            header('Location: index.php?cuerpo=form_curso.php&ID='.$modulo_curso->ID_CURSO); //Incluir en Generador            
+        }
+        else
+        {
+            header('Location: index.php?cuerpo=rejilla_modulo_curso.php&ID='.$modulo_curso->ID_CURSO); //Incluir en Generador
+        }
     }
 }
    
