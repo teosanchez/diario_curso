@@ -24,7 +24,7 @@ if (isset($_GET["ID"])) {
         echo 'Editar ';
     }
     ?>
-    <span>profesor-curso</span>
+    <span>Profesor-Curso</span>
 </h2>
 <!-- Fin Titulo de pÃ¡gina -->
 
@@ -32,32 +32,31 @@ if (isset($_GET["ID"])) {
     <input type="hidden" name="ID" ID="ID" value="<?php echo $profesor_curso->ID; ?>"/>
     <table>
         <tr>
-            <td class="text_right">ID</td>
-            <td>
-                <input type="text" label="ID" name="ID" ID="ID" value="<?php echo $profesor_curso->ID; ?>"/>
-            </td>
-        </tr>
-        <tr>
-            <td class="text_right">ID_PROFESOR</td>
-            <td>
+            <td class="text_right">Profesor</td>
+            <td class="form_td">
+                <?php
+                $profesor_curso = $bd->consultar("SELECT PROFESOR
+                            FROM vw_nombre_profesor_curso_especialidad");
+                echo $util->pinta_selection($profesor_curso, "PROFESOR",  $profesor_curso->ID_PROFESOR);
+                ?>
                 <input type="text" label="ID_PROFESOR" require="true" name="ID_PROFESOR" ID="ID_PROFESOR" value="<?php echo $profesor_curso->ID_PROFESOR; ?>"/>
             </td>
         </tr>
         <tr>
-            <td class="text_right">ID_CURSO</td>
-            <td>
+            <td class="text_right">Curso</td>
+            <td class="form_td">
                 <input type="text" label="ID_CURSO" require="true" name="ID_CURSO" ID="ID_CURSO" value="<?php echo $profesor_curso->ID_CURSO; ?>"/>
             </td>
         </tr>
         <tr>
-            <td class="text_right">FECHA_ALTA</td>
-            <td>
+            <td class="text_right">Fecha de Alta</td>
+            <td class="form_td">
                 <input type="text" label="FECHA_ALTA" require="true" name="FECHA_ALTA" ID="FECHA_ALTA" value="<?php echo $profesor_curso->FECHA_ALTA; ?>"/>
             </td>
         </tr>
         <tr>
-            <td class="text_right">FECHA_BAJA</td>
-            <td>
+            <td class="text_right">Fecha de Baja</td>
+            <td class="form_td">
                 <input type="text" label="FECHA_BAJA" name="FECHA_BAJA" ID="FECHA_BAJA" value="<?php echo $profesor_curso->FECHA_BAJA; ?>"/>
             </td>
         </tr>

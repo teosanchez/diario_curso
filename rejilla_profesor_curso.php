@@ -3,7 +3,7 @@ include ("clase_rejilla.php");
 include_once ("clase_bd.php");
 
 $bd = new bd();
-$result = $bd->consultarArray("select * from profesor_curso");
+$result = $bd->consultarArray("select * from vw_nombre_profesor_curso");
 ?>
 
 <!-- Titulo de pagina -->
@@ -11,11 +11,11 @@ $result = $bd->consultarArray("select * from profesor_curso");
     <input type="hidden" name="cuerpo" value="form_profesor_curso.php" />
     <div class="titulo">
         <div class="grid_9 alpha"">
-             <h2 class="caption">Administraci&oacute;n de <span>profesor-curso</span></h2>
+             <h2 class="caption">Administraci&oacute;n de <span>Profesor-Curso</span></h2>
         </div>
         <div class="grid_3 omega">
             <div class="left boton_principal"><img alt="Nuevo" src="images/add.png"/></div>  
-            <div class="left boton_principal"><input type="submit" name="nuevo" value="Nuevo profesor-curso"/></div>                   
+            <div class="left boton_principal"><input type="submit" name="nuevo" value="A&ntilde;adir nuevo Profesor"/></div>                   
             <div class="clear"></div>
         </div> 
         <div class="clear"></div>
