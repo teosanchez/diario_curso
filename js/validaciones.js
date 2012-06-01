@@ -32,9 +32,9 @@ function validacion()
                     alert('ERROR: El campo NUMERO debe contener caracteres.');
                     respuesta = false;
                 }
-                /*else
+                else
                 {
-                    indice = document.getElementsByName("Provincias").selectedIndex;
+                    indice = document.getElementById("Provincias").selectedIndex;
                     if( indice == null || indice == 0 ) 
                     {
                         alert('ERROR: Tiene que seleccionar una Provincia.');
@@ -42,12 +42,12 @@ function validacion()
                     }
                     else
                     {
-                        indice = document.getElementByName("Municipios").selectedIndex;
+                        indice = document.getElementById("Municipios").selectedIndex;
                         if( indice == null || indice == 0 ) 
                         {
                             alert('ERROR: Tiene que seleccionar un Municipio.');
                             respuesta = false;
-                        }*/
+                        }
                         else
                         {condicion =false;
                             valor = document.getElementById("FECHA_NACIMIENTO").value;
@@ -113,14 +113,14 @@ function validacion()
                                                         }
                                                         else
                                                         {
-                                                            valor = document.getElementByTagName("select").value;
-                                                    if( valor == 0 || /^\s+$/.test(valor) ) 
-                                                    {
-                                                        alert('ERROR: Debe seleccionar al menos una provincia de la lista.');
-                                                        respuesta = false;
-                                                    }
-                                                    
-
+                                                            indice = document.getElementById('Provincias').options.selectedIndex.value
+                                                            if(indice == 0)
+                                                            {
+                                                                alert("ERROR: Debe seleccionar al menos una Provincia."); 
+                                                                //document.form.Provincias.focus(); 
+                                                                respuesta= false;  
+                                                            } 
+                                                           
                                                            /* valor = document.getElementById("EMAIL").value;
                                                             
                                                             if( !(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)/.test(valor)) )

@@ -18,7 +18,7 @@ class utilidadesIU
                 {
                     $selected='';
                 }
-                $salida.='<option  '.$selected.'value="'.$row['ID'].'">'.$row[$campoVisible].'</option>';
+                $salida.='<option require="true" '.$selected.'value="'.$row['ID'].'">'.$row[$campoVisible].'</option>';
         }
         $salida.= "</select>";
         return $salida;

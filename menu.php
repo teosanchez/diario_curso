@@ -10,11 +10,11 @@
         <li><a href="index.php?cuerpo=rejilla_municipio.php">municipio</a></li>
         <li><a href="index.php?cuerpo=rejilla_nacionalidad.php">nacionalidad</a></li>
         <li><a href="index.php?cuerpo=rejilla_nivel_estudios.php">nivel_estudios</a></li>
-        <li><a href="index.php?cuerpo=rejilla_alumno_curso.php">alumno_curso</a></li>
-        <li><a href="index.php?cuerpo=rejilla_profesor_curso.php">profesor_curso</a></li>
+        
+        
         <li><a href="index.php?cuerpo=rejilla_provincia.php">provincia</a></li> 
         <li><a href="index.php?cuerpo=rejilla_situacion_laboral.php">situacion_laboral</a></li>         
         <li><a href="index.php?cuerpo=rejilla_modulo.php">modulo</a></li>
-        <li><a href="index.php?cuerpo=rejilla_modulo_curso.php">modulo_curso</a></li>
+       
     </ul>    
 </div>

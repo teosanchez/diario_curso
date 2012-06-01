@@ -1,5 +1,8 @@
+
+
 <script type="text/javascript" src="validaciones.js"></script>
-<script src="js/jquery_1.4.js" type="text/javascript"><!--mce:0--><!--mce:0--></script>
+<script src="js/jquery_1.4.js" type="text/javascript"></script>
+
 
 <script>
     $(document).ready(function(){
@@ -8,9 +11,18 @@
             {ID_PROVINCIA:  e.target.options[e.target.selectedIndex].value }); // El método load, carga lo que se le indica
         });
     });
+    $.ajaxSetup({
+    'beforeSend' : function(xhr) {
+    try{
+    xhr.overrideMimeType('text/html; charset=iso-8859-1');
+    }
+    catch(e){
+        
+    }
+    }});
 </script>
 
-
+	
 <?php
 include ("clase_alumno.php");
 include ("utilidadesIU.php");
