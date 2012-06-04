@@ -374,6 +374,7 @@ table.display tfoot td, table.display tfoot th, table.display tfoot tr  {text-al
     overflow: hidden;
     border-top: 1px solid #E5E5E5;
 }
+
 .post.single {
   margin-bottom: 20px;
 }
