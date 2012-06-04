@@ -25,8 +25,8 @@
 		 isset($arrayValores['ID'])?$this->ID=$arrayValores['ID']:$this->ID=null;
 		 isset($arrayValores['ID_ALUMNO'])?$this->ID_ALUMNO=$arrayValores['ID_ALUMNO']:$this->ID_ALUMNO=null;
 		 isset($arrayValores['ID_CURSO'])?$this->ID_CURSO=$arrayValores['ID_CURSO']:$this->ID_CURSO=null;
-		 isset($arrayValores['FECHA_ALTA'])?$this->FECHA_ALTA=$arrayValores['FECHA_ALTA']:$this->FECHA_ALTA=null;
-		 isset($arrayValores['FECHA_BAJA'])?$this->FECHA_BAJA=$arrayValores['FECHA_BAJA']:$this->FECHA_BAJA=null;
+                 isset($arrayValores['FECHA_ALTA'])?$this->FECHA_ALTA=date("d-m-Y",strtotime($arrayValores['FECHA_ALTA'])):$this->FECHA_ALTA=null;
+		 isset($arrayValores['FECHA_BAJA'])?$this->FECHA_BAJA=date("d-m-Y",strtotime($arrayValores['FECHA_BAJA'])):$this->FECHA_BAJA=null;
 		 isset($arrayValores['SUPLENTE'])?$this->SUPLENTE=$arrayValores['SUPLENTE']:$this->SUPLENTE=null;
 	}
 }
