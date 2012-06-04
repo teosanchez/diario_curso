@@ -33,10 +33,10 @@
                 {
                     $modulo_curso->cargar($arrayEntidad[0]);
                 }
-                
                 $bd->borrar($modulo_curso);
             }
 	}
+        
         if (isset($_GET["Cancelar"]))
         {
             if (isset($_GET["ID_CURSO"])) 

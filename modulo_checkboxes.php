@@ -10,14 +10,10 @@ $modulo_curso = new modulo_curso();
 if (isset($_GET["ID_CURSO"])) 
     {
         $modulo_curso->ID_CURSO = ($_GET["ID_CURSO"]);
-        $arrayEntidad = $bd->buscar($modulo_curso);
-        if ($arrayEntidad) 
-        {
-            $modulo_curso->cargar($arrayEntidad[0]);
-        }
     }
+    
 $c="";
-if (isset($_GET["c"]))
+if (isset($_GET["c"])&&($_GET["c"]<>""))
 {
     $c="nuevo"; // Se viene de form_curso con un curso nuevo (sin módulos)
 }

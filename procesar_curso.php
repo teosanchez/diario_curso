@@ -44,13 +44,11 @@
     }
     else
     {
-        echo ("curso-ID: ".$curso->ID);
-        echo ("c: ".$c);
         if (isset($_GET["Programa_del_curso"]))
         {
             if ($c=="nuevo")
             {
-                header('Location: index.php?cuerpo=modulo_checkboxes.php&ID_CURSO='.$curso->ID.'&MODULO='.$c);
+                header('Location: index.php?cuerpo=modulo_checkboxes.php&ID_CURSO='.$curso->ID.'&c='.$c);
             }
             else
             {
@@ -71,12 +69,19 @@
                     }
             }
             else 
+            {
+                if (isset($_GET["Alumnos_del_curso"]))
                 {
-                    if (isset($_GET["Alumnos_del_curso"]))
+                    if ($c=="nuevo")
+                    {
+                        header('Location: index.php?cuerpo=form_alumno_curso2.php&ID_CURSO='.$curso->ID.'&c='.$c);
+                    }
+                    else
                     {
                         header('Location: index.php?cuerpo=rejilla_alumno_curso.php&ID='.$curso->ID);
                     }
                 }
+            }
         }
     }
 ?>
