@@ -8,11 +8,6 @@ $curso = new curso();
 if(isset($_GET["ID"]))
 {
     $curso->ID = ($_GET["ID"]);
-    $arrayEntidad = $bd->buscar($curso);
-    if ($arrayEntidad) 
-    {
-        $curso->cargar($arrayEntidad[0]);
-    }
     $result = $bd->consultarArray("select ID,Profesor,Telefono,`Fecha Alta`,`Fecha Baja` 
                     from vw_nombre_profesor_curso_especialidad where ID_CURSO ='" . $curso->ID . "'");
 }

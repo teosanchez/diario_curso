@@ -31,11 +31,12 @@ if (isset($_GET["ID"])) {
 <form name="form_profesor_curso" id="MyForm" method="get" action="procesar_profesor_curso.php">
     <input type="hidden" name="ID" ID="ID" value="<?php echo $profesor_curso->ID; ?>"/>
     <input type="hidden" name="ID_CURSO" id="ID_CURSO" value="<?php echo $profesor_curso->ID_CURSO; ?>"/>
+    <input type="hidden" name="ID_PROFESOR" id="ID_PROFESOR" value="<?php echo $profesor_curso->ID_PROFESOR; ?>"/>
     <table>
         <tr>
             <td class="text_right">Profesor</td>
             <td class="form_td">
-                <input type="text" readonly="readonly" label="ID_PROFESOR" require="true" name="ID_PROFESOR" ID="ID_PROFESOR" 
+                <input type="text" readonly="readonly" label="PROFESOR" require="true" name="PROFESOR" ID="PROFESOR" 
                        value="<?php
                                 $curso = $bd->consultarArray("select ID,
                                     concat(APELLIDOS,', ',NOMBRE) AS Profesor
@@ -47,7 +48,7 @@ if (isset($_GET["ID"])) {
         <tr>
             <td class="text_right">Curso</td>
             <td class="form_td">
-                <input type="text" readonly="readonly" label="ID_CURSO" require="true" name="CURSO" ID="ID_CURSO" 
+                <input type="text" readonly="readonly" label="ID_CURSO" require="true" name="CURSO" ID="CURSO" 
                        value="<?php
                                 $curso = $bd->consultarArray("SELECT * from vw_form_profesor_curso_2 
                                     where ID ='" . $profesor_curso->ID_CURSO . "'");
@@ -69,7 +70,9 @@ if (isset($_GET["ID"])) {
         </tr>
         <tr>
             <td><input type="submit" name="Enviar" value="Enviar"></td>
-            <td><input type="submit" name="Cancelar" value="Cancelar"></td>
+            <td><input type="button" 
+            onClick="parent.location=
+                    'index.php?cuerpo=procesar_profesor_curso.php&Cancelar=Cancelar&ID_CURSO=<?php echo $profesor_curso->ID_CURSO;?>'" name="Cancelar" value="Cancelar"></td>
         </tr>
     </table>
 </form>
