@@ -74,12 +74,10 @@ if (isset($_GET["nuevo"])) {
     </tr>
     <tr>
         <td><input type="submit" name="Enviar" value="Enviar"/></td>
-        <!--<td><input type="button" 
-                   onClick="parent.location='index.php?cuerpo=rejilla_modulo_curso.php&ID='
-                            <?php echo $modulo_curso->ID_CURSO; ?>"
-                   name="Cancelar" value="Cancelar"/>
-        </td>-->
-        <td><input type="submit" name="Cancelar" value="Cancelar"/></td>                          
+        <td><input type="button" 
+            onClick="parent.location=
+                    'index.php?cuerpo=procesar_modulo_curso.php&Cancelar=Cancelar&ID_CURSO=<?php echo $modulo_curso->ID_CURSO;?>'"
+            name="Cancelar" value="Cancelar"></td>
     </tr>
 </table>
 </form>
