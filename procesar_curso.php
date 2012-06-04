@@ -61,7 +61,14 @@
         {
             if (isset($_GET["Profesores_del_curso"]))
             {
-                header('Location: index.php?cuerpo=rejilla_profesor_curso.php&ID='.$curso->ID);
+                if ($c=="nuevo")
+                    {
+                        header('Location: index.php?cuerpo=form_profesor_curso2.php&ID_CURSO='.$curso->ID.'&c='.$c);
+                    }
+                  else
+                    {
+                        header('Location: index.php?cuerpo=rejilla_profesor_curso.php&ID='.$curso->ID);
+                    }
             }
             else 
                 {

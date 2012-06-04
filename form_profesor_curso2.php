@@ -3,15 +3,21 @@ include ("clase_profesor_curso.php");
 include ("utilidadesIU.php");
 include_once ("clase_bd.php");
 
+
 $bd = new bd();
 $util = new utilidadesIU();
 $profesor_curso = new profesor_curso();
-if (isset($_GET["ID"])) {
-    $profesor_curso->ID = ($_GET["ID"]);
+if (isset($_GET["ID_CURSO"])) {
+    $profesor_curso->ID_CURSO = ($_GET["ID_CURSO"]);
     $arrayEntidad = $bd->buscar($profesor_curso);
     if ($arrayEntidad) {
         $profesor_curso->cargar($arrayEntidad[0]);
     }
+}
+$c="";
+if (isset($_GET["c"])and isset($_GET["c"])!="")
+{
+    $c="nuevo"; // Se viene de form_curso con un curso nuevo (sin módulos)
 }
 ?>
 
@@ -31,28 +37,25 @@ if (isset($_GET["ID"])) {
 <form name="form_profesor_curso" id="MyForm" method="get" action="procesar_profesor_curso.php">
     <input type="hidden" name="ID" ID="ID" value="<?php echo $profesor_curso->ID; ?>"/>
     <input type="hidden" name="ID_CURSO" id="ID_CURSO" value="<?php echo $profesor_curso->ID_CURSO; ?>"/>
+    <input type="hidden" name="c" id="c" value="<?php echo $c; ?>"/>
     <table>
         <tr>
             <td class="text_right">Profesor</td>
             <td class="form_td">
-                <input type="text" readonly="readonly" label="ID_PROFESOR" require="true" name="ID_PROFESOR" ID="ID_PROFESOR" 
-                       value="<?php
-                                $curso = $bd->consultarArray("select Profesor 
-                                 from vw_nombre_profesor_curso_especialidad 
-                                 where ID ='" . $profesor_curso->ID_CURSO . "'");
-                                    echo ($curso[0]["Profesor"]);
-                                ?>"/>
+                <?php
+                $datosLista = $bd->consultar('select concat(APELLIDOS,", ",NOMBRE) AS PROFESOR,ID from profesor');
+                echo $util->pinta_selection($datosLista, "Profesor", "PROFESOR", $profesor_curso->ID_PROFESOR);
+                ?>
             </td>
         </tr>
         <tr>
             <td class="text_right">Curso</td>
             <td class="form_td">
-                <input type="text" readonly="readonly" label="ID_CURSO" require="true" name="CURSO" ID="ID_CURSO" 
+                <input type="text" readonly="readonly" label="CURSO" require="true" name="CURSO" ID="ID_CURSO" 
                        value="<?php
-                                $curso = $bd->consultarArray("select ESPECIALIDAD
-                                 from vw_nombre_profesor_curso_especialidad 
-                                 where ID ='" . $profesor_curso->ID_CURSO . "'");
-                                    echo ($curso[0]["ESPECIALIDAD"]);
+                                $curso = $bd->consultarArray("SELECT * from vw_form_profesor_curso_2 
+                                    where ID ='" . $profesor_curso->ID_CURSO . "'");
+                                    echo ($curso[0]["NOMBRE"]);
                                 ?>"/>
             </td>
         </tr>
