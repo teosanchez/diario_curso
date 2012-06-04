@@ -36,9 +36,6 @@
                     {            
                         $resp.addClass('current');
                     }
-                
-              
-           
         });
         </script>
         

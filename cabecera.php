@@ -5,7 +5,7 @@
         <li><a href="index.php?cuerpo=rejilla_diario.php"><span class="meta">Diario de clase</span><br />Diario</a></li>        
         <li><a href="index.php"><span class="meta">Admin. Calendario</span><br />Calendario</a></li>
         <li><a href="index.php?cuerpo=rejilla_alumno.php"><span class="meta">Admin. Alumnos</span><br />Alumnos</a></li>
-        <li><a href="index.php?cuerpo=rejilla_profesor.php" class="current"><span class="meta">Admin. Profesores</span><br />Profesores</a></li>
+        <li><a href="index.php?cuerpo=rejilla_profesor.php"><span class="meta">Admin. Profesores</span><br />Profesores</a></li>
         <li><a href="index.php?cuerpo=rejilla_curso.php"><span class="meta">Admin. Cursos</span><br />Cursos</a></li>
         <li><a href="inicio.php"><span class="meta">P&aacute;gina Principal</span><br />Inicio</a></li>
     </ul>
