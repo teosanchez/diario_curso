@@ -37,9 +37,9 @@ if (isset($_GET["ID"])) {
             <td class="form_td">
                 <input type="text" readonly="readonly" label="ID_PROFESOR" require="true" name="ID_PROFESOR" ID="ID_PROFESOR" 
                        value="<?php
-                                $curso = $bd->consultarArray("select Profesor 
-                                 from vw_nombre_profesor_curso_especialidad 
-                                 where ID ='" . $profesor_curso->ID_CURSO . "'");
+                                $curso = $bd->consultarArray("select ID,
+                                    concat(APELLIDOS,', ',NOMBRE) AS Profesor
+                                    from profesor where ID ='" . $profesor_curso->ID_PROFESOR . "'");
                                     echo ($curso[0]["Profesor"]);
                                 ?>"/>
             </td>
@@ -49,10 +49,9 @@ if (isset($_GET["ID"])) {
             <td class="form_td">
                 <input type="text" readonly="readonly" label="ID_CURSO" require="true" name="CURSO" ID="ID_CURSO" 
                        value="<?php
-                                $curso = $bd->consultarArray("select ESPECIALIDAD
-                                 from vw_nombre_profesor_curso_especialidad 
-                                 where ID ='" . $profesor_curso->ID_CURSO . "'");
-                                    echo ($curso[0]["ESPECIALIDAD"]);
+                                $curso = $bd->consultarArray("SELECT * from vw_form_profesor_curso_2 
+                                    where ID ='" . $profesor_curso->ID_CURSO . "'");
+                                    echo ($curso[0]["NOMBRE"]);
                                 ?>"/>
             </td>
         </tr>
