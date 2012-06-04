@@ -57,7 +57,7 @@ if (isset($_GET["Cancelar"]))
         header('Location: index.php?cuerpo=form_curso.php&ID='.$alumno_curso->ID_CURSO);             
     }
     else
-    {
+    { 
         header('Location: index.php?cuerpo=rejilla_alumno_curso.php&ID='.$alumno_curso->ID_CURSO); 
     }
 }
