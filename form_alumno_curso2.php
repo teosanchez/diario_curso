@@ -6,15 +6,17 @@ include_once ("clase_bd.php");
 $bd = new bd();
 $util = new utilidadesIU();
 $alumno_curso = new alumno_curso();
-if (isset($_GET["ID"])) 
+if (isset($_GET["ID_CURSO"])) 
 {
-    $alumno_curso->ID = ($_GET["ID"]);
-    $arrayEntidad = $bd->buscar($alumno_curso);
-    if ($arrayEntidad) 
-    {
-        $alumno_curso->cargar($arrayEntidad[0]);
-    }
+    $alumno_curso->ID_CURSO = ($_GET["ID_CURSO"]);
 }
+
+$c="";
+if (isset($_GET["c"])&&($_GET["c"]<>""))
+{
+    $c="nuevo"; // Se viene de form_curso con un curso nuevo (sin alumnos)
+}
+
 ?>
 
 <!-- Titulo de pÃ¡gina -->
@@ -33,7 +35,8 @@ if (isset($_GET["nuevo"])) {
 <form name="form_alumno_curso" id="MyForm" method="get" action="procesar_alumno_curso.php">
     <input type="hidden" name="ID" ID="ID" value="<?php echo $alumno_curso->ID; ?>"/>
     <input type="hidden" name="ID_CURSO" ID="ID_CURSO" value="<?php echo $alumno_curso->ID_CURSO; ?>"/>
-    <input type="hidden" name="ID_ALUMNO" id="ID_ALUMNO" value="<?php echo $alumno_curso->ID_ALUMNO; ?>"/>
+    <input type="hidden" name="c" id="c" value="<?php echo $c; ?>"/>
+
     <table>
         <tr>
             <td>Curso</td>
@@ -51,13 +54,11 @@ if (isset($_GET["nuevo"])) {
         <tr>
             <td>Alumno</td>
             <td>
-                <input type="text" label="Alumno" require="true" name="ALUMNO" 
-                       readonly="readonly" ID="ALUMNO"
-                       value="<?php 
-                                 $alumno = $bd->consultarArray("select Alumno
-                                 from vw_nombre_alumno_nombre_especialidad 
-                                 where ID ='" . $alumno_curso->ID . "'");
-                                 echo ($alumno[0]["Alumno"]); ?>" />
+                <?php
+                $datosLista = $bd->consultar("select CONCAT(APELLIDOS,', ' ,NOMBRE) AS Alumno,ID 
+                    from alumno");
+                echo $util->pinta_selection($datosLista, "ID_ALUMNO", "Alumno", $alumno_curso->ID_ALUMNO);
+                ?>
             </td>
         </tr>
         <tr>
@@ -81,9 +82,9 @@ if (isset($_GET["nuevo"])) {
         <tr>
             <td><input type="submit" name="Enviar" value="Enviar"/></td>
             <td><input type="button" 
-            onClick="parent.location=
-                    'index.php?cuerpo=procesar_alumno_curso.php&Cancelar=Cancelar&ID_CURSO=<?php echo $alumno_curso->ID_CURSO;?>'"
+                        onClick="parent.location=
+                    'index.php?cuerpo=procesar_alumno_curso.php&Cancelar=Cancelar&ID_CURSO=<?php echo $alumno_curso->ID_CURSO;?>&c=<?php echo $c; ?>'"
             name="Cancelar" value="Cancelar"></td>
         </tr>
-    </table>ID_CURSO
+    </table>
 </form>
