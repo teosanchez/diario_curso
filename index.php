@@ -30,7 +30,7 @@
             <?php include ("cabecera.php"); ?>
 
             <!-- Content -->
-            <div id="featured" class="clearfix grid_12">
+            <div id="featured" class="container_12 grid_12">
                 <?php include ("cuerpo.php"); ?>    
             </div>
 

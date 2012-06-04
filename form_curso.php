@@ -94,7 +94,7 @@ if (isset($especialidad->ID_FAMILIA))
             <td>Nivel de Estudios</td>
             <td>
                 <?php
-                $datosLista = $bd->consultar("SELECT `NOMBRE`,`ID` FROM `nivel_estudios`");
+                $datosLista = $bd->consultar("select substr(NOMBRE, 1, 25)as NOMBRE,`ID` FROM `nivel_estudios`");
                 echo $util->pinta_selection($datosLista, "NIVEL_ESTUDIOS", "NOMBRE", $curso->ID_NIVEL_ESTUDIOS);
                 ?>
             </td>
