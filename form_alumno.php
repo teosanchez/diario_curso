@@ -1,9 +1,5 @@
-
-
 <script type="text/javascript" src="validaciones.js"></script>
 <script src="js/jquery_1.4.js" type="text/javascript"></script>
-
-
 <script>
     $(document).ready(function(){
         $("#Provincias").change(function(e){
@@ -205,7 +201,7 @@ if (isset($municipio->ID_PROVINCIA)) {
             </td>
         </tr>
         <tr>
-            <td><input type="submit" name="Enviar" value="Enviar"></td>           
+            <td><input type="submit" onClick="valida()" name="Enviar" value="Enviar"></td>           
             <td><input type="button" onClick="parent.location='index.php?cuerpo=rejilla_alumno.php'" name="Cancelar" value="Cancelar"></td>
         </tr>
     </table>

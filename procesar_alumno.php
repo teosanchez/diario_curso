@@ -8,6 +8,7 @@
 	$bd=new bd();
 	if(isset($_GET["Enviar"])) 
 	{
+            
             if(isset($_GET["ID"]))
             {
                  $alumno->ID=$_GET["ID"];
@@ -70,5 +71,6 @@
             }
 
 	}
+        
 	header('Location: index.php?cuerpo=rejilla_alumno.php');
 ?>

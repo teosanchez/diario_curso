@@ -113,14 +113,6 @@ function validacion()
                                                         }
                                                         else
                                                         {
-                                                            indice = document.getElementById('Provincias').options.selectedIndex.value
-                                                            if(indice == 0)
-                                                            {
-                                                                alert("ERROR: Debe seleccionar al menos una Provincia."); 
-                                                                //document.form.Provincias.focus(); 
-                                                                respuesta= false;  
-                                                            } 
-                                                           
                                                            /* valor = document.getElementById("EMAIL").value;
                                                             
                                                             if( !(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)/.test(valor)) )
@@ -283,4 +275,4 @@ function limitaCaracteres(elemento, maximoCaracteres, minCaracteres) {
         validaCaracteres = false;
     }    
     return validaCaracteres;
-}
+  
