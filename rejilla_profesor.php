@@ -4,7 +4,7 @@ include ("clase_rejilla.php");
 include_once ("clase_bd.php");
 
 $bd = new bd();
-$result = $bd->consultarArray("select ID,Profesor,Municipio,Provincia,Telefono
+$result = $bd->consultarArray("select ID,Profesor,Telefono
                                 from vw_profesor_direccion");
 ?>
 

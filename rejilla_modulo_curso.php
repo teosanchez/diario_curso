@@ -5,14 +5,9 @@ include ("clase_curso.php");
 
 $bd = new bd();
 $curso = new curso();
-if(isset($_GET["ID"]))
+if (isset($_GET["ID"]))
 {
     $curso->ID = ($_GET["ID"]);
-    $arrayEntidad = $bd->buscar($curso);
-    if ($arrayEntidad) 
-    {
-        $curso->cargar($arrayEntidad[0]);
-    }
     $result = $bd->consultarArray("select ID,Modulo,Horas 
                     from vw_modulo_curso_2
                     where ID_CURSO ='" . $curso->ID . "'");
