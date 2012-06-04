@@ -3,7 +3,8 @@ include ("clase_rejilla.php");
 include_once ("clase_bd.php");
 
 $bd = new bd();
-$result = $bd->consultarArray("select * from vw_curso_especialidad_nivel_estudios_familia");
+$result = $bd->consultarArray("select ID,Familia,Especialidad,Horas,`Fecha Inicio`,`Fecha Fin`
+                                from vw_curso_especialidad_nivel_estudios_familia");
 ?>
 
 <!-- Titulo de pagina -->
@@ -20,7 +21,8 @@ $result = $bd->consultarArray("select * from vw_curso_especialidad_nivel_estudio
         </div> 
         <div class="clear"></div>
     </div>
-    <!-- Fin Titulo de pÃ¡gina -->
+</form>
+<!-- Fin Titulo de pÃƒÂ¡gina -->
 
     <?php
     if ($result) {

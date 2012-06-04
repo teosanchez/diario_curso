@@ -147,8 +147,8 @@ h1#logo_form                                                {font-size:40px; fon
 ul#navigation                                               {text-transform:uppercase;}
 ul#navigation li                                            {float:right; display:inline; margin : 0 0 0 25px;}
 ul#navigation li a                                          {font-family:arial, sans-serif !important; display:block; padding:20px 0px 0px 0px; text-decoration:none; color:#000000; font-size:14px; font-weight:bold;}
-ul#navigation li a:hover,
-ul#navigation li a.current                                  {background:url(../images/triangle.gif) no-repeat center top;}
+ul#navigation li a:hover                                    {background:url(../images/triangle.gif) no-repeat center top;}
+/*ul#navigation li a.current                                  {background:url(../images/triangle.gif) no-repeat center top;}*/
 
 /* Footer */
 

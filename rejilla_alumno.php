@@ -3,7 +3,9 @@ include ("clase_rejilla.php");
 include_once ("clase_bd.php");
 $bd = new bd();
 
+
 $result = $bd->consultarArray("select `ID`, `Alumno`, `Situaci&oacute;n Laboral`, `Tel&eacute;fono`, `Email` from vw_rejilla_alumno_situacion_estudios");
+
 ?>
 
 <!-- Titulo de pagina -->

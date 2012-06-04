@@ -1,4 +1,8 @@
+
+
 <script type="text/javascript" src="validaciones.js"></script>
+<script src="js/jquery_1.4.js" type="text/javascript"></script>
+
 
 <script>
     $(document).ready(function(){
@@ -7,9 +11,18 @@
             {ID_PROVINCIA:  e.target.options[e.target.selectedIndex].value }); // El método load, carga lo que se le indica
         });
     });
+    $.ajaxSetup({
+    'beforeSend' : function(xhr) {
+    try{
+    xhr.overrideMimeType('text/html; charset=iso-8859-1');
+    }
+    catch(e){
+        
+    }
+    }});
 </script>
 
-
+	
 <?php
 include ("clase_alumno.php");
 include ("utilidadesIU.php");
@@ -90,13 +103,13 @@ if (isset($municipio->ID_PROVINCIA)) {
         <tr>
             <td class="text_right">Calle</td>
             <td>
-                <input type="text" label="Calle" name="CALLE" require="true" ID="CALLE" value="<?php echo $direccion->CALLE; ?>"/>
+                <input type="text" label="Calle" name="CALLE" ID="CALLE" value="<?php echo $direccion->CALLE; ?>"/>
             </td>
         </tr>
         <tr>
             <td class="text_right">N&uacute;mero</td>
             <td>
-                <input type="text" label="Número" name="NUMERO" require="true" ID="NUMERO" value="<?php echo $direccion->NUMERO; ?>"/>
+                <input type="text" label="Número" name="NUMERO" ID="NUMERO" value="<?php echo $direccion->NUMERO; ?>"/>
             </td>
         </tr>
 
