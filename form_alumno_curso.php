@@ -75,7 +75,18 @@ if (isset($_GET["nuevo"])) {
         <tr>
             <td>Suplente</td>
             <td>
-                <input type="text" label="Suplente"  name="SUPLENTE" ID="SUPLENTE" value="<?php echo $alumno_curso->SUPLENTE; ?>"/>
+                <?php
+                if ($alumno_curso->SUPLENTE == 0) 
+                    {
+                        echo '<div class="radio_form"><input type="radio" value="0" name="SUPLENTE" id="SUPLENTE" CHECKED/>Matriculado</div>';
+                        echo '<div class="radio_form"><input type="radio" value="1" name="SUPLENTE" id="SUPLENTE" />Reserva</div>';
+                    }
+                else 
+                    {
+                        echo '<div class="radio_form"><input type="radio" value="0" name="SUPLENTE" id="SUPLENTE" />Matriculado</div>';
+                        echo '<div class="radio_form"><input type="radio" value="1" name="SUPLENTE" id="SUPLENTE" CHECKED/>Reserva</div>';
+                    }
+                ?>
             </td>
         </tr>
         <tr>
@@ -85,5 +96,5 @@ if (isset($_GET["nuevo"])) {
                     'index.php?cuerpo=procesar_alumno_curso.php&Cancelar=Cancelar&ID_CURSO=<?php echo $alumno_curso->ID_CURSO;?>'"
             name="Cancelar" value="Cancelar"></td>
         </tr>
-    </table>ID_CURSO
+    </table>
 </form>
