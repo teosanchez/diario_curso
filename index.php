@@ -8,10 +8,12 @@
         <link rel="stylesheet" href="css/reset.css" />
         <link rel="stylesheet" href="css/styles.css" />
         <link rel="stylesheet" href="css/formly.css" type="text/css" />
+        <link rel="stylesheet" media="screen" type="text/css" href="css/datepicker.css" />
 
         <!-- Scripts -->
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
         <script type="text/javascript" src="js/formly.js"></script>
+        <script type="text/javascript" src="js/datepicker.js"></script>
         <!-- Form JQUERY -->
         <?php
         $cuerpo="";
@@ -54,7 +56,10 @@
 
             <!-- Content -->
             <div id="featured" class="clearfix grid_12">
-                <?php include ("cuerpo.php"); ?>    
+                <?php include ("cuerpo.php"); ?> 
+                <script>
+                    $('input').DatePicker(click);
+                </script>
             </div>
 
             <!-- Footer -->
