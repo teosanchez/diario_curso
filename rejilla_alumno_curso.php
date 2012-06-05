@@ -1,5 +1,5 @@
 <?php
-include ("clase_rejilla.php");
+include ("clase_rejilla_alumno_curso.php");
 include_once ("clase_bd.php");
 include ("clase_curso.php");
 
@@ -41,7 +41,7 @@ if (isset($_GET["ID"]))
 <?php
 if ($result) 
 {
-    $rejilla = new rejilla($result, "index.php?cuerpo=form_alumno_curso.php&", "ID", "Alumno");
+    $rejilla = new rejilla_alumno_curso($result, "index.php?cuerpo=form_alumno_curso.php&", "ID", "Alumno");
     echo $rejilla->pintar();
 }
 ?>

@@ -55,11 +55,16 @@
             <?php include ("cabecera.php"); ?>
 
             <!-- Content -->
+<<<<<<< HEAD
             <div id="featured" class="clearfix grid_12">
                 <?php include ("cuerpo.php"); ?> 
                 <script>
                     $('input').DatePicker(click);
                 </script>
+=======
+            <div id="featured" class="container_12 grid_12">
+                <?php include ("cuerpo.php"); ?>    
+>>>>>>> 3fb1c6ab0bec66ce600ed2836f755746fc1b71b7
             </div>
 
             <!-- Footer -->
