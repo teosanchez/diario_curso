@@ -6,7 +6,7 @@ class utilidadesIU
      public function pinta_selection($datos,$nombre,$campoVisible,$seleccion=-1)
     {
 
-        $salida= '<select size="1" require="true" label="'.$nombre.'" id="'.$nombre.'" name="'.$nombre.'">';
+        $salida= '<select size="1" label="'.$nombre.'" id="'.$nombre.'" name="'.$nombre.'">';
         $salida.='<option  value="0">Seleccione...</option>';
         while($row = mysql_fetch_array($datos))
         {    
