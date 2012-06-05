@@ -4,8 +4,9 @@ include ("clase_rejilla.php");
 include_once ("clase_bd.php");
 
 $bd = new bd();
-$result = $bd->consultarArray("select ID,Profesor,Telefono
-                                from vw_profesor_direccion");
+
+$result = $bd->consultarArray("select `ID`, `Profesor`, `Tel&eacute;fono`, `Email`  from vw_profesor_direccion");
+
 ?>
 
 <!-- Titulo de pagina -->

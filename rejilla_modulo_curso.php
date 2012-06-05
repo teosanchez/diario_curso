@@ -8,7 +8,7 @@ $curso = new curso();
 if (isset($_GET["ID"]))
 {
     $curso->ID = ($_GET["ID"]);
-    $result = $bd->consultarArray("select ID,Modulo,Horas 
+    $result = $bd->consultarArray("select ID,`M&oacute;dulo`,Horas 
                     from vw_modulo_curso_2
                     where ID_CURSO ='" . $curso->ID . "'");
 }

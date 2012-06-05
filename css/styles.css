@@ -329,13 +329,13 @@ p.error							{margin-left:140px; margin-top:10px;}
 .titulo{
     padding-top: 40px; ;
 }
-.titulo div.grid_9                                      {display:inline; float:left; position:relative; margin:0px; padding-left: 40px;}
+.titulo div.grid_9                                      {display:inline; float:left; position:relative; margin:0px; padding-left: 20px;}
 .titulo div.grid_3                                       {display:inline; float:right; position:relative; padding: 0px; margin: 0px}
 
 .img_rejilla                                                              { margin:0px; padding: 0px; border: 0px;}
 .a_img_rejilla                                                            {margin: 0px;    padding: 0px;    border: 0px;    width: 18px;    height: 18px;}
 
-table.display                                                           {font: 100% "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS", sans-serif; padding: 0; margin: 15px 20px 30px 20px; border-collapse: collapse; color: #333; background: #F3F5F7;}
+table.display                                                           {font: 100% "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS", sans-serif; padding: 0; margin: 15px -15px 25px 15px; border-collapse: collapse; color: #333; background: #F3F5F7;}
 
 table.display a                                                         {color: #3A4856; text-decoration: none; border-bottom: 1px solid #C6C8CB;}  
 
@@ -374,6 +374,7 @@ table.display tfoot td, table.display tfoot th, table.display tfoot tr  {text-al
     overflow: hidden;
     border-top: 1px solid #E5E5E5;
 }
+
 .post.single {
   margin-bottom: 20px;
 }

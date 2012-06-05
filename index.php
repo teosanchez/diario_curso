@@ -12,20 +12,41 @@
         <!-- Scripts -->
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
         <script type="text/javascript" src="js/formly.js"></script>
-       
+
+        <!-- Form JQUERY -->
+        <?php
+        $cuerpo="";
+        if (isset($_GET["cuerpo"])) {
+            $cuerpo = $_GET["cuerpo"];
+            $entidad=  explode("_", $cuerpo);
+            
+            if (count($entidad)>0){
+                $cuerpo=$entidad[1];
+            }
+        }
+        ?>
         <script>
         <!-- Form JQUERY -->
         
             $(document).ready(function()
-            { $('#MyForm').formly(); });
+            { 
+                $('#MyForm').formly(); 
+                var $resp=$('#navigation a[href*="<?php echo $cuerpo ?>"]');
+                if ($resp.lenght<=0){
+                    alert("No encontrado");
+                }
+                else
+                    {            
+                        $resp.addClass('current');
+                    }
+        });
         </script>
         
-        <script type="text/javascript" src="js/validaciones.js"></script>
-        
-	
 
+        <script type="text/javascript" src="js/validaciones.js"></script>
 
         <?php header( 'Content-type: text/html; charset=iso-8859-1' );?>     
+
     </head>
 
     <body>
@@ -38,7 +59,7 @@
             <?php include ("cabecera.php"); ?>
 
             <!-- Content -->
-            <div id="featured" class="clearfix grid_12">
+            <div id="featured" class="container_12 grid_12">
                 <?php include ("cuerpo.php"); ?>    
             </div>
 

@@ -76,7 +76,8 @@ if (isset($_GET["nuevo"])) {
         <tr>
             <td>Suplente</td>
             <td>
-                <input type="text" label="Suplente"  name="SUPLENTE" ID="SUPLENTE" value="<?php echo $alumno_curso->SUPLENTE; ?>"/>
+                <div class="radio_form"><input type="radio" value="0" name="SUPLENTE" id="SUPLENTE" />Matriculado</div>
+                <div class="radio_form"><input type="radio" value="1" name="SUPLENTE" id="SUPLENTE" />Reserva</div>
             </td>
         </tr>
         <tr>
