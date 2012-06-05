@@ -572,3 +572,45 @@ function validarFormDireccion()
         fi.appendChild(contenedor);
     }
 }
+
+function validarFormProfesorCurso()
+{
+    var sel = document.getElementsByTagName('select');//.selectedIndex;
+    
+    
+    
+    if (sel[0].selectedIndex == 0)
+    {
+        //alert("No se ha seleccionado nigun elemento "+sel[i].selectedIndex);
+        //alert(sel[i].id);
+        sel[0].style.borderColor="orange";
+        fi = document.getElementById('MyForm'); // 1
+        contenedor = document.createElement('div'); // 2
+        contenedor.id = 'div_profesor'; // 3
+        contenedor.setAttribute('class','formlyRequired formlyAlert');
+        contenedor.setAttribute('style','display: block;');
+        contenedor.innerHTML= "'Profesor' es un campo obligatorio."
+        fi.appendChild(contenedor);
+    }
+}
+
+function validarFormAlumnoCurso2()
+{
+    var sel = document.getElementsByTagName('select');//.selectedIndex;
+    
+    
+    
+    if (sel[0].selectedIndex == 0)
+    {
+        //alert("No se ha seleccionado nigun elemento "+sel[i].selectedIndex);
+        //alert(sel[i].id);
+        sel[0].style.borderColor="orange";
+        fi = document.getElementById('MyForm'); // 1
+        contenedor = document.createElement('div'); // 2
+        contenedor.id = 'div_alumno_curso'; // 3
+        contenedor.setAttribute('class','formlyRequired formlyAlert');
+        contenedor.setAttribute('style','display: block;');
+        contenedor.innerHTML= "'Alumno' es un campo obligatorio."
+        fi.appendChild(contenedor);
+    }
+}
