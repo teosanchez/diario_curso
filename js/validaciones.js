@@ -392,5 +392,183 @@ function validarFormAlumno()
     }
 }
     
+function validarFormCurso()
+{
+    var sel = document.getElementsByTagName('select');//.selectedIndex;
+    
+    
+    
+    if (sel[0].selectedIndex == 0)
+    {
+        //alert("No se ha seleccionado nigun elemento "+sel[i].selectedIndex);
+        //alert(sel[i].id);
+        sel[0].style.borderColor="orange";
+        fi = document.getElementById('MyForm'); // 1
+        contenedor = document.createElement('div'); // 2
+        contenedor.id = 'div_familia'; // 3
+        contenedor.setAttribute('class','formlyRequired formlyAlert');
+        contenedor.setAttribute('style','display: block;');
+        contenedor.innerHTML= "'Familia' es un campo obligatorio."
+        fi.appendChild(contenedor);
+    }
+        
+    if (sel[1].selectedIndex == 0)
+    {
+        //alert("No se ha seleccionado nigun elemento "+sel[i].selectedIndex);
+        //alert(sel[i].id);
+        sel[1].style.borderColor="orange";
+        fi = document.getElementById('MyForm'); // 1
+        contenedor = document.createElement('div'); // 2
+        contenedor.id = 'div_especialidad'; // 3
+        contenedor.setAttribute('class','formlyRequired formlyAlert');
+        contenedor.setAttribute('style','display: block;');
+        contenedor.innerHTML= "'Especialidad' es un campo obligatorio."
+        fi.appendChild(contenedor);
+    }
+        
+    if (sel[2].selectedIndex == 0)
+    {
+        //alert("No se ha seleccionado nigun elemento "+sel[i].selectedIndex);
+        //alert(sel[i].id);
+        sel[2].style.borderColor="orange";
+        fi = document.getElementById('MyForm'); // 1
+        contenedor = document.createElement('div'); // 2
+        contenedor.id = 'div_nivel'; // 3
+        contenedor.setAttribute('class','formlyRequired formlyAlert');
+        contenedor.setAttribute('style','display: block;');
+        contenedor.innerHTML= "'Nivel de Estudios' es un campo obligatorio."
+        fi.appendChild(contenedor);
+    }
+}
 
-           
+function validarFormProfesor()
+{
+    var sel = document.getElementsByTagName('select');//.selectedIndex;
+    
+    
+    
+    if (sel[0].selectedIndex == 0)
+    {
+        //alert("No se ha seleccionado nigun elemento "+sel[i].selectedIndex);
+        //alert(sel[i].id);
+        sel[0].style.borderColor="orange";
+        fi = document.getElementById('MyForm'); // 1
+        contenedor = document.createElement('div'); // 2
+        contenedor.id = 'div_provincias'; // 3
+        contenedor.setAttribute('class','formlyRequired formlyAlert');
+        contenedor.setAttribute('style','display: block;');
+        contenedor.innerHTML= "'Provincias' es un campo obligatorio."
+        fi.appendChild(contenedor);
+    }
+        
+    if (sel[1].selectedIndex == 0)
+    {
+        //alert("No se ha seleccionado nigun elemento "+sel[i].selectedIndex);
+        //alert(sel[i].id);
+        sel[1].style.borderColor="orange";
+        fi = document.getElementById('MyForm'); // 1
+        contenedor = document.createElement('div'); // 2
+        contenedor.id = 'div_municipios'; // 3
+        contenedor.setAttribute('class','formlyRequired formlyAlert');
+        contenedor.setAttribute('style','display: block;');
+        contenedor.innerHTML= "'Municipios' es un campo obligatorio."
+        fi.appendChild(contenedor);
+    }
+}
+function validarFormEspecialidad()
+{
+    var sel = document.getElementsByTagName('select');//.selectedIndex;
+    
+    
+    
+    if (sel[0].selectedIndex == 0)
+    {
+        //alert("No se ha seleccionado nigun elemento "+sel[i].selectedIndex);
+        //alert(sel[i].id);
+        sel[0].style.borderColor="orange";
+        fi = document.getElementById('MyForm'); // 1
+        contenedor = document.createElement('div'); // 2
+        contenedor.id = 'div_familia'; // 3
+        contenedor.setAttribute('class','formlyRequired formlyAlert');
+        contenedor.setAttribute('style','display: block;');
+        contenedor.innerHTML= "'Familia' es un campo obligatorio."
+        fi.appendChild(contenedor);
+    }
+}
+
+function validarFormMunicipio()
+{
+    var sel = document.getElementsByTagName('select');//.selectedIndex;
+    
+    
+    
+    if (sel[0].selectedIndex == 0)
+    {
+        //alert("No se ha seleccionado nigun elemento "+sel[i].selectedIndex);
+        //alert(sel[i].id);
+        sel[0].style.borderColor="orange";
+        fi = document.getElementById('MyForm'); // 1
+        contenedor = document.createElement('div'); // 2
+        contenedor.id = 'div_municipio'; // 3
+        contenedor.setAttribute('class','formlyRequired formlyAlert');
+        contenedor.setAttribute('style','display: block;');
+        contenedor.innerHTML= "'Provincia' es un campo obligatorio."
+        fi.appendChild(contenedor);
+    }
+}
+
+function validarFormAlumnoCurso()
+{
+    var sel = document.getElementsByTagName('select');//.selectedIndex;
+    
+    
+    
+    if (sel[0].selectedIndex == 0)
+    {
+        //alert("No se ha seleccionado nigun elemento "+sel[i].selectedIndex);
+        //alert(sel[i].id);
+        sel[0].style.borderColor="orange";
+        fi = document.getElementById('MyForm'); // 1
+        contenedor = document.createElement('div'); // 2
+        contenedor.id = 'div_alumno_curso'; // 3
+        contenedor.setAttribute('class','formlyRequired formlyAlert');
+        contenedor.setAttribute('style','display: block;');
+        contenedor.innerHTML= "'Alumno' es un campo obligatorio."
+        fi.appendChild(contenedor);
+    }
+}  
+
+function validarFormDireccion()
+{
+    var sel = document.getElementsByTagName('select');//.selectedIndex;
+    
+    
+    
+    if (sel[0].selectedIndex == 0)
+    {
+        //alert("No se ha seleccionado nigun elemento "+sel[i].selectedIndex);
+        //alert(sel[i].id);
+        sel[0].style.borderColor="orange";
+        fi = document.getElementById('MyForm'); // 1
+        contenedor = document.createElement('div'); // 2
+        contenedor.id = 'div_provincias'; // 3
+        contenedor.setAttribute('class','formlyRequired formlyAlert');
+        contenedor.setAttribute('style','display: block;');
+        contenedor.innerHTML= "'Provincia' es un campo obligatorio."
+        fi.appendChild(contenedor);
+    }
+        
+    if (sel[1].selectedIndex == 0)
+    {
+        //alert("No se ha seleccionado nigun elemento "+sel[i].selectedIndex);
+        //alert(sel[i].id);
+        sel[1].style.borderColor="orange";
+        fi = document.getElementById('MyForm'); // 1
+        contenedor = document.createElement('div'); // 2
+        contenedor.id = 'div_municipios'; // 3
+        contenedor.setAttribute('class','formlyRequired formlyAlert');
+        contenedor.setAttribute('style','display: block;');
+        contenedor.innerHTML= "'Municipio' es un campo obligatorio."
+        fi.appendChild(contenedor);
+    }
+}
