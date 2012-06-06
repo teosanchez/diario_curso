@@ -347,99 +347,180 @@ function validarFormAlumno()
 {
     var sel = document.getElementsByTagName('select');//.selectedIndex;
     
+    if(sel[0].selectedIndex == 0)
+    {
+        if (!document.getElementById('div_provincia'))
+        {
+            //alert("No se ha seleccionado nigun elemento "+sel[i].selectedIndex);
+            //alert(sel[i].id);
+            sel[0].style.borderColor="orange";
+            fi = document.getElementById('MyForm'); // 1
+            contenedor_provincia = document.createElement('div'); // 2
+            contenedor_provincia .id = 'div_provincia'; // 3
+            contenedor_provincia .setAttribute('class','formlyRequired formlyAlert');
+            contenedor_provincia .setAttribute('style','display: block;');
+            contenedor_provincia .innerHTML= "'Provincia' es un campo obligatorio."
+            fi.appendChild(contenedor_provincia );   
+        }
+        else
+            {
+                fi.appendChild(contenedor_provincia);
+            }
+    }
+    else
+    {
+        sel[0].style.borderColor="";
+        fi.removeChild(contenedor_provincia);
+    //alert("Sel ya no vale 0 y se debe de borrar el div");
+    }
     
     
-    if (sel[0].selectedIndex == 0)
+    if(sel[1].selectedIndex == 0)
     {
-        //alert("No se ha seleccionado nigun elemento "+sel[i].selectedIndex);
-        //alert(sel[i].id);
-        sel[0].style.borderColor="orange";
-        fi = document.getElementById('MyForm'); // 1
-        contenedor = document.createElement('div'); // 2
-        contenedor.id = 'div_provincias'; // 3
-        contenedor.setAttribute('class','formlyRequired formlyAlert');
-        contenedor.setAttribute('style','display: block;');
-        contenedor.innerHTML= "'Provincias' es un campo obligatorio."
-        fi.appendChild(contenedor);
+        if (!document.getElementById('div_municipio'))
+        {
+            //alert("No se ha seleccionado nigun elemento "+sel[i].selectedIndex);
+            //alert(sel[i].id);
+            sel[1].style.borderColor="orange";
+            fi = document.getElementById('MyForm'); // 1
+            contenedor_municipio = document.createElement('div'); // 2
+            contenedor_municipio .id = 'div_municipio'; // 3
+            contenedor_municipio .setAttribute('class','formlyRequired formlyAlert');
+            contenedor_municipio .setAttribute('style','display: block;');
+            contenedor_municipio .innerHTML= "'Municipo' es un campo obligatorio."
+            fi.appendChild(contenedor_municipio);   
+        }
+        else
+            {
+                fi.appendChild(contenedor_municipio);
+            }
     }
-        
-    if (sel[1].selectedIndex == 0)
+    else
     {
-        //alert("No se ha seleccionado nigun elemento "+sel[i].selectedIndex);
-        //alert(sel[i].id);
-        sel[1].style.borderColor="orange";
-        fi = document.getElementById('MyForm'); // 1
-        contenedor = document.createElement('div'); // 2
-        contenedor.id = 'div_municipios'; // 3
-        contenedor.setAttribute('class','formlyRequired formlyAlert');
-        contenedor.setAttribute('style','display: block;');
-        contenedor.innerHTML= "'Municipios' es un campo obligatorio."
-        fi.appendChild(contenedor);
+        sel[1].style.borderColor="";
+        fi.removeChild(contenedor_municipio);
+    //alert("Sel ya no vale 0 y se debe de borrar el div");
     }
-        
-    if (sel[4].selectedIndex == 0)
+    
+    
+    if(sel[4].selectedIndex == 0)
     {
-        //alert("No se ha seleccionado nigun elemento "+sel[i].selectedIndex);
-        //alert(sel[i].id);
-        sel[4].style.borderColor="orange";
-        fi = document.getElementById('MyForm'); // 1
-        contenedor = document.createElement('div'); // 2
-        contenedor.id = 'div_nivel'; // 3
-        contenedor.setAttribute('class','formlyRequired formlyAlert');
-        contenedor.setAttribute('style','display: block;');
-        contenedor.innerHTML= "'Nivel de Estudios' es un campo obligatorio."
-        fi.appendChild(contenedor);
+        if (!document.getElementById('div_nivel'))
+        {
+            //alert("No se ha seleccionado nigun elemento "+sel[i].selectedIndex);
+            //alert(sel[i].id);
+            sel[4].style.borderColor="orange";
+            fi = document.getElementById('MyForm'); // 1
+            contenedor_nivel = document.createElement('div'); // 2
+            contenedor_nivel .id = 'div_nivel'; // 3
+            contenedor_nivel .setAttribute('class','formlyRequired formlyAlert');
+            contenedor_nivel .setAttribute('style','display: block;');
+            contenedor_nivel .innerHTML= "'Nivel de Estudios' es un campo obligatorio."
+            fi.appendChild(contenedor_nivel);   
+        }
+        else
+            {
+                fi.appendChild(contenedor_nivel);
+            }
+    }
+    else
+    {
+        sel[4].style.borderColor="";
+        fi.removeChild(contenedor_nivel);
+    //alert("Sel ya no vale 0 y se debe de borrar el div");
     }
 }
-    
+
+
 function validarFormCurso()
 {
     var sel = document.getElementsByTagName('select');//.selectedIndex;
-    
-    
-    
-    if (sel[0].selectedIndex == 0)
+    if(sel[0].selectedIndex == 0)
     {
-        //alert("No se ha seleccionado nigun elemento "+sel[i].selectedIndex);
-        //alert(sel[i].id);
-        sel[0].style.borderColor="orange";
-        fi = document.getElementById('MyForm'); // 1
-        contenedor = document.createElement('div'); // 2
-        contenedor.id = 'div_familia'; // 3
-        contenedor.setAttribute('class','formlyRequired formlyAlert');
-        contenedor.setAttribute('style','display: block;');
-        contenedor.innerHTML= "'Familia' es un campo obligatorio."
-        fi.appendChild(contenedor);
+        if (!document.getElementById('div_familia'))
+        {
+            //alert("No se ha seleccionado nigun elemento "+sel[i].selectedIndex);
+            //alert(sel[i].id);
+            sel[0].style.borderColor="orange";
+            fi = document.getElementById('MyForm'); // 1
+            contenedor_familia = document.createElement('div'); // 2
+            contenedor_familia .id = 'div_familia'; // 3
+            contenedor_familia .setAttribute('class','formlyRequired formlyAlert');
+            contenedor_familia .setAttribute('style','display: block;');
+            contenedor_familia .innerHTML= "'Familia' es un campo obligatorio."
+            fi.appendChild(contenedor_familia);   
+        }
+        else
+        {
+            fi.appendChild(contenedor_familia);
+        }
+    }
+    else
+    {
+        sel[0].style.borderColor="";
+        fi.removeChild(contenedor_familia);
+    //alert("Sel ya no vale 0 y se debe de borrar el div");
+    }
+
+
+        
+    if(sel[1].selectedIndex == 0)
+    {
+        if (!document.getElementById('div_especialidad'))
+        {
+            //alert("No se ha seleccionado nigun elemento "+sel[i].selectedIndex);
+            //alert(sel[i].id);
+            sel[1].style.borderColor="orange";
+            fi = document.getElementById('MyForm'); // 1
+            contenedor_especialidad = document.createElement('div'); // 2
+            contenedor_especialidad.id = 'div_especialidad'; // 3
+            contenedor_especialidad.setAttribute('class','formlyRequired formlyAlert');
+            contenedor_especialidad.setAttribute('style','display: block;');
+            contenedor_especialidad.innerHTML= "'especialidad' es un campo obligatorio."
+            fi.appendChild(contenedor_especialidad);   
+        }
+        else
+        {
+            fi.appendChild(contenedor_especialidad);
+        }
+    }
+    else
+    {
+        sel[1].style.borderColor="";
+        fi.removeChild(contenedor_especialidad);
+    //alert("Sel ya no vale 0 y se debe de borrar el div");
     }
         
-    if (sel[1].selectedIndex == 0)
+   
+    if(sel[2].selectedIndex == 0)
     {
-        //alert("No se ha seleccionado nigun elemento "+sel[i].selectedIndex);
-        //alert(sel[i].id);
-        sel[1].style.borderColor="orange";
-        fi = document.getElementById('MyForm'); // 1
-        contenedor = document.createElement('div'); // 2
-        contenedor.id = 'div_especialidad'; // 3
-        contenedor.setAttribute('class','formlyRequired formlyAlert');
-        contenedor.setAttribute('style','display: block;');
-        contenedor.innerHTML= "'Especialidad' es un campo obligatorio."
-        fi.appendChild(contenedor);
+        if (!document.getElementById('div_nivel'))
+        {
+            //alert("No se ha seleccionado nigun elemento "+sel[i].selectedIndex);
+            //alert(sel[i].id);
+            sel[2].style.borderColor="orange";
+            fi = document.getElementById('MyForm'); // 1
+            contenedor_nivel = document.createElement('div'); // 2
+            contenedor_nivel.id = 'div_nivel'; // 3
+            contenedor_nivel.setAttribute('class','formlyRequired formlyAlert');
+            contenedor_nivel.setAttribute('style','display: block;');
+            contenedor_nivel.innerHTML= "'Nivel de Estudios' es un campo obligatorio."
+            fi.appendChild(contenedor_nivel);   
+        }
+        else
+            {
+                fi.appendChild(contenedor_nivel);
+            }
     }
-        
-    if (sel[2].selectedIndex == 0)
+    else
     {
-        //alert("No se ha seleccionado nigun elemento "+sel[i].selectedIndex);
-        //alert(sel[i].id);
-        sel[2].style.borderColor="orange";
-        fi = document.getElementById('MyForm'); // 1
-        contenedor = document.createElement('div'); // 2
-        contenedor.id = 'div_nivel'; // 3
-        contenedor.setAttribute('class','formlyRequired formlyAlert');
-        contenedor.setAttribute('style','display: block;');
-        contenedor.innerHTML= "'Nivel de Estudios' es un campo obligatorio."
-        fi.appendChild(contenedor);
+        sel[2].style.borderColor="";
+        fi.removeChild(contenedor_nivel);
+    alert("Sel ya no vale 0 y se debe de borrar el div");
     }
+    
 }
+
 
 function validarFormProfesor()
 {
@@ -614,3 +695,4 @@ function validarFormAlumnoCurso2()
         fi.appendChild(contenedor);
     }
 }
+
