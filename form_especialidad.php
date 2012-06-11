@@ -47,7 +47,7 @@ echo $util->pinta_selection($datosLista, "ID_FAMILIA", "NOMBRE", $especialidad->
             </td>
         </tr>
         <tr>
-            <td><input type="submit" name="Enviar" value="Enviar"></td>
+            <td><input type="submit" onclick="validarFormEspecialidad()" name="Enviar" value="Enviar"></td>
             <td><input type="button" onClick="parent.location='index.php?cuerpo=rejilla_especialidad.php'" name="Cancelar" value="Cancelar"></td>
         </tr>
     </table>

@@ -4,16 +4,12 @@ include_once ("clase_bd.php");
 include ("clase_curso.php");
 
 $bd = new bd();
-
-/*$result = $bd->consultarArray("select ID,Profesor,`Tel&eacute;fono`,`Fecha Alta`,`Fecha Baja` 
-                    from vw_nombre_profesor_curso_especialidad");
-        */
-
 $curso = new curso();
+
 if(isset($_GET["ID"]))
 {
     $curso->ID = ($_GET["ID"]);
-    $result = $bd->consultarArray("select ID,Profesor,Telefono,`Fecha Alta`,`Fecha Baja` 
+    $result = $bd->consultarArray("select ID,Profesor,`Tel&eacute;fono`,`Fecha Alta`,`Fecha Baja` 
                     from vw_nombre_profesor_curso_especialidad where ID_CURSO ='" . $curso->ID . "'");
 }
 

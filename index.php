@@ -8,7 +8,9 @@
         <link rel="stylesheet" href="css/reset.css" />
         <link rel="stylesheet" href="css/styles.css" />
         <link rel="stylesheet" href="css/formly.css" type="text/css" />
+
         <link rel="stylesheet" media="screen" type="text/css" href="css/datepicker.css" />
+        
 
         
         <!-- Scripts -->
