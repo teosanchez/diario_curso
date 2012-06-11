@@ -8,10 +8,25 @@
         <link rel="stylesheet" href="css/reset.css" />
         <link rel="stylesheet" href="css/styles.css" />
         <link rel="stylesheet" href="css/formly.css" type="text/css" />
+        <link rel="stylesheet" media="screen" type="text/css" href="css/datepicker.css" />
 
+        
         <!-- Scripts -->
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
         <script type="text/javascript" src="js/formly.js"></script>
+        <!-- jwysiwyg js -->                
+        <script type="text/javascript" src="js/jquery.wysiwyg.js"></script>
+        <script type="text/javascript" src="js/wysiwyg.image.js"></script>
+        <script type="text/javascript" src="js/wysiwyg.link.js"></script>
+        <script type="text/javascript" src="js/wysiwyg.table.js"></script>
+        <script type="text/javascript">
+            (function($) {
+                $(document).ready(function() { 
+                    $('#wysiwyg').wysiwyg();
+                });
+            })(jQuery);
+        </script>
+        
         <!-- Form JQUERY -->
         <?php
         $cuerpo="";
@@ -24,7 +39,9 @@
             }
         }
         ?>
+        
         <script>
+        <!-- Form JQUERY -->
             $(document).ready(function()
             { 
                 $('#MyForm').formly(); 
@@ -39,8 +56,10 @@
         });
         </script>
         
-        	
-        <?php header( 'Content-type: text/html; charset=iso-8859-15' );?>     
+
+        <script type="text/javascript" src="js/validaciones.js"></script>
+        <?php header( 'Content-type: text/html; charset=iso-8859-1' );?>     
+
     </head>
 
     <body>
@@ -53,7 +72,7 @@
             <?php include ("cabecera.php"); ?>
 
             <!-- Content -->
-            <div id="featured" class="container_12 grid_12">
+            <div id="featured" class="clearfix grid_12">
                 <?php include ("cuerpo.php"); ?>    
             </div>
 

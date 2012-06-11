@@ -2,7 +2,7 @@
     <ul id="navigation" class="grid_12 clearfix">
         <li><a href="index.php?cuerpo=menu.php"><span class="meta">Admin. General</span><br />Administración</a></li>
         <li><a href="index.php"><span class="meta">Ver estadisticas</span><br />Estadisticas</a></li>
-        <li><a href="index.php?cuerpo=rejilla_diario.php"><span class="meta">Diario de clase</span><br />Diario</a></li>        
+        <li><a href="index.php?cuerpo=seleccion_curso.php"><span class="meta">Diario de clase</span><br />Diario</a></li>        
         <li><a href="index.php"><span class="meta">Admin. Calendario</span><br />Calendario</a></li>
         <li><a href="index.php?cuerpo=rejilla_alumno.php"><span class="meta">Admin. Alumnos</span><br />Alumnos</a></li>
         <li><a href="index.php?cuerpo=rejilla_profesor.php"><span class="meta">Admin. Profesores</span><br />Profesores</a></li>
