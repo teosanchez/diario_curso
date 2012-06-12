@@ -235,6 +235,19 @@ a img                                                       {border:none; outlin
     -moz-box-shadow:0px 0px 20px #787878; 
     background:#f9f9f9;           
 }
+#formulario_seleccion {
+    width:250px; 
+    height:130px;
+    margin:180px;
+    margin-left: 370px;
+    padding:20px; 
+    border: 1px solid #aaaaaa;             
+    -webkit-border-radius: 5px; 
+    -moz-border-radius: 5px;
+    -webkit-box-shadow:0px 0px 20px #787878; 
+    -moz-box-shadow:0px 0px 20px #787878; 
+    background:#f9f9f9;           
+}
 
 .login_form div{
     margin: 3px;

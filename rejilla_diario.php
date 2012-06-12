@@ -10,7 +10,7 @@ $util = new utilidadesIU();
 $profesor_curso = new profesor_curso();
 if (isset($_GET["ID_PROFESOR_CURSO"])) {
     $profesor_curso->ID = ($_GET["ID_PROFESOR_CURSO"]);
-    $codigo_profesor=62;
+    
 }
 ?>
 

@@ -49,7 +49,7 @@
                 $('#MyForm').formly(); 
                 var $resp=$('#navigation a[href*="<?php echo $cuerpo ?>"]');
                 if ($resp.lenght<=0){
-                    alert("No encontrado");
+                    //alert("No encontrado");
                 }
                 else
                     {            
