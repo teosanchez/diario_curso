@@ -1,4 +1,4 @@
-DIARIO<?php
+<?php
 include ("clase_rejilla.php");
 include_once ("clase_bd.php");
 

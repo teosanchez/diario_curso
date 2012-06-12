@@ -1,14 +1,41 @@
 <div class="clearfix">
-    <ul id="navigation" class="grid_12 clearfix">
-        <li><a href="index.php?cuerpo=menu.php"><span class="meta">Admin. General</span><br />Administración</a></li>
-        <li><a href="index.php"><span class="meta">Ver estadisticas</span><br />Estadisticas</a></li>
-        <li><a href="index.php?cuerpo=rejilla_diario.php"><span class="meta">Diario de clase</span><br />Diario</a></li>        
-        <li><a href="index.php"><span class="meta">Admin. Calendario</span><br />Calendario</a></li>
-        <li><a href="index.php?cuerpo=rejilla_alumno.php"><span class="meta">Admin. Alumnos</span><br />Alumnos</a></li>
-        <li><a href="index.php?cuerpo=rejilla_profesor.php"><span class="meta">Admin. Profesores</span><br />Profesores</a></li>
-        <li><a href="index.php?cuerpo=rejilla_curso.php"><span class="meta">Admin. Cursos</span><br />Cursos</a></li>
-        <li><a href="inicio.php"><span class="meta">P&aacute;gina Principal</span><br />Inicio</a></li>
-    </ul>
+    <?php 
+	include("clase_bd.php");
+	require_once("userCake/models/config.php");
+	if (isUserLoggedIn())   //Si el usuario está identificado
+		{
+			
+			$bd=new bd();
+			$grupo=$loggedInUser->groupID();
+			if ($grupo["Group_ID"]==ADMINISTRADOR)    // Administración
+				{
+				$datos=$bd->consultar("SELECT * FROM `menu` where id_padre=0");
+				}
+			if ($grupo["Group_ID"]==ALUMNO)
+				{
+				$datos=$bd->consultar("SELECT * FROM `menu` where id_padre=0");
+				}
+                        if ($grupo["Group_ID"]==PROFESOR)
+				{
+				$datos=$bd->consultar("SELECT * FROM `menu` where id_padre=0");
+				}
+                        if ($grupo["Group_ID"]==SECRETARIA)
+				{
+				$datos=$bd->consultar("SELECT * FROM `menu` where id_padre=0");
+				}        
+			$salida="";
+			if ($datos) //Pintar menu
+			{
+				 $salida='<ul id="navigation" class="grid_12 clearfix">';
+				 while($row = mysql_fetch_array($datos))
+				 {
+                                    $salida.='<li><a href="'.$row['enlace'].'"><span class="meta">'.$row['texto'].'</span><br/>'.$row['texto'].'</a></li>';                                    
+				 }                                 
+				 $salida.="</ul>";
+			}
+			echo $salida;
+		}
+	?>   
 </div>
 
 <div class="clearfix">

@@ -45,7 +45,7 @@
 
     <body>
         <!-- Login User -->
-        <?php include ("login_user.php"); ?>  
+        <?php include ("info_usuario.php"); ?>        
 
         <div id="wrapper" class="container_12 clearfix">
 
@@ -53,7 +53,8 @@
             <?php include ("cabecera.php"); ?>
 
             <!-- Content -->
-            <div id="featured" class="container_12 grid_12">
+            <div id="featured" class="container_12 grid_12"> 
+                
                 <?php include ("cuerpo.php"); ?>    
             </div>
 

@@ -11,6 +11,7 @@
 	 public $APELLIDOS=null;
 	 public $DNI=null;
 	 public $TELEFONO=null;
+         public $EMAIL=null;
 
 	 public function cargar($arrayValores)
 
@@ -28,6 +29,7 @@
 		 isset($arrayValores['APELLIDOS'])?$this->APELLIDOS=$arrayValores['APELLIDOS']:$this->APELLIDOS=null;
 		 isset($arrayValores['DNI'])?$this->DNI=$arrayValores['DNI']:$this->DNI=null;
 		 isset($arrayValores['TELEFONO'])?$this->TELEFONO=$arrayValores['TELEFONO']:$this->TELEFONO=null;
+                 isset($arrayValores['EMAIL'])?$this->EMAIL=$arrayValores['EMAIL']:$this->EMAIL=null;
 	}
 }
 ?>
