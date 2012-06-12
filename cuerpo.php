@@ -1,5 +1,5 @@
 <?php
-include("constantes.php");
+include_once("constantes.php");
 
 $cuerpo = "bienvenida.php";
 
