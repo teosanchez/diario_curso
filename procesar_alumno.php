@@ -10,11 +10,18 @@
 	$bd=new bd();        
 	if(isset($_GET["Enviar"])) 
 	{
+            
             if(isset($_GET["ID"]))
             {
                  $alumno->ID=$_GET["ID"];
+                 if($_GET["ID_SITUACION"]!=0)
+                 {
                  $alumno->ID_SITUACION=$_GET["ID_SITUACION"];
+                 }
+                 if($_GET["ID_NACIONALIDAD"]!=0)
+                 {
                  $alumno->ID_NACIONALIDAD=$_GET["ID_NACIONALIDAD"];
+                 }
                  $alumno->ID_NIVEL_ESTUDIOS=$_GET["ID_NIVEL_ESTUDIOS"];
                  $alumno->ID_DIRECCION=$_GET["ID_DIRECCION"];
                  $alumno->NOMBRE=$_GET["NOMBRE"];
@@ -119,5 +126,6 @@
                 $bd->borrar($direccion);
             }
 	}
+        
 	header('Location: index.php?cuerpo=rejilla_alumno.php');
 ?>

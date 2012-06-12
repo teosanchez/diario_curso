@@ -1,4 +1,5 @@
 <div class="clearfix">
+
     <?php 
 	include("clase_bd.php");
 	require_once("userCake/models/config.php");
@@ -36,6 +37,7 @@
 			echo $salida;
 		}
 	?>   
+
 </div>
 
 <div class="clearfix">

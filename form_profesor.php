@@ -158,13 +158,17 @@ if (isset($_GET["ID"])) {
             </td>
         </tr>
         <tr>
+
             <td class="text_right">Email</td>
             <td>
                 <input type="text" name="EMAIL" ID="EMAIL" value="<?php echo $profesor->EMAIL; ?>"/>
             </td>
         </tr>
         <tr>
-            <td><input type="submit" name="Enviar" value="Enviar"></td>
+            <!--td><input type="submit" name="Enviar" value="Enviar"></td-->
+
+            <td><input type="submit" onclick="validarFormProfesor()" name="Enviar" value="Enviar"></td>
+
             <td><input type="button" onClick="parent.location='index.php?cuerpo=rejilla_profesor.php'" name="Cancelar" value="Cancelar"></td>          
         </tr>
     </table>

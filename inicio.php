@@ -52,7 +52,7 @@
                         <span>Administración General</span>
                         <img class="" src="images/admin.png"  alt=""/>
                     </a>
-                    <a class="portfolio_item float " href="index.php?cuerpo=diario.php">
+                    <a class="portfolio_item float " href="index.php?cuerpo=seleccion_curso.php">
                         <span>Diario de clase</span>
                         <img class="" src="images/diario.png"  alt=""/>
                     </a>
