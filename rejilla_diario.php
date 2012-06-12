@@ -10,15 +10,17 @@ $util = new utilidadesIU();
 $profesor_curso = new profesor_curso();
 if (isset($_GET["ID_PROFESOR_CURSO"])) {
     $profesor_curso->ID = ($_GET["ID_PROFESOR_CURSO"]);
-    $codigo_profesor=62;
+    $arrayEntidad = $bd->buscar($profesor_curso);
+    if ($arrayEntidad) {
+        $profesor_curso->cargar($arrayEntidad[0]);
+    }
 }
 ?>
 
 <!-- Titulo de pagina -->
 <form action="index.php" method="get">
     <input type="hidden" name="cuerpo" value="form_diario.php" />
-    <input type="hidden" name="ID_PROFESOR_CURSO" ID="ID_CURSO" value="<?php echo $profesor_curso->ID; ?>"/>
-    <input type="hidden" name="ID_PROFESOR" ID="ID_PROFESOR" value="<?php echo $codigo_profesor; ?>"/>
+    <input type="hidden" name="ID_PROFESOR_CURSO" ID="ID_PROFESOR_CURSO" value="<?php echo $profesor_curso->ID; ?>"/>
     <div class="titulo">
         <div class="grid_9 alpha"">
              <h2 class="caption">Entradas del curso: <span>  
@@ -46,13 +48,12 @@ if (isset($_GET["ID_PROFESOR_CURSO"])) {
             <div class="left boton_principal">
                 <form action="index.php" method="get">
                     <input type="hidden" name="cuerpo" value="form_diario.php" />
-                    <input type="hidden" name="ID_PROFESOR" ID="ID_PROFESOR" value="<?php echo $codigo_profesor; ?>"/>
                     <?php
-                    $diario = $bd->consultar("select * from vw_diario_profesor_curso where ID_PROFESOR_CURSO ='" . $profesor_curso->ID . "'");
-                    $modulos = $bd->consultar("select MODULO from vw_diario_profesor_curso_nombre_check where ID_PROFESOR_CURSO ='" . $profesor_curso->ID . "'");
+                    $diario = $bd->consultar("select * from vw_diario_profesor_curso 
+                        where ID_PROFESOR_CURSO ='" . $profesor_curso->ID . "'");
 
                     if ($diario) {
-                        echo $util->pinta_entradas($diario, $modulos);
+                        echo $util->pinta_entradas($diario);
                     }
                     ?>
                   

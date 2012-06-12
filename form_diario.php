@@ -1,26 +1,31 @@
 <?php
 include ("clase_diario.php");
+include ("clase_profesor_curso.php");
 include ("utilidadesIU.php");
 include_once ("clase_bd.php");
 
 $bd = new bd();
 $util = new utilidadesIU();
 $diario = new diario();
-if (isset($_GET["ID"])) {
+$profesor_curso = new profesor_curso();
+if (isset($_GET["ID"])) 
+{
     $diario->ID = ($_GET["ID"]);
     $arrayEntidad = $bd->buscar($diario);
-    if ($arrayEntidad) {
+    if ($arrayEntidad) 
+    {
         $diario->cargar($arrayEntidad[0]);
     }
 }
-    if (isset($_GET["ID_PROFESOR_CURSO"])) 
+if (isset($_GET["ID_PROFESOR_CURSO"])) 
+{
+    $profesor_curso->ID = $_GET["ID_PROFESOR_CURSO"];
+    $arrayEntidad = $bd->buscar($profesor_curso);
+    if ($arrayEntidad) 
     {
-        $ID_PROFESOR_CURSO=$_GET["ID_PROFESOR_CURSO"];
+        $profesor_curso->cargar($arrayEntidad[0]);
     }
-    if (isset($_GET["ID_PROFESOR"])) 
-    {
-        $ID_PROFESOR=$_GET["ID_PROFESOR"];
-    }
+}
 
 ?>
 <!-- Titulo de pÃ¡gina -->
@@ -37,8 +42,7 @@ if (isset($_GET["ID"])) {
 <!-- Fin Titulo de pÃ¡gina -->
 <form name="form_diario" id="MyForm" method="get" action="procesar_diario.php">
     <input type="hidden" name="ID" ID="ID" value="<?php echo $diario->ID; ?>"/>
-    <input type="hidden" name="ID_PROFESOR" ID="ID_PROFESOR" value="<?php echo $ID_PROFESOR; ?>"/>
-    <input type="hidden" name="ID_PROFESOR_CURSO" ID="ID_PROFESOR_CURSO" value="<?php echo $ID_PROFESOR_CURSO; ?>"/>
+    <input type="hidden" name="ID_PROFESOR_CURSO" ID="ID_PROFESOR_CURSO" value="<?php echo $profesor_curso->ID; ?>"/>
     <input type="hidden" name="FECHA" ID="FECHA" value="<?php date_default_timezone_set('Europe/Madrid');
     echo date("Y/m/d H:i:s"); ?>"/>
     <table>        
@@ -61,13 +65,18 @@ if (isset($_GET["ID"])) {
             </td>
 
         </tr>
-          <tr>
-            <td>Aqui van </td>
-            <td>los checkbox</td>
+        <tr>
+            <?php
+            $modulos = $bd->consultarArray("SELECT ID_MODULO,MODULO FROM vw_modulo_curso 
+                            WHERE ID_CURSO='". $profesor_curso->ID_CURSO."'");
+            $checks_seleccionados = $bd->consultarArray("Select ID_CHECK 
+                                    from check_marcados where ID_DIARIO='" . $diario->ID . "'");
+            echo $util->pinta_checkboxes_marcados($modulos, $checks_seleccionados, "Checks_Seleccionados", "MODULO");
+            ?>
         </tr> 
         <tr>
             <td><input type="submit" name="Enviar" value="Enviar"></td>            
-            <td><input type="button" onClick="parent.location='index.php?cuerpo=rejilla_diario.php&ID_PROFESOR_CURSO=<?php echo $ID_PROFESOR_CURSO;?>'" name="Cancelar" value="Cancelar"></td>
+            <td><input type="button" onClick="parent.location='index.php?cuerpo=rejilla_diario.php&ID_PROFESOR_CURSO=<?php echo $profesor_curso->ID;?>'" name="Cancelar" value="Cancelar"></td>
 
         </tr>
     </table>
