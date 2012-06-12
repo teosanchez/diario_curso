@@ -62,7 +62,7 @@
 						$_SESSION["userCakeUser"] = $loggedInUser;
 						
 						//Redirect to user account page
-						header("Location: index.php?cuerpo=rejilla_diario.php");
+						header("Location: index.php?cuerpo=app_inicio.php");
 						die();
 					}
 				}

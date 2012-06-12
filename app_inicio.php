@@ -17,11 +17,11 @@
     <body class="portfolio">
         
         <!-- Login User -->
-        <?php include ("login_user.php"); ?> 
+   
         
         <div id="wrapper" class="container_12 clearfix">
             <!-- Text Logo -->
-            <h1 id="logo" class="grid_4">Diario de clase</h1>
+       
 
             <!-- Portfolio Items -->
             
@@ -70,10 +70,8 @@
             <div class="hr grid_12 clearfix">&nbsp;</div>
 
             <!-- Footer -->
-            <p class="grid_12 footer clearfix">
-                <span class="float"><b>&copy; Copyright</b> PHP-Tropical 2012 <b>Design by</b> Paco & Papita.</span>
-                <a class="float right" href="#">top</a>
-            </p>
+          
+        
             
         </div><!--end wrapper-->
 
