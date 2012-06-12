@@ -26,7 +26,7 @@ if (isset($_GET["ID"])) {
     $arrayEntidad = $bd->buscar($profesor);
 
     if ($arrayEntidad) {
-        $profesor->cargar($arrayEntidad[0]);
+        $profesor->cargar($arrayEntidad[0]);        
     }
 
     if (isset($profesor->ID_DIRECCION)) {
@@ -71,45 +71,75 @@ if (isset($_GET["ID"])) {
     <input type="hidden" name="ID_DIRECCION" ID="ID_DIRECCION" value="<?php echo $profesor->ID_DIRECCION; ?>"/>
     <table>
         <tr>
-            <td>Nombre</td>
+            <td class="text_right">Nombre</td>
             <td>
                 <input type="text" label="Nombre" require="true" name="NOMBRE" ID="NOMBRE" value="<?php echo $profesor->NOMBRE; ?>"/>
             </td>
         </tr>
         <tr>
-            <td>Apellidos</td>
+            <td class="text_right">Apellidos</td>
             <td>
                 <input type="text" label="Apellidos" require="true" name="APELLIDOS" ID="APELLIDOS" value="<?php echo $profesor->APELLIDOS; ?>"/>
             </td>
         </tr>
         <tr>
-            <td>DNI</td>
+            <td class="text_right">DNI</td>
             <td>
                 <input type="text" label="DNI" require="true" name="DNI" ID="DNI" value="<?php echo $profesor->DNI; ?>"/>
             </td>
         </tr>
         <tr>
-            <td>Calle</td>
+            <td class="text_right">Usuario</td>
+            <td>
+                <?php
+                if (isset($_GET["ID"]))
+                    {
+                    $usuario="select * from users where Email='".$profesor->EMAIL ."'";
+                    $datos= $bd->consultar($usuario);
+                    while ($fila = mysql_fetch_array($datos)) 
+                        {
+                        echo '<input type="hidden" label="User_ID" ID="User_ID" name="User_ID" value="'.$fila["User_ID"].'"/>';
+                        echo '<input type="text" label="username" ID="username" name="username" value="'.$fila["Username"].'"/>';
+                        }                                      
+                    }
+                else
+                    {
+                    echo '<input type="text" label="username" ID="username" name="username" />';
+                    }                
+                ?>                
+            </td>
+        </tr>
+        <tr>
+               <?php
+                if (!isset($_GET["ID"]))
+                    {                   
+                        echo '<td class="text_right">Contrase&ntilde;a</td>';
+                        echo '<td><input type="text" label="password" ID="password" name="password" /><td>';                                                        
+                    }                              
+                ?>       
+        </tr>
+        <tr>
+            <td class="text_right">Calle</td>
             <td>
                 <input type="text" label="Calle" name="CALLE" ID="CALLE" value="<?php echo $direccion->CALLE; ?>"/>
             </td>
         </tr>
         <tr>
-            <td>N&uacute;mero</td>
+            <td class="text_right">N&uacute;mero</td>
             <td>
                 <input type="text" label="N&uacute;mero" name="NUMERO" ID="NUMERO" value="<?php echo $direccion->NUMERO; ?>"/>
             </td>
         </tr>
         <tr>
-            <td>Provincia</td>
+            <td class="text_right">Provincia</td>
             <td> <?php
-$datosLista = $bd->consultar("select NOMBRE,ID from provincia");
-echo $util->pinta_selection($datosLista, "Provincias", "NOMBRE", $municipio->ID_PROVINCIA);
-?>
+                    $datosLista = $bd->consultar("select NOMBRE,ID from provincia");
+                    echo $util->pinta_selection($datosLista, "Provincias", "NOMBRE", $municipio->ID_PROVINCIA);
+                 ?>
             </td>
         </tr>
         <tr>
-            <td>
+            <td class="text_right">
                 Municipio
             </td>
             <td>
@@ -122,13 +152,23 @@ echo $util->pinta_selection($datosLista, "Provincias", "NOMBRE", $municipio->ID_
             </td>
         </tr>
         <tr>
-            <td>Tel&eacute;fono</td>
+            <td class="text_right">Tel&eacute;fono</td>
             <td>
                 <input type="text" name="TELEFONO" ID="TELEFONO" value="<?php echo $profesor->TELEFONO; ?>"/>
             </td>
         </tr>
         <tr>
+
+            <td class="text_right">Email</td>
+            <td>
+                <input type="text" name="EMAIL" ID="EMAIL" value="<?php echo $profesor->EMAIL; ?>"/>
+            </td>
+        </tr>
+        <tr>
+            <!--td><input type="submit" name="Enviar" value="Enviar"></td-->
+
             <td><input type="submit" onclick="validarFormProfesor()" name="Enviar" value="Enviar"></td>
+
             <td><input type="button" onClick="parent.location='index.php?cuerpo=rejilla_profesor.php'" name="Cancelar" value="Cancelar"></td>          
         </tr>
     </table>

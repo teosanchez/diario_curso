@@ -6,12 +6,12 @@ class rejilla {
     private $_formDestino; //formulario de edicion de cada fila
     private $_campoClave; // Clave primaria de la tabla
     private $_campoEnlace; //Campo que hara de enlace al form de edicion
-
+    
     public function __construct($datos, $formDestino, $campoClave, $campoEnlace) {
         $this->_datos = $datos;
         $this->_formDestino = $formDestino;
         $this->_campoClave = strtoupper($campoClave);
-        $this->_campoEnlace = strtoupper($campoEnlace);
+        $this->_campoEnlace = strtoupper($campoEnlace);        
     }
 
     private function cabecera() {
@@ -52,7 +52,7 @@ class rejilla {
                 } /* Incluir en generador */
             }
             $salida.='<td class="td_imagen"><a class="img_rejilla" href="' . $this->_formDestino . 'ID=' . $clave . '"><img class="a_img_rejilla" src="images/lapiz.png"/></a></td>';
-            $salida.='<td class="td_imagen"><a class="img_rejilla" href="'.$procesar.'ID=' . $clave . '&Borrar=Borrar"><img class="a_img_rejilla" src="images/borrar.png"/></a></td>';
+            $salida.='<td class="td_imagen"><a class="img_rejilla" href="'.$procesar.'ID=' . $clave . '&Borrar=Borrar"><img class="a_img_rejilla" src="images/borrar.png"/></a></td>';                    
             $salida.="</tr>";
         }
 

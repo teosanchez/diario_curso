@@ -38,9 +38,10 @@ $provincia = new provincia();
 if (isset($_GET["ID"])) {
     $alumno->ID = ($_GET["ID"]);
     $arrayEntidad = $bd->buscar($alumno);
-    if ($arrayEntidad) {
+    if ($arrayEntidad)
+        {
         $alumno->cargar($arrayEntidad[0]);
-    }
+        }    
 }
 if (isset($alumno->ID_DIRECCION)) {
     $direccion->ID = $alumno->ID_DIRECCION;
@@ -96,9 +97,39 @@ if (isset($municipio->ID_PROVINCIA)) {
             </td>
         </tr>
         <tr>
+            <td class="text_right">Usuario</td>
+            <td>
+                <?php
+                if (isset($_GET["ID"]))
+                    {
+                    $usuario="select * from users where Email='".$alumno->EMAIL ."'";
+                    $datos= $bd->consultar($usuario);
+                    while ($fila = mysql_fetch_array($datos)) 
+                        {
+                        echo '<input type="hidden" label="User_ID" ID="User_ID" name="User_ID" value="'.$fila["User_ID"].'"/>';
+                        echo '<input type="text" label="username" ID="username" name="username" value="'.$fila["Username"].'"/>';
+                        }                                      
+                    }
+                else
+                    {
+                    echo '<input type="text" label="username" ID="username" name="username" />';
+                    }                
+                ?>
+            </td>
+        </tr>
+        <tr>            
+               <?php
+                if (!isset($_GET["ID"]))
+                    {                   
+                        echo '<td class="text_right">Contrase&ntilde;a</td>';
+                        echo '<td><input type="text" label="password" ID="password" name="password" /><td>';                                                        
+                    }                              
+                ?>        
+        </tr>
+        <tr>
             <td class="text_right">Calle</td>
             <td>
-                <input type="text" label="Calle" name="CALLE" ID="CALLE" value="<?php echo $direccion->CALLE; ?>"/>
+                <input type="text" label="Calle" name="CALLE"  value="<?php echo $direccion->CALLE; ?>"/>
             </td>
         </tr>
         <tr>
