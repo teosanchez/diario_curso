@@ -36,7 +36,7 @@
             $cuerpo = $_GET["cuerpo"];
             $entidad=  explode("_", $cuerpo);
             
-            if (count($entidad)>0){
+            if (count($entidad)>1){
                 $cuerpo=$entidad[1];
             }
         }
