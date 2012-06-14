@@ -64,6 +64,10 @@ $grupo = $loggedInUser->groupID();
 <!-- Fin Titulo de pÃ¡gina -->
 
 <?php
+if(isset($_GET['mensaje_error']))
+{
+    echo "<div>".$_GET['mensaje_error']."</div>";
+}
 if ($result)
     $rejilla = new rejilla_xx($result, "index.php?cuerpo=form_profesor_curso.php&", "ID", "Profesor",$_GET["origen"],$grupo["Group_ID"]);
 echo $rejilla->pintar();

@@ -23,6 +23,10 @@ $result = $bd->consultarArray("select * from nacionalidad");
     <!-- Fin Titulo de pÃ¡gina -->
 
     <?php
+    if(isset($_GET['mensaje_error']))
+    {
+        echo "<div>".$_GET['mensaje_error']."</div>";
+    }
     if ($result) {
         $rejilla = new rejilla($result, "index.php?cuerpo=form_nacionalidad.php&", "ID", "NOMBRE");
         echo $rejilla->pintar();
