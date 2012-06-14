@@ -11,6 +11,11 @@ if (isset($_GET["ID_CURSO"])) {
     $profesor_curso->ID_CURSO = ($_GET["ID_CURSO"]);
     }
 
+if (isset($_GET["Cursos"])) 
+{
+    $profesor_curso->ID_CURSO = ($_GET["Cursos"]);
+}
+       
 $c="";
 if (isset($_GET["c"])&&($_GET["c"])!="")
 {

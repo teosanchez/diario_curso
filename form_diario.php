@@ -18,14 +18,25 @@ if (isset($_GET["ID"]))
     }
 }
 if (isset($_GET["ID_PROFESOR_CURSO"])) 
+    {
+        $profesor_curso->ID = $_GET["ID_PROFESOR_CURSO"];
+        $arrayEntidad = $bd->buscar($profesor_curso);
+        if ($arrayEntidad) 
+        {
+            $profesor_curso->cargar($arrayEntidad[0]);
+        }
+    }
+if (isset($_GET["Cursos"]) && isset($_GET["ID_PROFESOR"]))
 {
-    $profesor_curso->ID = $_GET["ID_PROFESOR_CURSO"];
+    $profesor_curso->ID_CURSO = $_GET["Cursos"];
     $arrayEntidad = $bd->buscar($profesor_curso);
     if ($arrayEntidad) 
     {
         $profesor_curso->cargar($arrayEntidad[0]);
     }
+    
 }
+    
 
 ?>
 <!-- Titulo de pÃ¡gina -->

@@ -237,7 +237,7 @@ class utilidadesIU {
         // Caja de Administración de Profesores de un curso
         if ($grupo_id == ADMINISTRADOR || $grupo_id == SECRETARIA)
         {
-            $salida.='<a class="portfolio_item float " href="index.php?cuerpo=seleccion_curso.php&destino=rejilla_profesor_curso.php">';
+            $salida.='<a class="portfolio_item float " href="index.php?cuerpo=rejilla_profesor_curso.php&origen=app_inicio.php">';
             $salida.='<span>Adm&oacute;n de Profesores de un Curso</span>';
         }
         else 
@@ -262,7 +262,7 @@ class utilidadesIU {
         // Caja de Administración de Alumnos de un curso
         if ($grupo_id == ADMINISTRADOR || $grupo_id == SECRETARIA)
         {
-            $salida.='<a class="portfolio_item float " href="index.php?cuerpo=seleccion_curso.php&destino=rejilla_alumno_curso.php">';
+            $salida.='<a class="portfolio_item float " href="index.php?cuerpo=rejilla_alumno_curso.php&origen=app_inicio.php">';
             $salida.='<span>Adm&oacute;n de Alumnos de un Curso</span>';
         }
         else 
@@ -320,14 +320,15 @@ class utilidadesIU {
         
 
         // Caja de Diario de clase de un curso
-        $salida.='<a class="portfolio_item float" href="index.php?cuerpo=seleccion_curso.php&destino=rejilla_diario.php">';
+        //$salida.='<a class="portfolio_item float" href="index.php?cuerpo=seleccion_curso.php&destino=rejilla_diario.php">';
+        $salida.='<a class="portfolio_item float" href="index.php?cuerpo=rejilla_diario.php&origen=app_inicio.php">';
         $salida.='<span>Diario de clase</span>';
         $salida.='<img class="" src="images/diario.png"  alt=""/>';
         $salida.='</a>';
         
         
-        // Caja de Informes y Estadísticas
-        $salida.='<a class="portfolio_item float" href="index.php?cuerpo=seleccion_curso.php&destino=rejilla_modulo_curso.php">';
+        // Caja de Informes y Estadísticas -> Pasa a ser Programa de un curso
+        $salida.='<a class="portfolio_item float" href="index.php?cuerpo=rejilla_modulo_curso.php&origen=app_inicio.php">';
         $salida.='<span>Programa de un Curso</span>';
         $salida.='<img class="" src="images/estadisticas.png"  alt=""/>';
         $salida.='</a>';
