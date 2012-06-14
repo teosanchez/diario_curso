@@ -16,15 +16,16 @@
                 <div class="grid_12">
                     <div id="formulario_seleccion">                        
                     <form action="index.php" method="get">
-                    <input type="hidden" name="cuerpo" value="rejilla_diario.php" />
-                         
+                    <input type="hidden" name="cuerpo" value="<?php echo $_GET{"destino"}; ?>" />
+                    <input type="hidden" name="origen" value="app_inicio.php" />
                             <?php
                             include_once ("clase_bd.php");
                             include ("utilidadesIU.php");
 
                             $bd = new bd();
                             $util = new utilidadesIU();
-                            $datosLista = $bd->consultar("select ESPECIALIDAD,ID from vw_curso_especialidad_profesor_curso");
+                            $datosLista = $bd->consultar("select ESPECIALIDAD,ID 
+                                from vw_curso_especialidad_profesor_curso");
                             echo $util->pinta_selection($datosLista, "ID_PROFESOR_CURSO", "ESPECIALIDAD");
                             ?>
                       

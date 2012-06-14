@@ -4,6 +4,12 @@
         print_r($_GET);
 	$modulo_curso=new modulo_curso();
 	$bd=new bd();
+        
+        if (isset($_GET["origen"]))
+        {
+            $origen = $_GET["origen"];
+        }
+       
 	if(isset($_GET["Enviar"])) 
 	{
             if(isset($_GET["ID"]))
@@ -45,7 +51,7 @@
             }
         }
 
-        header('Location: index.php?cuerpo=rejilla_modulo_curso.php&ID='.$modulo_curso->ID_CURSO);
+        header('Location: index.php?cuerpo=rejilla_modulo_curso.php&ID='.$modulo_curso->ID_CURSO.'&origen='.$origen);
         
                 
 ?>

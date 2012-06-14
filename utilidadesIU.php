@@ -2,13 +2,10 @@
 
 class utilidadesIU {
 
-//<<<<<<< HEAD
     public function pinta_selection($datos, $nombre, $campoVisible, $seleccion = -1) {
 
-        //$salida = '<select size="1" require="true" label="' . $nombre . '" id="' . $nombre . '" name="' . $nombre . '">';
-//=======
         $salida= '<select size="1" label="'.$nombre.'" id="'.$nombre.'" name="'.$nombre.'">';
-/*>>>>>>> 1cc1a9d483f3c8a82b86ed3329103813ef86a7d9*/
+
         $salida.='<option  value="0">Seleccione...</option>';
         while ($row = mysql_fetch_array($datos)) {
             if ($seleccion == $row['ID']) {
@@ -149,8 +146,9 @@ class utilidadesIU {
         return $salida;
     }
 
-    public function pinta_entradas($datos) {
+    public function pinta_entradas($datos, $grupo_id) {
         $salida = '';
+
         $bd = new bd();
         while ($row = mysql_fetch_array($datos)) {
 
@@ -193,8 +191,11 @@ class utilidadesIU {
             $salida.='<ul>';
             $salida.=' <li class="user">Manolito</li>';
             $salida.='<li class="time">'.$row["HORA"].'</li>';
-            $salida.='<td class="td_imagen"><a class="img_rejilla" href="index.php?cuerpo=form_diario.php&ID='.$row["ID"].'&ID_PROFESOR_CURSO='.$row["ID_PROFESOR_CURSO"].'"><img class="a_img_rejilla" src="images/lapiz.png"/></a></td>';
-            $salida.='<td class="td_imagen"><a class="img_rejilla" href="index.php?cuerpo=procesar_diario.php&ID='.$row["ID"].'&ID_PROFESOR_CURSO='.$row["ID_PROFESOR_CURSO"].'&Borrar=Borrar"><img class="a_img_rejilla" src="images/borrar.png"/></a></td>';
+            if ($grupo_id == PROFESOR)
+            {
+                $salida.='<td class="td_imagen"><a class="img_rejilla" href="index.php?cuerpo=form_diario.php&ID='.$row["ID"].'&ID_PROFESOR_CURSO='.$row["ID_PROFESOR_CURSO"].'"><img class="a_img_rejilla" src="images/lapiz.png"/></a></td>';
+                $salida.='<td class="td_imagen"><a class="img_rejilla" href="index.php?cuerpo=procesar_diario.php&ID='.$row["ID"].'&ID_PROFESOR_CURSO='.$row["ID_PROFESOR_CURSO"].'&Borrar=Borrar"><img class="a_img_rejilla" src="images/borrar.png"/></a></td>';
+            }
             $salida.='</form></li>';
             $salida.='</ul>';
             $salida.='  </div>';
@@ -205,7 +206,142 @@ class utilidadesIU {
         }
         return $salida;
     }
+    
+    
+    public function pinta_inicio($grupo_id)
+    {
+        $salida = "";
+        
+        // Caja de Administración de Cursos
+        if ($grupo_id == ADMINISTRADOR || $grupo_id == SECRETARIA)
+        {
+            $salida.='<a class="portfolio_item float alpha" href="index.php?cuerpo=rejilla_curso.php">';
+            $salida.='<span>Administraci&oacute;n de Cursos</span>';
+        }
+        else 
+        {
+             $salida.='<a class="portfolio_item float alpha" href="index.php?cuerpo=rejilla_curso.php">';
+             $salida.='<span>Listado de Cursos</span>';
+        }
+        if ($grupo_id == ADMINISTRADOR || $grupo_id == SECRETARIA)
+        {
+            $salida.='<img class="" src="images/curso.png"  alt=""/>';
+        }
+        else
+        {
+            $salida.='<img class="" src="images/curso.png"  alt=""/>';
+        }
+        $salida.='</a>';
+        
+        
+        // Caja de Administración de Profesores de un curso
+        if ($grupo_id == ADMINISTRADOR || $grupo_id == SECRETARIA)
+        {
+            $salida.='<a class="portfolio_item float " href="index.php?cuerpo=seleccion_curso.php&destino=rejilla_profesor_curso.php">';
+            $salida.='<span>Adm&oacute;n de Profesores de un Curso</span>';
+        }
+        else 
+        {
+            $salida.='<a class="portfolio_item float " href="#">';
+        }
+        if ($grupo_id == ADMINISTRADOR || $grupo_id == SECRETARIA)
+        {
+            $salida.='<span>Adm&oacute;n de Profesores de un Curso</span>';
+        }
+        if ($grupo_id == ADMINISTRADOR || $grupo_id == SECRETARIA)
+        {
+            $salida.='<img class="" src="images/profesor.png"  alt=""/>';
+        }
+        else
+        {
+            $salida.='<img class="" src="images/profesor.png"  alt=""/>';           
+        }
+        $salida.='</a>';
+        
 
+        // Caja de Administración de Alumnos de un curso
+        if ($grupo_id == ADMINISTRADOR || $grupo_id == SECRETARIA)
+        {
+            $salida.='<a class="portfolio_item float " href="index.php?cuerpo=seleccion_curso.php&destino=rejilla_alumno_curso.php">';
+            $salida.='<span>Adm&oacute;n de Alumnos de un Curso</span>';
+        }
+        else 
+        {
+            $salida.='<a class="portfolio_item float " href="#">';
+        }
+        if ($grupo_id == ADMINISTRADOR || $grupo_id == SECRETARIA)
+        {
+            $salida.='<img class="" src="images/alumno.png"  alt=""/>';
+        }
+        else 
+        {
+            $salida.='<img class="" src="images/alumno.png"  alt=""/>';
+            
+        }
+        $salida.='</a>';
+        
+        
+        // Caja de Horarios y Calendarios
+        $salida.='<a class="portfolio_item float omega" href="#">';
+        if ($grupo_id == ADMINISTRADOR || $grupo_id == SECRETARIA)
+        {
+            $salida.='<span>Adm&oacute;n. de Calendarios y Horarios</span>';
+        }
+        else 
+        {
+            $salida.='<span>Calendarios y Horarios</span>';
+        }
+        $salida.='<img class="" src="images/calendario.png"  alt=""/>';
+        $salida.='</a>';
+        
+
+        // Caja de Administración General
+        if ($grupo_id == ADMINISTRADOR || $grupo_id == SECRETARIA)
+        {
+            $salida.='<a class="portfolio_item float alpha" href="index.php?cuerpo=menu.php">';
+        }
+        else 
+        {
+            $salida.='<a class="portfolio_item float alpha" href="#">';
+        }
+        if ($grupo_id == ADMINISTRADOR || $grupo_id == SECRETARIA)
+        {
+            $salida.='<span>Administraci&oacute;n General</span>';
+        }
+        if ($grupo_id == ADMINISTRADOR || $grupo_id == SECRETARIA)
+        {
+            $salida.='<img class="" src="images/admin.png"  alt=""/>';
+        }
+        else
+        {
+            $salida.='<img class="" src="images/admin.png"  alt=""/>';           
+        }
+        $salida.='</a>';
+        
+
+        // Caja de Diario de clase de un curso
+        $salida.='<a class="portfolio_item float" href="index.php?cuerpo=seleccion_curso.php&destino=rejilla_diario.php">';
+        $salida.='<span>Diario de clase</span>';
+        $salida.='<img class="" src="images/diario.png"  alt=""/>';
+        $salida.='</a>';
+        
+        
+        // Caja de Informes y Estadísticas
+        $salida.='<a class="portfolio_item float" href="index.php?cuerpo=seleccion_curso.php&destino=rejilla_modulo_curso.php">';
+        $salida.='<span>Programa de un Curso</span>';
+        $salida.='<img class="" src="images/estadisticas.png"  alt=""/>';
+        $salida.='</a>';
+        
+        
+        // Caja de Perfil de usuario
+        $salida.='<a class="portfolio_item float omega" href="#">';
+        $salida.='<span>Perfil de usuario</span>';
+        $salida.='<img class="" src="images/conf_cuenta.png"  alt=""/>';
+        $salida.='</a>';  
+
+       
+        return $salida;
+    }
 }
 
 ?>

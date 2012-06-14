@@ -13,6 +13,7 @@ class loggedInUser {
 	public $user_id = NULL;
 	public $clean_username = NULL;
 	public $display_username = NULL;
+     
 	
 	//Simple function to update the last sign in of a user
 	public function updateLastSignIn()

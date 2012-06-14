@@ -10,6 +10,12 @@ if (isset($_GET["c"])and ($_GET["c"])!="")
 {
     $c="nuevo"; // Se viene de form_curso con un curso nuevo (sin módulos)
 }
+
+if (isset($_GET["origen"]))
+{
+    $origen = $_GET["origen"];
+}
+
 if (isset($_GET["Enviar"])) 
     {
     if (isset($_GET["ID"]))
@@ -27,7 +33,7 @@ if (isset($_GET["Enviar"]))
             {
             $bd->actualizar($profesor_curso);
             }
-        header('Location: index.php?cuerpo=rejilla_profesor_curso.php&ID='.$profesor_curso->ID_CURSO);
+        header('Location: index.php?cuerpo=rejilla_profesor_curso.php&ID='.$profesor_curso->ID_CURSO.'&origen='.$origen);
         }
     }
 if (isset($_GET["Borrar"])) {
@@ -38,7 +44,7 @@ if (isset($_GET["Borrar"])) {
         $profesor_curso->cargar($arrayEntidad[0]);
     }
     $bd->borrar($profesor_curso);
-    header('Location: index.php?cuerpo=rejilla_profesor_curso.php&ID='.$profesor_curso->ID_CURSO);
+    header('Location: index.php?cuerpo=rejilla_profesor_curso.php&ID='.$profesor_curso->ID_CURSO.'&origen='.$origen);
 }
 
 if (isset($_GET["Cancelar"]))
@@ -53,7 +59,7 @@ if (isset($_GET["Cancelar"]))
             }
             else
             {
-                header('Location: index.php?cuerpo=rejilla_profesor_curso.php&ID='.$profesor_curso->ID_CURSO); //Incluir en Generador
+                header('Location: index.php?cuerpo=rejilla_profesor_curso.php&ID='.$profesor_curso->ID_CURSO.'&origen='.$origen); //Incluir en Generador
             }
         }
 

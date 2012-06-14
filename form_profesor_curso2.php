@@ -35,6 +35,7 @@ if (isset($_GET["c"])&&($_GET["c"])!="")
     <input type="hidden" name="ID" ID="ID" value="<?php echo $profesor_curso->ID; ?>"/>
     <input type="hidden" name="ID_CURSO" id="ID_CURSO" value="<?php echo $profesor_curso->ID_CURSO; ?>"/>
     <input type="hidden" name="c" id="c" value="<?php echo $c; ?>"/>
+    <input type="hidden" name="origen" id="origen" value="<?php echo $_GET["origen"]; ?>"/>
     <table>
         <tr>
             <td class="text_right">Profesor</td>
@@ -71,7 +72,8 @@ if (isset($_GET["c"])&&($_GET["c"])!="")
         <tr>
             <td><input type="submit" onclick="validarFormProfesorCurso()" name="Enviar" value="Enviar"></td>
             <td><input type="button" onClick="parent.location=
-                    'index.php?cuerpo=procesar_profesor_curso.php&Cancelar=Cancelar&ID_CURSO=<?php echo $profesor_curso->ID_CURSO;?>&c=<?php echo $c; ?>'" name="Cancelar" value="Cancelar"></td>
+                    'index.php?cuerpo=procesar_profesor_curso.php&Cancelar=Cancelar&ID_CURSO=<?php echo $profesor_curso->ID_CURSO;?>&c=<?php echo $c; ?>&origen=<?php echo $_GET["origen"];?>'" 
+                    name="Cancelar" value="Cancelar"/></td>
         </tr>
     </table>
 </form>

@@ -55,12 +55,15 @@
 						$loggedInUser->hash_pw = $userdetails["Password"];
 						$loggedInUser->display_username = $userdetails["Username"];
 						$loggedInUser->clean_username = $userdetails["Username_Clean"];
-						
+                                              
+                                                
 						//Update last sign in
 						$loggedInUser->updateLastSignIn();
 		
 						$_SESSION["userCakeUser"] = $loggedInUser;
+                                                
 						
+                                                
 						//Redirect to user account page
 						header("Location: index.php?cuerpo=app_inicio.php");
 						die();
@@ -76,11 +79,12 @@
     <p>Aqui va el mensaje de bienvenida del sistema</p>    
 
 <?php 
-	if (!isUserLoggedIn()) 
+/*$nada=isUserLoggedIn();
+	if (!$nada) 
 		{
 		$group = $loggedInUser->groupID();
 		echo $group['Group_Name']; 
-		}
+		}*/
 	 ?>
 
 	 </strong></p>

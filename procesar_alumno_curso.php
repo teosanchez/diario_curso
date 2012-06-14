@@ -12,6 +12,11 @@ if (isset($_GET["c"])&&($_GET["c"]<>""))
     $c="nuevo"; // Se viene de form_curso con un curso nuevo (sin alumnos)
 }
 
+if (isset($_GET["origen"]))
+{
+    $origen = $_GET["origen"];
+}
+
 if (isset($_GET["Enviar"])) 
 {
     if (isset($_GET["ID"])) 
@@ -30,7 +35,7 @@ if (isset($_GET["Enviar"]))
         {
             $bd->actualizar($alumno_curso);
         }
-        header('Location: index.php?cuerpo=rejilla_alumno_curso.php&ID='.$alumno_curso->ID_CURSO);
+        header('Location: index.php?cuerpo=rejilla_alumno_curso.php&ID='.$alumno_curso->ID_CURSO.'&origen='.$origen);
     }
 }
 
@@ -43,7 +48,7 @@ if (isset($_GET["Borrar"]))
         $alumno_curso->cargar($arrayEntidad[0]);
     }
     $bd->borrar($alumno_curso);
-    header('Location: index.php?cuerpo=rejilla_alumno_curso.php&ID='.$alumno_curso->ID_CURSO);
+    header('Location: index.php?cuerpo=rejilla_alumno_curso.php&ID='.$alumno_curso->ID_CURSO.'&origen='.$origen);
 }
 
 if (isset($_GET["Cancelar"])) 
@@ -58,7 +63,7 @@ if (isset($_GET["Cancelar"]))
     }
     else
     { 
-        header('Location: index.php?cuerpo=rejilla_alumno_curso.php&ID='.$alumno_curso->ID_CURSO); 
+        header('Location: index.php?cuerpo=rejilla_alumno_curso.php&ID='.$alumno_curso->ID_CURSO.'&origen='.$origen); 
     }
 }
 ?>

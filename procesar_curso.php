@@ -48,11 +48,11 @@
         {
             if ($c=="nuevo")
             {
-                header('Location: index.php?cuerpo=modulo_checkboxes.php&ID_CURSO='.$curso->ID.'&c='.$c);
+                header('Location: index.php?cuerpo=modulo_checkboxes.php&ID_CURSO='.$curso->ID.'&c='.$c.'&origen=form_curso.php');
             }
             else
             {
-                header('Location: index.php?cuerpo=rejilla_modulo_curso.php&ID='.$curso->ID);
+                header('Location: index.php?cuerpo=rejilla_modulo_curso.php&ID='.$curso->ID.'&origen=form_curso.php');
             }
         }
         else
@@ -61,11 +61,11 @@
             {
                 if ($c=="nuevo")
                     {
-                        header('Location: index.php?cuerpo=form_profesor_curso2.php&ID_CURSO='.$curso->ID.'&c='.$c);
+                        header('Location: index.php?cuerpo=form_profesor_curso2.php&ID_CURSO='.$curso->ID.'&c='.$c.'&origen=form_curso.php');
                     }
                   else
                     {
-                        header('Location: index.php?cuerpo=rejilla_profesor_curso.php&ID='.$curso->ID);
+                        header('Location: index.php?cuerpo=rejilla_profesor_curso.php&ID='.$curso->ID.'&origen=form_curso.php');
                     }
             }
             else 
@@ -74,11 +74,11 @@
                 {
                     if ($c=="nuevo")
                     {
-                        header('Location: index.php?cuerpo=form_alumno_curso2.php&ID_CURSO='.$curso->ID.'&c='.$c);
+                        header('Location: index.php?cuerpo=form_alumno_curso2.php&ID_CURSO='.$curso->ID.'&c='.$c.'&origen=form_curso.php');
                     }
                     else
                     {
-                        header('Location: index.php?cuerpo=rejilla_alumno_curso.php&ID='.$curso->ID);
+                        header('Location: index.php?cuerpo=rejilla_alumno_curso.php&ID='.$curso->ID.'&origen=form_curso.php');
                     }
                 }
             }

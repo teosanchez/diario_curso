@@ -4,39 +4,66 @@
 	include("clase_bd.php");
 	require_once("userCake/models/config.php");
 	if (isUserLoggedIn())   //Si el usuario está identificado
-		{
-			
-			$bd=new bd();
-			$grupo=$loggedInUser->groupID();
-			if ($grupo["Group_ID"]==ADMINISTRADOR)    // Administración
-				{
-				$datos=$bd->consultar("SELECT * FROM `menu` where id_padre=0");
-				}
-			if ($grupo["Group_ID"]==ALUMNO)
-				{
-				$datos=$bd->consultar("SELECT * FROM `menu` where id_padre=0");
-				}
-                        if ($grupo["Group_ID"]==PROFESOR)
-				{
-				$datos=$bd->consultar("SELECT * FROM `menu` where id_padre=0");
-				}
-                        if ($grupo["Group_ID"]==SECRETARIA)
-				{
-				$datos=$bd->consultar("SELECT * FROM `menu` where id_padre=0");
-				}        
-			$salida="";
-			if ($datos) //Pintar menu
-			{
-				 $salida='<ul id="navigation" class="grid_12 clearfix">';
-				 while($row = mysql_fetch_array($datos))
-				 {
-                                    $salida.='<li><a href="'.$row['enlace'].'"><span class="meta">'.$row['texto'].'</span><br/>'.$row['texto'].'</a></li>';                                    
-				 }                                 
-				 $salida.="</ul>";
-			}
-			echo $salida;
-		}
-	?>   
+        {
+                $bd=new bd();
+                $grupo=$loggedInUser->groupID();
+
+                $fila1= array('texto'=>'Inicio',
+                            'enlace'=>'index.php?cuerpo=app_inicio.php');
+                $fila2= array('texto'=>'Administraci&oacute;n',
+                            'enlace'=>'index.php?cuerpo=menu.php');
+                $fila3= array('texto'=>'Diario',
+                            'enlace'=>'index.php?cuerpo=seleccion_curso.php&destino=rejilla_diario.php');
+                $fila4= array('texto'=>'Curso',
+                            'enlace'=>'index.php?cuerpo=rejilla_curso.php');
+                $fila5= array('texto'=>'Alumno_Curso',
+                            'enlace'=>'index.php?cuerpo=seleccion_curso.php&destino=rejilla_alumno_curso.php');
+                $fila6= array('texto'=>'Profesor_Curso',
+                            'enlace'=>'index.php?cuerpo=seleccion_curso.php&destino=rejilla_profesor_curso.php');
+                $fila7= array('texto'=>'Programa',
+                            'enlace'=>'index.php?cuerpo=seleccion_curso.php&destino=rejilla_modulo_curso.php');
+
+                if ($grupo["Group_ID"]==ADMINISTRADOR)    // Administración
+                {
+                    //$datos=$bd->consultar("SELECT * FROM `menu` where id_padre=0");
+                    $datos= array($fila7,$fila6,$fila5,$fila4,$fila3,$fila2,$fila1);
+                }
+
+                if ($grupo["Group_ID"]==ALUMNO)
+                {
+                    $datos= array($fila7,$fila4,$fila3,$fila1);
+                }
+
+                if ($grupo["Group_ID"]==PROFESOR)
+                {
+                    $datos= array($fila7,$fila4,$fila3,$fila1);
+                }
+
+                if ($grupo["Group_ID"]==SECRETARIA)
+                {
+                    $datos= array($fila7,$fila6,$fila5,$fila4,$fila3,$fila2,$fila1);
+                }        
+
+                //print "<pre>";                    
+                //print_r($datos);
+                //print "</pre>";
+
+                $salida="";
+                if ($datos) //Pintar menu
+                {
+                     $salida='<ul id="navigation" class="grid_12 clearfix">';
+                     foreach ($datos as $fila => $valor)
+                     {
+                            $salida.='<li><a href="'.$valor['enlace'].'">';
+                            $salida.='<span class="meta">'.$valor['texto'].'</span>';
+                            $salida.='<br/>'.$valor['texto'];
+                            $salida.='</a></li>';                                    
+                     }
+                     $salida.="</ul>";
+                }
+                echo $salida;
+        }
+    ?>   
 
 </div>
 

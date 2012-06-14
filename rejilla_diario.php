@@ -4,7 +4,6 @@ include_once ("clase_bd.php");
 include ("clase_profesor_curso.php");
 include ("utilidadesIU.php");
 
-
 $bd = new bd();
 $util = new utilidadesIU();
 $profesor_curso = new profesor_curso();
@@ -17,9 +16,13 @@ if (isset($_GET["ID_PROFESOR_CURSO"])) {
     }
 
 }
+
+$grupo = $loggedInUser->groupID();
+
 ?>
 
 <!-- Titulo de pagina -->
+<!--<form action="index.php" method="get" onsubmit="return entrada_diario($grupo['Group_ID'])">-->
 <form action="index.php" method="get">
     <input type="hidden" name="cuerpo" value="form_diario.php" />
     <input type="hidden" name="ID_PROFESOR_CURSO" ID="ID_PROFESOR_CURSO" value="<?php echo $profesor_curso->ID; ?>"/>
@@ -35,8 +38,13 @@ if (isset($_GET["ID_PROFESOR_CURSO"])) {
             </span></h2>
         </div>
         <div class="grid_3 omega">
-            <div class="left boton_principal"><img alt="Nuevo" src="images/add.png"/></div>  
-            <div class="left boton_principal"><input type="submit" name="nuevo" value="Nueva entrada"/></div>                   
+            <?php
+                if ($grupo['Group_ID'] == PROFESOR)
+                {
+                echo '<div class="left boton_principal"><img alt="Nuevo" src="images/add.png"/></div>'; 
+                echo '<div class="left boton_principal"><input type="submit" name="nuevo" value="Nueva entrada"/></div>';                   
+                }
+            ?>
             <div class="clear"></div>
         </div> 
         <div class="clear"></div>
@@ -55,7 +63,7 @@ if (isset($_GET["ID_PROFESOR_CURSO"])) {
                         where ID_PROFESOR_CURSO ='" . $profesor_curso->ID . "'");
 
                     if ($diario) {
-                        echo $util->pinta_entradas($diario);
+                        echo $util->pinta_entradas($diario,$grupo['Group_ID']);
                     }
                     ?>
                   
