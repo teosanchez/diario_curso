@@ -679,8 +679,6 @@ function validarFormAlumnoCurso2()
 {
     var sel = document.getElementsByTagName('select');//.selectedIndex;
     
-    
-    
     if (sel[0].selectedIndex == 0)
     {
         //alert("No se ha seleccionado nigun elemento "+sel[i].selectedIndex);
@@ -695,4 +693,49 @@ function validarFormAlumnoCurso2()
         fi.appendChild(contenedor);
     }
 }
+
+function validarFormMunicipios()
+{ 
+   	//valida la provincia del select 
+        //var prov = document.MyForm.Provincia;
+        //alert(prov);
+        var x = 1;
+        var mensajes = new Array(2); 
+        mensajes[0] = "Tiene que elegir una provincia";
+        mensajes[1] = "Tiene que escribir un municipio";
+        var sel = document.getElementById('ID_PROVINCIA');
+        var inp = document.getElementById('NOMBRE');
+        var form = document.getElementById("MyForm");
+        
+   	if (sel.selectedIndex==0)
+        { 
+            alert(mensajes[0]);
+            sel[0].focus();
+            //return 0; 
+            x=0;
+   	} 
+
+        //valido el nombre del municipio 
+   	if (inp.value.length==0)
+        { 
+            alert(mensajes[1]);
+            inp.focus();
+            //return 0; 
+            x=0;
+   	} 
+        
+   	//el formulario se envia 
+        if(x==0)
+        {
+            return x; 
+        }
+        else
+        {
+            alert("Muchas gracias por enviar el formulario"); 
+           form.submit(); 
+        }
+   	
+        //parent.location='index.php?cuerpo=rejilla_municipio.php';
+}
+
 

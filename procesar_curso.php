@@ -2,6 +2,7 @@
     include ("clase_curso.php");
     include_once ("clase_bd.php");
 
+    $mensaje_error="";
     $curso=new curso();
     $bd=new bd();
     $c="";
@@ -36,11 +37,18 @@
     if(isset($_GET["Borrar"])) 
     {
             $curso->ID=$_GET["ID"];
-            $bd->borrar($curso);
+            try
+            {
+                $bd->borrar($curso);       
+            }
+            catch(Exception $e)
+            {
+                $mensaje_error="No se puede eliminar un curso que tiene datos asociados.";
+            }
     }
     if (isset($_GET["Borrar"]) || isset($_GET["Enviar"]))
     {
-        header('Location: index.php?cuerpo=rejilla_curso.php');
+        header('Location: index.php?cuerpo=rejilla_curso.php&mensaje_error='.$mensaje_error);
     }
     else
     {

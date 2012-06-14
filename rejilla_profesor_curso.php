@@ -90,8 +90,13 @@ $grupo = $loggedInUser->groupID();
 </form>
 <!-- Fin Titulo de pÃ¡gina -->
 
+
 <div id="lista_profesores">
     <?php
+    if(isset($_GET['mensaje_error']))
+    {
+        echo "<div>".$_GET['mensaje_error']."</div>";
+    }
     if ($result)
     {
         $rejilla = new rejilla_xx($result, "index.php?cuerpo=form_profesor_curso.php&", "ID", "Profesor",$_GET["origen"],$grupo["Group_ID"]);
@@ -99,6 +104,17 @@ $grupo = $loggedInUser->groupID();
     }
     ?>
 </div>
+
+
+<?php
+/*if(isset($_GET['mensaje_error']))
+{
+    echo "<div>".$_GET['mensaje_error']."</div>";
+}
+if ($result)
+    $rejilla = new rejilla_xx($result, "index.php?cuerpo=form_profesor_curso.php&", "ID", "Profesor",$_GET["origen"],$grupo["Group_ID"]);
+echo $rejilla->pintar();*/
+?>
 
 <form action="index.php" method="get">
     <input type="hidden" name="cuerpo" value="<?php echo $_GET["origen"]; ?>" />

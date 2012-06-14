@@ -41,6 +41,10 @@
 <!-- Fin Titulo de pÃƒÂ¡gina -->
 
     <?php
+    if(isset($_GET['mensaje_error']))
+    {
+        echo "<div>".$_GET['mensaje_error']."</div>";
+    }
     if ($result) {
         $rejilla = new rejilla_xx($result, "index.php?cuerpo=form_curso.php&", "ID", "ESPECIALIDAD","",$grupo['Group_ID']);
         echo $rejilla->pintar();

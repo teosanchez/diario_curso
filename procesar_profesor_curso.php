@@ -3,6 +3,7 @@
 include ("clase_profesor_curso.php");
 include_once ("clase_bd.php");
 
+$mensaje_error="";
 $profesor_curso = new profesor_curso();
 $bd = new bd();
 $c="";
@@ -43,8 +44,15 @@ if (isset($_GET["Borrar"])) {
     {
         $profesor_curso->cargar($arrayEntidad[0]);
     }
-    $bd->borrar($profesor_curso);
-    header('Location: index.php?cuerpo=rejilla_profesor_curso.php&ID='.$profesor_curso->ID_CURSO.'&origen='.$origen);
+    try
+    {
+        $bd->borrar($profesor_curso);       
+    }
+    catch(Exception $e)
+    {
+        $mensaje_error="No se puede eliminar un profesor de curso asociado a un diario";
+    }
+    header('Location: index.php?cuerpo=rejilla_profesor_curso.php&mensaje_error='.$mensaje_error.'&ID='.$profesor_curso->ID_CURSO.'&origen='.$origen);
 }
 
 if (isset($_GET["Cancelar"]))

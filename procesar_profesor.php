@@ -3,6 +3,7 @@
 	include_once ("clase_bd.php");
         include ("clase_direccion.php");        
       
+        $mensaje_error="";
 	$profesor=new profesor();
 	$bd=new bd();
         $direccion=new direccion();
@@ -101,7 +102,14 @@
                     $delete="delete from users where Email='" . $email . "'";
                     $bd->consultar($delete);
                     }
-		$bd->borrar($profesor);                
+		try
+                {
+                    $bd->borrar($profesor);       
+                }
+                catch(Exception $e)
+                {
+                    $mensaje_error="No se puede eliminar un profesor que tiene datos asociados";
+                }                
 	 }
-         header('Location: index.php?cuerpo=rejilla_profesor.php');
+         header('Location: index.php?cuerpo=rejilla_profesor.php&mensaje_error='.$mensaje_error);
 ?>
