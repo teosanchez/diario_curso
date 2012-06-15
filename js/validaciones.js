@@ -738,4 +738,36 @@ function validarFormMunicipios()
         //parent.location='index.php?cuerpo=rejilla_municipio.php';
 }
 
+function validarListaCursos()
+{ 
+   	//valida la provincia del select 
+        //var prov = document.MyForm.Provincia;
+        //alert(prov);
+        var x = 1;
+        var mensajes = new Array(2); 
+        mensajes[0] = "Tiene que seleccionar un curso";        
+        var sel = document.getElementById('Cursos');
+        
+        var form = document.getElementById("formNuevo");
+        
+   	if (sel.selectedIndex==0)
+        { 
+            alert(mensajes[0]);
+            sel.focus();
+            //return 0; 
+            x=0;
+   	} 
 
+       
+        if(x==0)
+        {
+            return x; 
+        }
+        else
+        {
+            //alert("Muchas gracias por enviar el formulario"); 
+           form.submit(); 
+        }
+   	
+        //parent.location='index.php?cuerpo=rejilla_alumno_curso.php';
+}

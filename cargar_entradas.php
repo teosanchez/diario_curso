@@ -1,6 +1,7 @@
 <?php
-echo ("hola"."</br>");
-echo ("id_curso: ".$_POST["ID_CURSO"]);
+    //echo ("hola"."</br>");
+    //echo ("id_curso: ".$_POST["ID_CURSO"]);
+
     include ("clase_bd.php");
     include ("utilidadesIU.php");
     $bd = new bd();

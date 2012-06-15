@@ -45,7 +45,7 @@ $grupo = $loggedInUser->groupID();
 ?>
 
 <!-- Titulo de pagina -->
-<form action="index.php" method="get">
+<form action="index.php" id="formNuevo" method="get">
     <input type="hidden" name="cuerpo" value="form_profesor_curso2.php" />
     <input type="hidden" name="ID_CURSO" ID="ID_CURSO" value="<?php echo $id_curso; ?>"/>
     <input type="hidden" name="origen" id="origen" value="<?php echo $_GET["origen"]; ?>"/>
@@ -62,7 +62,7 @@ $grupo = $loggedInUser->groupID();
         </div>
         <div class="grid_3 omega">
             <div class="left boton_principal"><img alt="Nuevo" src="images/add.png"/></div>  
-            <div class="left boton_principal"><input type="submit" name="nuevo" value="A&ntilde;adir Profesor"/></div>                   
+            <div class="left boton_principal"><input type="button" onClick="validarListaCursos()" name="nuevo" value="A&ntilde;adir Profesor"/></div>                   
             <div class="clear"></div>
         </div> 
         <div class="clear"></div>

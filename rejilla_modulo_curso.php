@@ -47,7 +47,7 @@ $grupo = $loggedInUser->groupID();
 ?>
 
 <!-- Titulo de pagina -->
-<form action="index.php" method="get">
+<form action="index.php" id="formNuevo" method="get" >
     <input type="hidden" name="cuerpo" value="modulo_checkboxes.php" />
     <input type="hidden" name="ID_CURSO" ID="ID_CURSO" value="<?php echo $id_curso; ?>"/>
     <input type="hidden" name="origen" ID="origen" value="<?php echo $_GET["origen"]; ?>"/>
@@ -74,7 +74,7 @@ $grupo = $loggedInUser->groupID();
                 if ($grupo['Group_ID'] == ADMINISTRADOR || $grupo['Group_ID'] == SECRETARIA)
                 {
                 echo '<div class="left boton_principal"><img alt="Nuevo" src="images/add.png"/></div>'; 
-                echo '<div class="left boton_principal"><input type="submit" name="nuevo" value="A&ntilde;adir m&oacute;dulo"/></div>';                   
+                echo '<div class="left boton_principal"><input type="button" onClick="validarListaCursos()" name="nuevo" value="A&ntilde;adir m&oacute;dulo"/></div>';                   
                 }
             ?>
             <div class="clear"></div>

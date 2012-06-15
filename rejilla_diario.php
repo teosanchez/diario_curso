@@ -95,7 +95,7 @@ if (isset($_GET["ID_CURSO"]))
 
 <!-- Titulo de pagina -->
 <!--<form action="index.php" method="get" onsubmit="return entrada_diario($grupo['Group_ID'])">-->
-<form action="index.php" method="get">
+<form action="index.php" id="formNuevo" method="get">
     <input type="hidden" name="cuerpo" value="form_diario.php" />
     <div class="titulo">
         <div class="grid_9 alpha"">
@@ -134,7 +134,7 @@ if (isset($_GET["ID_CURSO"]))
                 if ($grupo['Group_ID'] == PROFESOR)
                 {
                 echo '<div class="left boton_principal"><img alt="Nuevo" src="images/add.png"/></div>'; 
-                echo '<div class="left boton_principal"><input type="submit" name="nuevo" value="A&ntilde;adir entrada"/></div>';                   
+                echo '<div class="left boton_principal"><input type="button" onClick="validarListaCursos()" name="nuevo" value="A&ntilde;adir entrada"/></div>';                   
                 }
             ?>
             <div class="clear"></div>
