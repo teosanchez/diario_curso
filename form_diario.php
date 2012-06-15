@@ -20,6 +20,13 @@ if (isset($_GET["ID"]))
         $diario->cargar($arrayEntidad[0]);
     }
     $id_profesor_curso = $diario->ID_PROFESOR_CURSO;
+    
+    $profesor_curso->ID = $id_profesor_curso;
+    $arrayEntidad = $bd->buscar($profesor_curso);
+    if ($arrayEntidad) 
+    {
+        $profesor_curso->cargar($arrayEntidad[0]);
+    }
 }
 if (isset($_GET["Cursos"])) 
 {
