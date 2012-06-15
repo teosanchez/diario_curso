@@ -5,9 +5,10 @@
         $mensaje_error="";
 	$nacionalidad=new nacionalidad();
 	$bd=new bd();
-	if(isset($_GET["Enviar"])) 
-	{
-	 if(isset($_GET["ID"]))
+	
+        /*if(isset($_GET["Enviar"])) 
+	{*/
+	 if(isset($_GET["ID"],$_GET["NOMBRE"]))
 		{
 			 $nacionalidad->ID=$_GET["ID"];
 			 $nacionalidad->NOMBRE=$_GET["NOMBRE"];
@@ -20,7 +21,7 @@
 			$bd->actualizar($nacionalidad);
 		}
 	}
-	}
+	//}
 	if(isset($_GET["Borrar"])) 
 		{
 		$nacionalidad->ID=$_GET["ID"];

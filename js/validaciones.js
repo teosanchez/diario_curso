@@ -522,12 +522,10 @@ function validarFormCurso()
 }
 
 
-function validarFormProfesor()
+/*function validarFormProfesor()
 {
     var sel = document.getElementsByTagName('select');//.selectedIndex;
-    
-    
-    
+
     if (sel[0].selectedIndex == 0)
     {
         //alert("No se ha seleccionado nigun elemento "+sel[i].selectedIndex);
@@ -555,7 +553,9 @@ function validarFormProfesor()
         contenedor.innerHTML= "'Municipios' es un campo obligatorio."
         fi.appendChild(contenedor);
     }
-}
+}*/
+
+
 function validarFormEspecialidad()
 {
     var sel = document.getElementsByTagName('select');//.selectedIndex;
@@ -654,7 +654,8 @@ function validarFormDireccion()
     }
 }
 
-function validarFormProfesorCurso()
+
+/*function validarFormProfesorCurso()
 {
     var sel = document.getElementsByTagName('select');//.selectedIndex;
     
@@ -673,7 +674,7 @@ function validarFormProfesorCurso()
         contenedor.innerHTML= "'Profesor' es un campo obligatorio."
         fi.appendChild(contenedor);
     }
-}
+}*/
 
 function validarFormAlumnoCurso2()
 {
@@ -696,9 +697,6 @@ function validarFormAlumnoCurso2()
 
 function validarFormMunicipios()
 { 
-   	//valida la provincia del select 
-        //var prov = document.MyForm.Provincia;
-        //alert(prov);
         var x = 1;
         var mensajes = new Array(2); 
         mensajes[0] = "Tiene que elegir una provincia";
@@ -707,6 +705,7 @@ function validarFormMunicipios()
         var inp = document.getElementById('NOMBRE');
         var form = document.getElementById("MyForm");
         
+        //Valida el select con las provincias
    	if (sel.selectedIndex==0)
         { 
             alert(mensajes[0]);
@@ -731,7 +730,98 @@ function validarFormMunicipios()
         }
         else
         {
-            alert("Muchas gracias por enviar el formulario"); 
+           //alert("Muchas gracias por enviar el formulario"); 
+           form.submit(); 
+        }
+   	
+        //parent.location='index.php?cuerpo=rejilla_municipio.php';
+}
+
+function validarFormModulo()
+{ 
+        var x = 1;
+        var mensajes = new Array(1); 
+        mensajes[0] = "Tiene que escribir un modulo";
+        var inp = document.getElementById('NOMBRE');
+        var form = document.getElementById("MyForm");
+        
+        //valido el nombre del modulo
+   	if (inp.value.length==0)
+        { 
+            alert(mensajes[0]);
+            inp.focus();
+            //return 0; 
+            x=0;
+   	} 
+        
+   	//el formulario se envia 
+        if(x==0)
+        {
+            return x; 
+        }
+        else
+        {
+           //alert("Muchas gracias por enviar el formulario"); 
+           form.submit(); 
+        }
+   	
+        //parent.location='index.php?cuerpo=rejilla_municipio.php';
+}
+
+function validarFormNacionalidad()
+{ 
+        var x = 1;
+        var mensajes = new Array(1); 
+        mensajes[0] = "Tiene que escribir una nacionalidad";
+        var inp = document.getElementById('NOMBRE');
+        var form = document.getElementById("MyForm");
+              
+   	if (inp.value.length==0)
+        { 
+            alert(mensajes[0]);
+            inp.focus();
+            //return 0; 
+            x=0;
+   	} 
+        
+   	//el formulario se envia 
+        if(x==0)
+        {
+            return x; 
+        }
+        else
+        {
+           //alert("Muchas gracias por enviar el formulario"); 
+           form.submit(); 
+        }
+   	
+        //parent.location='index.php?cuerpo=rejilla_municipio.php';
+}
+
+function validarFormNivelEstudios()
+{ 
+        var x = 1;
+        var mensajes = new Array(1); 
+        mensajes[0] = "Tiene que escribir un nivel de estudios";
+        var inp = document.getElementById('NOMBRE');
+        var form = document.getElementById("MyForm");
+              
+   	if (inp.value.length==0)
+        { 
+            alert(mensajes[0]);
+            inp.focus();
+            //return 0; 
+            x=0;
+   	} 
+        
+   	//el formulario se envia 
+        if(x==0)
+        {
+            return x; 
+        }
+        else
+        {
+           //alert("Muchas gracias por enviar el formulario"); 
            form.submit(); 
         }
    	
@@ -739,3 +829,162 @@ function validarFormMunicipios()
 }
 
 
+function validarFormProfesor()
+{ 
+        var x = 1;
+        var mensajes = new Array(8); 
+        mensajes[0] = "Tiene que escribir un nombre";
+        mensajes[1] = "Tiene que escribir un apellido";
+        mensajes[2] = "Tiene que escribir un DNI";
+        mensajes[3] = "Tiene que escribir un nombre de usuario";
+        mensajes[4] = "Tiene que escribir una contraseña";
+        mensajes[5] = "Tiene que seleccionar una provincia";
+        mensajes[6] = "Tiene que seleccionar un municipio";
+        mensajes[7] = "Tiene que escribir un telefono";
+        mensajes[8] = "Tiene que escribir un email";
+        var nombre = document.getElementById('NOMBRE');
+        var apellidos = document.getElementById('APELLIDOS');
+        var dni = document.getElementById('DNI');
+        var username = document.getElementById('username');
+        var password = document.getElementById('password');
+        var provincias = document.getElementById('Provincias');
+        var municipios = document.getElementById('Municipios');
+        var email = document.getElementById('EMAIL');
+        var telefono = document.getElementById('TELEFONO');
+        var form = document.getElementById("MyForm");
+              
+   	if(nombre.value.length==0)
+        { 
+            alert(mensajes[0]);
+            nombre.focus();
+            //return 0; 
+            x=0;
+   	} 
+        if(apellidos.value.length==0)
+        { 
+            alert(mensajes[1]);
+            apellidos.focus();
+            //return 0; 
+            x=0;
+   	}
+        if(dni.value.length==0)
+        { 
+            alert(mensajes[2]);
+            dni.focus();
+            //return 0; 
+            x=0;
+   	}
+        if(username.value.length==0)
+        { 
+            alert(mensajes[3]);
+            username.focus();
+            //return 0; 
+            x=0;
+   	}
+        if(password.value.length==0)
+        { 
+            alert(mensajes[4]);
+            password.focus();
+            //return 0; 
+            x=0;
+   	}
+        if(provincias.selectedIndex==0)
+        { 
+            alert(mensajes[5]);
+            provincias.focus();
+            //return 0; 
+            x=0;
+   	}
+        if(municipios.selectedIndex==0)
+        { 
+            alert(mensajes[6]);
+            municipios.focus();
+            //return 0; 
+            x=0;
+   	}
+        if(telefono.value.length==0)
+        { 
+            alert(mensajes[7]);
+            telefono.focus();
+            //return 0; 
+            x=0;
+   	}
+        if(email.value.length==0)
+        { 
+            alert(mensajes[8]);
+            email.focus();
+            //return 0; 
+            x=0;
+   	}
+        
+        
+   	//el formulario se envia 
+        if(x==0)
+        {
+            return x; 
+        }
+        else
+        {
+           //alert("Muchas gracias por enviar el formulario"); 
+           form.submit(); 
+        }
+   	
+        //parent.location='index.php?cuerpo=rejilla_municipio.php';
+}
+
+function validarFormSeleccionCurso()
+{ 
+        var x = 1;
+        var mensaje = "Tiene que elegir un curso";
+        var sel = document.getElementById('ID_PROFESOR_CURSO');
+        var form = document.getElementById('formulario_seleccion_curso');
+        
+        //Valida el select con los cursos
+   	if (sel.selectedIndex==0)
+        { 
+            alert(mensaje);
+            sel.focus();
+            //return 0; 
+            x=0;
+   	} 
+
+   	//el formulario se envia 
+        if(x==0)
+        {
+            return x; 
+        }
+        else
+        {
+           //alert("Muchas gracias por enviar el formulario"); 
+           form.submit(); 
+        }
+}
+
+function validarFormProfesorCurso()
+{ 
+        var x = 1;
+        var mensajes = "Tiene que escribir una fecha de alta";
+        var inp = document.getElementById('FECHA_ALTA');
+        var form = document.getElementById("MyForm");
+              
+   	if (inp.value.length==0)
+        { 
+            alert(mensajes);
+            inp.focus();
+            //return 0; 
+            x=0;
+   	} 
+        
+   	//el formulario se envia 
+        if(x==0)
+        {
+            return x; 
+        }
+        else
+        {
+           //alert("Muchas gracias por enviar el formulario"); 
+           form.submit(); 
+        }
+   	
+        //parent.location='index.php?cuerpo=rejilla_municipio.php';
+}

@@ -33,11 +33,11 @@ if (isset($_GET["nuevo"])) {
         <tr>
             <td class="text_right">Nacionalidad</td>
             <td>
-                <input type="text" name="NOMBRE" require="true" label="NACIONALIDAD" ID="NOMBRE" value="<?php echo $nacionalidad->NOMBRE; ?>"/>
+                <input type="text" name="NOMBRE" label="NACIONALIDAD" ID="NOMBRE" value="<?php echo $nacionalidad->NOMBRE; ?>"/>
             </td>
         </tr>
         <tr>
-            <td><input type="submit" name="Enviar" value="Enviar"></td>
+            <td><input type="button" onClick="validarFormNacionalidad()" name="Enviar" value="Enviar"></td>
             <td><input type="button" onClick="parent.location='index.php?cuerpo=rejilla_nacionalidad.php'" name="Cancelar" value="Cancelar"></td>
         </tr>
     </table>

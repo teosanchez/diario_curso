@@ -15,7 +15,7 @@
 
                 <div class="grid_12">
                     <div id="formulario_seleccion">                        
-                    <form action="index.php" method="get">
+                    <form id="formulario_seleccion_curso" action="index.php" method="get">
                     <input type="hidden" name="cuerpo" value="<?php echo $_GET{"destino"}; ?>" />
                     <input type="hidden" name="origen" value="app_inicio.php" />
                             <?php
@@ -30,7 +30,7 @@
                             ?>
                       
                             <div id="cancelar_seleccion_curso"><input type="reset" value="Cancelar" ></input></div>
-                            <div id="seleccion_curso"><input name="seleccionar" type="submit" value="Seleccionar" ></input></div>
+                            <div id="seleccion_curso"><input name="seleccionar" type="button" onclick="validarFormSeleccionCurso()" value="Seleccionar" ></input></div>
                         
                         </form>
                     </div>                     

@@ -18,7 +18,7 @@ class profesor_curso {
         isset($arrayValores['ID_PROFESOR']) ? $this->ID_PROFESOR = $arrayValores['ID_PROFESOR'] : $this->ID_PROFESOR = null;
         isset($arrayValores['ID_CURSO']) ? $this->ID_CURSO = $arrayValores['ID_CURSO'] : $this->ID_CURSO = null;
         isset($arrayValores['FECHA_ALTA']) ? $this->FECHA_ALTA = date("d-m-Y", strtotime($arrayValores['FECHA_ALTA'])) : $this->FECHA_ALTA = null;
-        isset($arrayValores['FECHA_BAJA']) ? $this->FECHA_BAJA = date("d-m-Y", strtotime($arrayValores['FECHA_BAJA'])) : $this->FECHA_BAJA = null;
+        isset($arrayValores['FECHA_BAJA'] ) && $arrayValores['FECHA_BAJA']!="0000-00-00" ? $this->FECHA_BAJA = date("d-m-Y", strtotime($arrayValores['FECHA_BAJA'])) : $this->FECHA_BAJA = null;
     }
 
 }

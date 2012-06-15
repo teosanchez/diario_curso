@@ -5,22 +5,22 @@
         $mensaje_error="";
 	$modulo=new modulo();
 	$bd=new bd();
-	if(isset($_GET["Enviar"])) 
+	/*if(isset($_GET["Enviar"])) 
+	{*/
+	if(isset($_GET["ID"],$_GET["NOMBRE"]))
 	{
-	 if(isset($_GET["ID"]))
-		{
-			 $modulo->ID=$_GET["ID"];
-			 $modulo->NOMBRE=$_GET["NOMBRE"];
-		if($_GET["ID"]=="")
-		{
-			$bd->insertar($modulo);
-		}
-		 else
-		{
-			$bd->actualizar($modulo);
-		}
+            $modulo->ID=$_GET["ID"];
+            $modulo->NOMBRE=$_GET["NOMBRE"];
+            if($_GET["ID"]=="")
+            {
+                    $bd->insertar($modulo);
+            }
+                else
+            {
+                    $bd->actualizar($modulo);
+            }
 	}
-	}
+	//}
 	if(isset($_GET["Borrar"])) 
 		{
 		$modulo->ID=$_GET["ID"];

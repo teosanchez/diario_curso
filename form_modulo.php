@@ -38,7 +38,7 @@ if (isset($_GET["nuevo"])) {
         </td>
     </tr>
     <tr>
-        <td><input type="submit" name="Enviar" value="Enviar"></td>
+        <td><input type="button" onClick="validarFormModulo()" name="Enviar" value="Enviar"></td>
         <td><input type="button" onClick="parent.location='index.php?cuerpo=rejilla_modulo.php'" name="Cancelar" value="Cancelar"></td>
     </tr>
 </table>

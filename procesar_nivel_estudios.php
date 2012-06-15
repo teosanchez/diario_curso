@@ -5,9 +5,9 @@
         $mensaje_error="";
 	$nivel_estudios=new nivel_estudios();
 	$bd=new bd();
-	if(isset($_GET["Enviar"])) 
-	{
-	 if(isset($_GET["ID"]))
+	/*if(isset($_GET["Enviar"])) 
+	{*/
+	 if(isset($_GET["ID"],$_GET["NOMBRE"]))
 		{
 			 $nivel_estudios->ID=$_GET["ID"];
 			 $nivel_estudios->NOMBRE=$_GET["NOMBRE"];
@@ -20,7 +20,7 @@
 			$bd->actualizar($nivel_estudios);
 		}
 	}
-	}
+	//}
 	if(isset($_GET["Borrar"])) 
 		{
 		$nivel_estudios->ID=$_GET["ID"];

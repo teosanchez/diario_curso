@@ -8,9 +8,9 @@
 	$bd=new bd();
         $direccion=new direccion();
         
-	if(isset($_GET["Enviar"])) 
-	{
-	 if(isset($_GET["ID"]))
+	/*if(isset($_GET["Enviar"])) 
+	{*/
+	 if(isset($_GET["ID"],$_GET["ID_DIRECCION"],$_GET["NOMBRE"],$_GET["APELLIDOS"],$_GET["DNI"],$_GET["TELEFONO"],$_GET["EMAIL"],$_GET["Municipios"],$_GET["CALLE"],$_GET["NUMERO"],$_GET["username"],$_GET["password"]))
 		{
 			 $profesor->ID=$_GET["ID"];
 			 $profesor->ID_DIRECCION=$_GET["ID_DIRECCION"];
@@ -86,7 +86,7 @@
                     $sql= "UPDATE `users` SET `Username`='".$username."',`Username_Clean`='".$username."',`Email`='".$profesor->EMAIL."'where Email='".$email."'";
                     $bd->consultar($sql);
                  }
-                }
+                //}
 	}
 	if(isset($_GET["Borrar"])) 
 		{
