@@ -8,6 +8,9 @@ $bd = new bd();
 $util = new utilidadesIU();
 $diario = new diario();
 $profesor_curso = new profesor_curso();
+
+$id_profesor_curso="";
+
 if (isset($_GET["ID"])) 
 {
     $diario->ID = ($_GET["ID"]);
@@ -16,17 +19,9 @@ if (isset($_GET["ID"]))
     {
         $diario->cargar($arrayEntidad[0]);
     }
+    $id_profesor_curso = $diario->ID_PROFESOR_CURSO;
 }
-if (isset($_GET["ID_PROFESOR_CURSO"])) 
-    {
-        $profesor_curso->ID = $_GET["ID_PROFESOR_CURSO"];
-        $arrayEntidad = $bd->buscar($profesor_curso);
-        if ($arrayEntidad) 
-        {
-            $profesor_curso->cargar($arrayEntidad[0]);
-        }
-    }
-if (isset($_GET["Cursos"]) && isset($_GET["ID_PROFESOR"]))
+if (isset($_GET["Cursos"])) 
 {
     $profesor_curso->ID_CURSO = $_GET["Cursos"];
     $arrayEntidad = $bd->buscar($profesor_curso);
@@ -34,9 +29,9 @@ if (isset($_GET["Cursos"]) && isset($_GET["ID_PROFESOR"]))
     {
         $profesor_curso->cargar($arrayEntidad[0]);
     }
-    
+    $id_profesor_curso = $profesor_curso->ID;
 }
-    
+
 
 ?>
 <!-- Titulo de pÃ¡gina -->
@@ -53,7 +48,7 @@ if (isset($_GET["Cursos"]) && isset($_GET["ID_PROFESOR"]))
 <!-- Fin Titulo de pÃ¡gina -->
 <form name="form_diario" id="MyForm" method="get" action="procesar_diario.php">
     <input type="hidden" name="ID" ID="ID" value="<?php echo $diario->ID; ?>"/>
-    <input type="hidden" name="ID_PROFESOR_CURSO" ID="ID_PROFESOR_CURSO" value="<?php echo $profesor_curso->ID; ?>"/>
+    <input type="hidden" name="ID_PROFESOR_CURSO" ID="ID_PROFESOR_CURSO" value="<?php echo $id_profesor_curso; ?>"/>
     <input type="hidden" name="FECHA" ID="FECHA" value="<?php date_default_timezone_set('Europe/Madrid');
     echo date("Y/m/d H:i:s"); ?>"/>
     <table>        

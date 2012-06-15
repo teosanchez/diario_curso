@@ -11,11 +11,10 @@ if (isset($_GET["ID_CURSO"]))
     {
         $modulo_curso->ID_CURSO = ($_GET["ID_CURSO"]);
     }
-
 if (isset($_GET["Cursos"])) 
-{
+    {
     $modulo_curso->ID_CURSO = ($_GET["Cursos"]);
-}
+    }
 
     
 $c="";

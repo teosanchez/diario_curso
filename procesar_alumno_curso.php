@@ -48,7 +48,7 @@ if (isset($_GET["Borrar"]))
         $alumno_curso->cargar($arrayEntidad[0]);
     }
     $bd->borrar($alumno_curso);
-    header('Location: index.php?cuerpo=rejilla_alumno_curso.php&ID='.$alumno_curso->ID_CURSO.'&origen='.$origen);
+    //header('Location: index.php?cuerpo=rejilla_alumno_curso.php&ID='.$alumno_curso->ID_CURSO.'&origen='.$origen);
 }
 
 if (isset($_GET["Cancelar"])) 

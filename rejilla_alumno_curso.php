@@ -2,7 +2,9 @@
     $(document).ready(function(){
         $("#Cursos").change(function(e){
             $("#lista_alumnos").load("cargar_alumnos.php",
-            {ID_CURSO:  e.target.options[e.target.selectedIndex].value }); // El método load, carga lo que se le indica
+            {ID_CURSO:  e.target.options[e.target.selectedIndex].value,
+             ID_GRUPO: <?php echo $grupo["Group_ID"]; ?> }); 
+         // El método load, carga lo que se le indica
         });
     });
     $.ajaxSetup({
@@ -14,8 +16,8 @@
         
     }
     }});
-      
 </script>
+
 <?php
 include ("clase_rejilla_alumno_curso.php");
 include_once ("clase_bd.php");
@@ -23,6 +25,9 @@ include ("clase_curso.php");
 
 $bd = new bd();
 $curso = new curso();
+
+include ("utilidadesIU.php");
+$util = new utilidadesIU();
 
 $id_curso="";
 $result="";
@@ -44,6 +49,8 @@ if (isset($_GET["ID_PROFESOR_CURSO"]))  // Venimos de "Seleccionar un curso"
                             where ID_CURSO ='" . $profesor_curso->ID_CURSO . "'");
 }*/
 
+
+
 if (isset($_GET["ID"])) 
 {
     $curso->ID = ($_GET["ID"]);
@@ -64,18 +71,13 @@ $grupo = $loggedInUser->groupID();
     <div class="titulo">
         <div class="grid_9 alpha"">
              <h2 class="caption">Administraci&oacute;n de <span>alumnos del curso:
-            
-            <form>
+                     
                 <?php
-                    include ("utilidadesIU.php");
-                    $util = new utilidadesIU();
-                    $datosLista = $bd->consultar("select ESPECIALIDAD,ID
-                        from vw_curso_especialidad");
-                    echo $util->pinta_selection($datosLista, "Cursos", "ESPECIALIDAD",$id_curso);
+                $datosLista = $bd->consultar("select ESPECIALIDAD,ID from vw_curso_especialidad ");
+                echo $util->pinta_selection($datosLista, "Cursos", "ESPECIALIDAD", $id_curso);
                 ?>
-            </form>
-
-            </span></h2>
+                     
+              </span></h2>
         </div>
         <div class="grid_3 omega">
             <div class="left boton_principal"><img alt="Nuevo" src="images/add.png"/></div>  
@@ -86,15 +88,17 @@ $grupo = $loggedInUser->groupID();
     </div>
 </form>
     <!-- Fin Titulo de pÃ¡gina -->
-
+    
 <div id="lista_alumnos">
+
     <?php
-    if ($result) 
-    {
-        $rejilla = new rejilla_alumno_curso($result, "index.php?cuerpo=form_alumno_curso.php&", "ID", "Alumno",$_GET["origen"],$grupo["Group_ID"]);
-        echo $rejilla->pintar();
-    }
+        if ($result) 
+        {
+            $rejilla = new rejilla_alumno_curso($result, "index.php?cuerpo=form_alumno_curso.php&", "ID", "Alumno",$_GET["origen"],$grupo["Group_ID"]);
+            echo $rejilla->pintar();
+        }
     ?>
+    
 </div>
     
 <form action="index.php" method="get">
