@@ -414,9 +414,9 @@ aside p.dateinfo {
     background: url(../images/date-bg.png) no-repeat;
     height: 70px;
     width: 60px;
-    margin: 10px 0 0 78px;
+    margin: 3px 0 0 78px;
     padding: 7px 0 0 0;
-    font: bold 15px Arial, Helvetica, sans-serif;
+    font: bold 16px Arial, Helvetica, sans-serif;
     text-transform: uppercase;
     text-align: center;
     letter-spacing: 2px;
@@ -424,11 +424,21 @@ aside p.dateinfo {
     text-shadow: 0 -1px 0 rgba(10, 10, 10, 1);
 }
 aside p.dateinfo span {
-    font: bold 26px 'Lucida Grande','Lucida Sans Unicode', 'Lucida Sans', Verdana, Sans-Serif;
+    font: bold 18px 'Lucida Grande','Lucida Sans Unicode', 'Lucida Sans', Verdana, Sans-Serif;
     display: block;
-    color: #444;
-    margin: 5px 0 0 0;
-    padding: 0;
+    color: #000;
+    margin: 10px 0 0 0;
+    padding: 0;    
+    letter-spacing: 0;
+    text-shadow: none;
+}
+
+aside span{
+    font: bold 18px 'Lucida Grande','Lucida Sans Unicode', 'Lucida Sans', Verdana, Sans-Serif;
+    display: block;
+    color: #2d79a9;
+    margin: 5px 0 0 82px;
+    padding: 0;    
     letter-spacing: 0;
     text-shadow: none;
 }
@@ -437,8 +447,9 @@ aside p.dateinfo span {
 aside .post-meta {
     width: 138px;
     font-size: .9em;
-    margin: 20px 0;
+    margin: 5px 0;
     padding: 0;
+    padding-top: 25px;
 }
 aside .post-meta h4 {
     text-align: right;
@@ -473,6 +484,14 @@ aside .post-meta ul li a {
 }
 aside .post-meta ul li a { color: #666666; }
 aside .post-meta ul li a:hover { color: #CC3300; }
+
+#borrar {    
+    margin-left: 15px; 
+}
+
+#editar {
+    margin-left: 85px;   
+}
 
 /* Post Bottom */
 .post-bottom-section {

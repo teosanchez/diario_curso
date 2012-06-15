@@ -93,6 +93,20 @@ if (isset($_GET["ID_CURSO"]))
 
 ?>
 
+<!--<script>
+    function muestraOculta(elemento){
+        texto = document.getElementById("texto_mostrar_" + elemento);
+        boton = document.getElementById("boton_mostrar_" + elemento);
+        if(texto.style.display == "none"){
+            texto.style.display = "block";
+            //boton.innerHTML = "Ocultar contenidos";
+        }else{
+            texto.style.display = "none";
+            //boton.innerHTML = "Mostrar contenidos";
+        }
+    }
+</script>
+-->
 <!-- Titulo de pagina -->
 <!--<form action="index.php" method="get" onsubmit="return entrada_diario($grupo['Group_ID'])">-->
 <form action="index.php" id="formNuevo" method="get">
@@ -170,16 +184,18 @@ if (isset($_GET["ID_CURSO"]))
             </div>
 
             <div class="clear"></div>
+
     </div> 
+
         <div class="clear"></div>        
-    </div>
+
 
     <!-- Menu Lateral -->
     <div class="grid_3 omega">
 
     </div> 
     <div class="clear"></div>
-</div>
+
 
 
 

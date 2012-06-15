@@ -19,10 +19,8 @@ if (!isset($language))
 
 require_once("lang/" . $language . ".php");
 require_once("class.user.php");
-require_once("class.mail.php");
 require_once("funcs.user.php");
 require_once("funcs.general.php");
-require_once("class.newuser.php");
 
 session_start();
 

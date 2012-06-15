@@ -1,32 +1,9 @@
 <?php
-	/*
-		UserCake Version: 1.4
-		http://usercake.com
-		
-		Developed by: Adam Davis
-	*/
-	
 	function sanitize($str)
 	{
 		return strtolower(strip_tags(trim(($str))));
 	}
 	
-	function isValidEmail($email)
-	{
-		return preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/",trim($email));
-	}
-	
-	function minMaxRange($min, $max, $what)
-	{
-		if(strlen(trim($what)) < $min)
-		   return true;
-		else if(strlen(trim($what)) > $max)
-		   return true;
-		else
-		   return false;
-	}
-	
-	//@ Thanks to - http://phpsec.org
 	function generateHash($plainText, $salt = null)
 	{
 		if ($salt === null)
@@ -39,21 +16,7 @@
 		}
 	
 		return $salt . sha1($salt . $plainText);
-	}
-	
-	function replaceDefaultHook($str)
-	{
-		global $default_hooks,$default_replace;
-	
-		return (str_replace($default_hooks,$default_replace,$str));
-	}
-	
-	function getUniqueCode($length = "")
-	{	
-		$code = md5(uniqid(rand(), true));
-		if ($length != "") return substr($code, 0, $length);
-		else return $code;
-	}
+	}	
 	
 	function errorBlock($errors)
 	{
@@ -63,12 +26,10 @@
 		}
 		else
 		{
-			echo "<ul>";
 			foreach($errors as $error)
 			{
-				echo "<li>".$error."</li>";
-			}
-			echo "</ul>";
+                            echo $error.".<br/><br/>";                     
+			}			
 		}
 	}
 	

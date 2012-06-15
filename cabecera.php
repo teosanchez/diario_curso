@@ -3,6 +3,7 @@
     <?php 
 	include("clase_bd.php");
 	require_once("userCake/models/config.php");
+       // if(!isUserLoggedIn()) { header("Location: index.php?cuerpo=bienvenida.php"); die(); }
 	if (isUserLoggedIn())   //Si el usuario está identificado
         {
                 $bd=new bd();

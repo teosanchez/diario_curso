@@ -59,8 +59,7 @@
 
             <!-- Footer -->
             <p class="grid_12 footer clearfix">
-                <span class="float"><b>&copy; Copyright</b> PHP-Tropical 2012 <b>Design by</b> Paco & Papita.</span>
-                <a class="float right" href="#">top</a>
+                <span class="float"><b>&copy; Copyright</b> PHP-Tropical 2012 <b>Design by</b> Paco & Papita.</span>                
             </p>
 
         </div><!--end wrapper-->
