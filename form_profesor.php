@@ -114,7 +114,7 @@ if (isset($_GET["ID"])) {
                 if (!isset($_GET["ID"]))
                     {                   
                         echo '<td class="text_right">Contrase&ntilde;a</td>';
-                        echo '<td><input type="text" label="password" ID="password" name="password" /><td>';                                                        
+                        echo '<td><input type="password" label="password" ID="password" name="password" /><td>';                                                        
                     }                              
                 ?>       
         </tr>
@@ -171,4 +171,12 @@ if (isset($_GET["ID"])) {
             <td><input type="button" onClick="parent.location='index.php?cuerpo=rejilla_profesor.php'" name="Cancelar" value="Cancelar"></td>          
         </tr>
     </table>
+    <?php
+    if (isset($_GET['msj']) && $_GET['msj'] != "")
+        {//Incluir en Generador
+        echo '<div id="errors" class="formlyRequired formlyAlert" style="display: block;">';
+        echo $_GET['msj'];
+        echo '</div>';
+        }                               
+    ?>
 </form>

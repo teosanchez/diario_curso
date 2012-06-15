@@ -1,12 +1,4 @@
 <?php
-	/*
-		UserCake Version: 1.4
-		http://usercake.com
-		
-		Developed by: Adam Davis
-	*/
-	
-	
 	function usernameExists($username)
 	{
 		global $db,$db_table_prefix;
@@ -23,7 +15,7 @@
 			return false;
 	}
 	
-	function emailExists($email)
+	/*function emailExists($email)
 	{
 		global $db,$db_table_prefix;
 	
@@ -39,7 +31,7 @@
 	}
 	
 	//Function lostpass var if set will check for an active account.
-	function validateActivationToken($token,$lostpass=NULL)
+	/*function validateActivationToken($token,$lostpass=NULL)
 	{
 		global $db,$db_table_prefix;
 		
@@ -67,7 +59,7 @@
 			return true;
 		else
 			return false;
-	}
+	}*/
 	
 	
 	function setUserActive($token)
@@ -111,7 +103,7 @@
 		return ($row);
 	}
 	
-	function flagLostPasswordRequest($username,$value)
+	/*function flagLostPasswordRequest($username,$value)
 	{
 		global $db,$db_table_prefix;
 		
@@ -156,7 +148,7 @@
 			return true;
 		else
 			return false;
-	}
+	}*/
 	
 	
 	function isUserLoggedIn()
@@ -215,7 +207,7 @@
 	}
 	
 	//Generate an activation key 
-	function generateActivationToken()
+	/*function generateActivationToken()
 	{
 		$gen;
 	
@@ -240,5 +232,5 @@
 				Username_Clean = '".$db->sql_escape(sanitize($username))."'";
 		
 		return ($db->sql_query($sql));
-	}
+	}*/
 ?>

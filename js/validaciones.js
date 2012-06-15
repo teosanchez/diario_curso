@@ -916,8 +916,7 @@ function validarFormProfesor()
             //return 0; 
             x=0;
    	}
-        
-        
+
    	//el formulario se envia 
         if(x==0)
         {
@@ -928,8 +927,6 @@ function validarFormProfesor()
            //alert("Muchas gracias por enviar el formulario"); 
            form.submit(); 
         }
-   	
-        //parent.location='index.php?cuerpo=rejilla_municipio.php';
 }
 
 function validarFormSeleccionCurso()
@@ -943,6 +940,37 @@ function validarFormSeleccionCurso()
    	if (sel.selectedIndex==0)
         { 
             alert(mensaje);
+            sel.focus();
+        }
+        
+        //el formulario se envia 
+        if(x==0)
+        {
+            return x; 
+        }
+        else
+        {
+           //alert("Muchas gracias por enviar el formulario"); 
+           form.submit(); 
+        }
+}
+
+function validarListaCursos()
+{ 
+   	//valida la provincia del select 
+        //var prov = document.MyForm.Provincia;
+        //alert(prov);
+        var x = 1;
+        var mensajes = new Array(2); 
+        mensajes[0] = "Tiene que seleccionar un curso";        
+        var sel = document.getElementById('Cursos');
+        
+        var form = document.getElementById("formNuevo");
+        
+   	if (sel.selectedIndex==0)
+        { 
+            alert(mensajes[0]);
+
             sel.focus();
             //return 0; 
             x=0;
@@ -985,6 +1013,6 @@ function validarFormProfesorCurso()
            //alert("Muchas gracias por enviar el formulario"); 
            form.submit(); 
         }
-   	
-        //parent.location='index.php?cuerpo=rejilla_municipio.php';
 }
+
+        

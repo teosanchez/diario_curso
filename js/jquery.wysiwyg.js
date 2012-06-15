@@ -541,12 +541,12 @@ html: '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.o
 			autoGrow: false,
 			autoSave: true,
 			brIE: true,					// http://code.google.com/p/jwysiwyg/issues/detail?id=15
-			formHeight: 270,
-			formWidth: 440,
+			formHeight: 4998,
+			formWidth: 4998,
 			iFrameClass: null,
 			initialContent: null,
-			maxHeight: 999,			// see autoGrow
-			maxLength: 999,
+			maxHeight: 4998,			// see autoGrow
+			maxLength: 4998,
 			messages: {
 				nonSelection: "Selecciona un texto para crear el enlace"
 			},

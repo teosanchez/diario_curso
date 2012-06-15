@@ -85,17 +85,31 @@ if (isset($_GET["ID_CURSO"]))
     $id_curso = $_GET["ID_CURSO"];
 }
 
-echo ("id_curso: ".$id_curso."</br>");
-echo ("id_alumno: ".$id_alumno."</br>");
-echo ("id_profesor: ".$id_profesor."</br>");
-echo ("email: ".$email."</br>");
-echo ("grupo_id: ".$grupo["Group_ID"]."</br>");
+//echo ("id_curso: ".$id_curso."</br>");
+//echo ("id_alumno: ".$id_alumno."</br>");
+//echo ("id_profesor: ".$id_profesor."</br>");
+//echo ("email: ".$email."</br>");
+//echo ("grupo_id: ".$grupo["Group_ID"]."</br>");
 
 ?>
 
+<!--<script>
+    function muestraOculta(elemento){
+        texto = document.getElementById("texto_mostrar_" + elemento);
+        boton = document.getElementById("boton_mostrar_" + elemento);
+        if(texto.style.display == "none"){
+            texto.style.display = "block";
+            //boton.innerHTML = "Ocultar contenidos";
+        }else{
+            texto.style.display = "none";
+            //boton.innerHTML = "Mostrar contenidos";
+        }
+    }
+</script>
+-->
 <!-- Titulo de pagina -->
 <!--<form action="index.php" method="get" onsubmit="return entrada_diario($grupo['Group_ID'])">-->
-<form action="index.php" method="get">
+<form action="index.php" id="formNuevo" method="get">
     <input type="hidden" name="cuerpo" value="form_diario.php" />
     <div class="titulo">
         <div class="grid_9 alpha"">
@@ -134,7 +148,7 @@ echo ("grupo_id: ".$grupo["Group_ID"]."</br>");
                 if ($grupo['Group_ID'] == PROFESOR)
                 {
                 echo '<div class="left boton_principal"><img alt="Nuevo" src="images/add.png"/></div>'; 
-                echo '<div class="left boton_principal"><input type="submit" name="nuevo" value="Nueva entrada"/></div>';                   
+                echo '<div class="left boton_principal"><input type="button" onClick="validarListaCursos()" name="nuevo" value="A&ntilde;adir entrada"/></div>';                   
                 }
             ?>
             <div class="clear"></div>
@@ -170,16 +184,18 @@ echo ("grupo_id: ".$grupo["Group_ID"]."</br>");
             </div>
 
             <div class="clear"></div>
+
     </div> 
+
         <div class="clear"></div>        
-    </div>
+
 
     <!-- Menu Lateral -->
     <div class="grid_3 omega">
 
     </div> 
     <div class="clear"></div>
-</div>
+
 
 
 

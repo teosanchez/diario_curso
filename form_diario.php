@@ -20,6 +20,13 @@ if (isset($_GET["ID"]))
         $diario->cargar($arrayEntidad[0]);
     }
     $id_profesor_curso = $diario->ID_PROFESOR_CURSO;
+    
+    $profesor_curso->ID = $id_profesor_curso;
+    $arrayEntidad = $bd->buscar($profesor_curso);
+    if ($arrayEntidad) 
+    {
+        $profesor_curso->cargar($arrayEntidad[0]);
+    }
 }
 if (isset($_GET["Cursos"])) 
 {
@@ -46,7 +53,7 @@ if (isset($_GET["Cursos"]))
     <span>entrada al diario</span>
 </h2>
 <!-- Fin Titulo de pÃ¡gina -->
-<form name="form_diario" id="MyForm" method="get" action="procesar_diario.php">
+<form name="form_diario" id="MyForm" method="post" action="procesar_diario.php">
     <input type="hidden" name="ID" ID="ID" value="<?php echo $diario->ID; ?>"/>
     <input type="hidden" name="ID_PROFESOR_CURSO" ID="ID_PROFESOR_CURSO" value="<?php echo $id_profesor_curso; ?>"/>
     <input type="hidden" name="FECHA" ID="FECHA" value="<?php date_default_timezone_set('Europe/Madrid');

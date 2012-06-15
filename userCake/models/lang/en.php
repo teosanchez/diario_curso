@@ -14,13 +14,13 @@
 	
 	//Account
 	$lang = array_merge($lang,array(
-		"ACCOUNT_SPECIFY_USERNAME" 				=> "Please enter your username",
-		"ACCOUNT_SPECIFY_PASSWORD" 				=> "Please enter your password",
-		"ACCOUNT_SPECIFY_EMAIL"					=> "Please enter your email address",
-		"ACCOUNT_INVALID_EMAIL"					=> "Invalid email address",
-		"ACCOUNT_INVALID_USERNAME"				=> "Invalid username",
-		"ACCOUNT_USER_OR_EMAIL_INVALID"			=> "Username or email address is invalid",
-		"ACCOUNT_USER_OR_PASS_INVALID"			=> "Username or password is invalid",
+		"ACCOUNT_SPECIFY_USERNAME" 				=> "Por favor, introduzca su nombre de usuario",
+		"ACCOUNT_SPECIFY_PASSWORD" 				=> "Por favor, ingrese su contrase&ntilde;a",
+		"ACCOUNT_SPECIFY_EMAIL"					=> "Introduzca su dirección de correo electrónico",
+		"ACCOUNT_INVALID_EMAIL"					=> "Dirección de correo electrónico no válida",
+		"ACCOUNT_INVALID_USERNAME"				=> "Nombre de usuario inválido",
+		"ACCOUNT_USER_OR_EMAIL_INVALID"			=> "Nombre de usuario o correo electrónico no es válido",
+		"ACCOUNT_USER_OR_PASS_INVALID"			=> "Nombre de usuario o contrase&ntilde;a no es v&aacute;lida",
 		"ACCOUNT_ALREADY_ACTIVE"				=> "Your account is already activatived",
 		"ACCOUNT_INACTIVE"						=> "Your account is in-active. Check your emails / spam folder for account activation instructions",
 		"ACCOUNT_USER_CHAR_LIMIT"				=> "Your username must be no fewer than %m1% characters or greater than %m2%",
