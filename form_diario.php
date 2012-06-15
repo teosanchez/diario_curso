@@ -40,7 +40,7 @@ if (isset($_GET["ID_PROFESOR_CURSO"]))
     <span>entrada al diario</span>
 </h2>
 <!-- Fin Titulo de pÃ¡gina -->
-<form name="form_diario" id="MyForm" method="get" action="procesar_diario.php">
+<form name="form_diario" id="MyForm" method="post" action="procesar_diario.php">
     <input type="hidden" name="ID" ID="ID" value="<?php echo $diario->ID; ?>"/>
     <input type="hidden" name="ID_PROFESOR_CURSO" ID="ID_PROFESOR_CURSO" value="<?php echo $profesor_curso->ID; ?>"/>
     <input type="hidden" name="FECHA" ID="FECHA" value="<?php date_default_timezone_set('Europe/Madrid');
