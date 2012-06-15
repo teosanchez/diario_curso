@@ -69,38 +69,75 @@
 			}
 		}
 	}
-?>
-<div id="main">
-    <h1>Bienvenido a Diario de clases 1.0</h1>
+?> 
 
-    <p>Aqui va el mensaje de bienvenida del sistema</p>    
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 
-<?php 
-	if (!isUserLoggedIn()) 
-		{
-		$group = $loggedInUser->groupID();
-		echo $group['Group_Name']; 
-		}
-	 ?>
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="css/reset.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="stylesheet" href="css/formly.css" />
 
-	 </strong></p>
+        <!-- Scripts -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+        <!--[if IE 6]>
+        <script src="js/DD_belatedPNG_0.0.8a-min.js"></script>
+        <script>
+          /* EXAMPLE */
+          DD_belatedPNG.fix('.button');
+          
+          /* string argument can be any CSS selector */
+          /* .png_bg example is unnecessary */
+          /* change it to what suits you! */
+        </script>
+        <![endif]-->
 
-	<div id="regbox">
-		<form name="newUser" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
-		<p>
-			<label>Usuario:</label>
-			<input type="text" name="username" />
-		</p>
+    </head>
 
-		<p>
-                    <label>Contrase&ntilde;a:</label>
-                    <input type="password" name="password" />
-		</p>
+    <body class="portfolio">
+        
+            <!-- Control de Errores -->
+            <?php
+                if(!empty($_POST))
+                    {
+                        if(count($errors) > 0)
+                    {
+            ?>
+            <div id="errors" class="formlyRequired formlyAlert" style="display: block;">
+                <?php errorBlock($errors);} } ?>
+            </div>
+        <div id="wrapper" class="container_12 clearfix">
 
-		<p>
-			<label>&nbsp;</label>
-                        <input type="submit" value="Inciar Sesi&oacute;n" class="submit"/>
-		</p>
-                </form>			
-        </div>	
-</div>
+            <!-- Text Logo -->
+            <h1 id="logo" class="grid_4">Diario de clase</h1>		
+            <div class="hr grid_12 clearfix">&nbsp;</div>
+            <!-- Portfolio Items -->
+            
+            <!-- Section 1 -->
+
+            <!-- Section 3 -->
+                <div class="grid_12">
+                    <div class="login_form">                        
+                        <form name="newUser" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+                            <div class="clear"></div>
+                            <div>Usuario: <input type="text" name="username" /></div>
+                            <div class="clear"></div>
+                            <div>Contrase&ntilde;a: <input type="password" name="password" /></div>
+                            <div class="clear"></div>
+                            <div id="login_button"><input type="submit" value="Inciar Sesi&oacute;n" class="submit"/></div>
+                            <div class="clear"></div>
+                            <div id="login_a"><a href="login.html">&#191;Has olvidado tu Contrase&ntilde;a?</a></div>
+                        </form>
+                    </div>                     
+                </div>        
+
+            <div class="hr grid_12 clearfix">&nbsp;</div>
+
+            <!-- Footer -->
+            <p class="grid_12 footer clearfix">
+                <span class="float"><b>&copy; Copyright</b> PHP-Tropical 2012 <b>Design by</b> Paco & Papita.</span>                
+            </p>
+        </div>
+
+    </body> 

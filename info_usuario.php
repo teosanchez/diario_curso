@@ -10,15 +10,13 @@
                     }
                 ?>
             </div>                    
-            <div class="right" id="user"> 
-                <a href="index.php?cuerpo=bienvenida.php">
+            <div class="right" id="user">                
                     <?php if (isUserLoggedIn())
                     {
                         echo "<span> Bienvenido, </span>";
                         echo '<a href="index.php?cuerpo=account.php">'.$loggedInUser->display_username.'</a>';                
                     }
-                    ?>
-                </a>
+                    ?>               
             </div>        
             <div class="clear"></div>
         </form>

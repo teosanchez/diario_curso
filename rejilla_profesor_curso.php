@@ -22,7 +22,14 @@ if(isset($_GET["ID"]))
     <input type="hidden" name="ID_CURSO" ID="ID_CURSO" value="<?php echo $curso->ID; ?>"/>
     <div class="titulo">
         <div class="grid_9 alpha">
-             <h2 class="caption">Administraci&oacute;n de <span>Profesor-Curso</span></h2>
+             <h2 class="caption">Administraci&oacute;n de <span>Profesor-Curso
+                 <?php
+                        $curso = $bd->consultarArray("select ESPECIALIDAD 
+                        from vw_curso_especialidad 
+                        where ID ='" . $curso->ID . "'");
+                        echo ($curso[0]["ESPECIALIDAD"]);
+                    ?>
+                 </span></h2>
         </div>
         <div class="grid_3 omega">
             <div class="left boton_principal"><img alt="Nuevo" src="images/add.png"/></div>  

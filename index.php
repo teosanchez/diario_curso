@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html > 
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>Diario de clase</title>
@@ -11,8 +11,7 @@
 
         <link rel="stylesheet" media="screen" type="text/css" href="css/datepicker.css" />
         
-
-        
+            
         <!-- Scripts -->
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
         <script type="text/javascript" src="js/formly.js"></script>
@@ -71,7 +70,12 @@
         <div id="wrapper" class="container_12 clearfix">
 
             <!-- Cabecera -->
-            <?php include ("cabecera.php"); ?>
+            <?php
+            require_once("userCake/models/config.php");
+            if (isUserLoggedIn()) { 
+            include ("cabecera.php");}
+            
+            ?>
 
             <!-- Content -->
 
@@ -79,12 +83,15 @@
                 
 
             <!--div id="featured" class="clearfix grid_12"-->
-
+                
                 <?php include ("cuerpo.php"); ?>    
             </div>
 
             <!-- Footer -->
-            <?php include ("pie.php"); ?> 
+            <?php
+            if (isUserLoggedIn()) { 
+            include ("pie.php");}
+            ?> 
 
 
         </div><!--end wrapper-->

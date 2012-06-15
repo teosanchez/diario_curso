@@ -1,28 +1,21 @@
 <?php
-	/*
-		UserCake Version: 1.4
-		http://usercake.com
-		
-		Developed by: Adam Davis
-	*/
-
+	include_once ("constantes.php");
 	//General Settings
 	//--------------------------------------------------------------------------
-	
 	//Database Information
 	$dbtype = "mysql"; 
-	$db_host = "localhost";
-	$db_user = "root";
-	$db_pass = "";
-	$db_name = "diario_clase";
+	$db_host = SERVIDOR;
+	$db_user = USUARIO;
+	$db_pass = PASSWORD;
+	$db_name = BD;
 	$db_port = "3306";
 	$db_table_prefix = "";
 
 	$language = "en";
 	
 	//Generic website variables
-	$websiteName = "diario_clase";
-	$websiteUrl = "http://localhost/diario_curso/"; //including trailing slash
+	$websiteName = PAGINA_WEB;
+	$websiteUrl = URL; //including trailing slash
 
 	//Do you wish UserCake to send out emails for confirmation of registration?
 	//We recommend this be set to true to prevent spam bots.

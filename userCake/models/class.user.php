@@ -1,11 +1,4 @@
 <?php
-/*
-	UserCake Version: 1.4
-	http://usercake.com
-	
-	Developed by: Adam Davis
-*/
-
 class loggedInUser {
 
 	public $email = NULL;
@@ -100,7 +93,7 @@ class loggedInUser {
 	}
 	
 	//Is a user member of a group
-	public function isGroupMember($id)
+	/*public function isGroupMember($id)
 	{
 		global $db,$db_table_prefix;
 	
@@ -118,7 +111,7 @@ class loggedInUser {
 		else
 			return false;
 		
-	}
+	}*/
 	
 	//Logout
 	function userLogOut()
