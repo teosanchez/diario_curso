@@ -81,7 +81,7 @@ $grupo = $loggedInUser->groupID();
         </div>
         <div class="grid_3 omega">
             <div class="left boton_principal"><img alt="Nuevo" src="images/add.png"/></div>  
-            <div class="left boton_principal"><input type="submit" name="nuevo" value="Nuevo alumno"/></div>                   
+            <div class="left boton_principal"><input type="submit" name="nuevo" value="A&ntilde;adir alumno"/></div>                   
             <div class="clear"></div>
         </div> 
         <div class="clear"></div>

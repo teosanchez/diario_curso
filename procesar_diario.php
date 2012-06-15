@@ -34,7 +34,7 @@ if (isset($_GET["Enviar"]))
     $diario->TITULO = $_GET["TITULO"];
     if ($_GET["ID"] == "" && $_GET["ID_PROFESOR_CURSO"] <> "") 
     {
-        $bd->insertar($diario);
+        $diario->ID = $bd->insertar($diario);
     } else 
     {
         $bd->actualizar($diario);

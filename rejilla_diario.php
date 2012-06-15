@@ -85,11 +85,11 @@ if (isset($_GET["ID_CURSO"]))
     $id_curso = $_GET["ID_CURSO"];
 }
 
-echo ("id_curso: ".$id_curso."</br>");
-echo ("id_alumno: ".$id_alumno."</br>");
-echo ("id_profesor: ".$id_profesor."</br>");
-echo ("email: ".$email."</br>");
-echo ("grupo_id: ".$grupo["Group_ID"]."</br>");
+//echo ("id_curso: ".$id_curso."</br>");
+//echo ("id_alumno: ".$id_alumno."</br>");
+//echo ("id_profesor: ".$id_profesor."</br>");
+//echo ("email: ".$email."</br>");
+//echo ("grupo_id: ".$grupo["Group_ID"]."</br>");
 
 ?>
 
@@ -134,7 +134,7 @@ echo ("grupo_id: ".$grupo["Group_ID"]."</br>");
                 if ($grupo['Group_ID'] == PROFESOR)
                 {
                 echo '<div class="left boton_principal"><img alt="Nuevo" src="images/add.png"/></div>'; 
-                echo '<div class="left boton_principal"><input type="submit" name="nuevo" value="Nueva entrada"/></div>';                   
+                echo '<div class="left boton_principal"><input type="submit" name="nuevo" value="A&ntilde;adir entrada"/></div>';                   
                 }
             ?>
             <div class="clear"></div>

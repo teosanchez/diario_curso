@@ -30,7 +30,7 @@
                 if ($grupo['Group_ID'] == ADMINISTRADOR || $grupo['Group_ID'] == SECRETARIA)
                 {
                 echo '<div class="left boton_principal"><img alt="Nuevo" src="images/add.png"/></div>'; 
-                echo '<div class="left boton_principal"><input type="submit" name="nuevo" value="Nueva entrada"/></div>';                   
+                echo '<div class="left boton_principal"><input type="submit" name="nuevo" value="Nuevo curso"/></div>';                   
                 }
             ?>
             <div class="clear"></div>
