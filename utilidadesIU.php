@@ -18,6 +18,24 @@ class utilidadesIU {
         $salida.= "</select>";
         return $salida;
     }
+    
+    public function pinta_selection_cursos($datos, $nombre, $campoVisible, $seleccion = -1) {
+
+        $salida= '<select size="1" label="'.$nombre.'" id="'.$nombre.'" name="'.$nombre.'">';
+
+        $salida.='<option  value="0">Seleccione...</option>';
+        while ($row = mysql_fetch_array($datos)) {
+            if ($seleccion == $row['ID_CURSO']) {
+                $selected = " selected ";
+            } else {
+                $selected = '';
+            }
+            $salida.='<option require="true" ' . $selected . 'value="' . $row['ID_CURSO'] . '">' . $row[$campoVisible] . '</option>';
+        }
+        $salida.= "</select>";
+        return $salida;
+    }
+
 
     public function pinta_selection2($datos, $nombre, $campoVisible, $seleccion = -1) {
 
@@ -233,8 +251,12 @@ class utilidadesIU {
 
 
         // Caja de Administración de Profesores de un curso
-        if ($grupo_id == ADMINISTRADOR || $grupo_id == SECRETARIA) {
-            $salida.='<a class="portfolio_item float " href="index.php?cuerpo=seleccion_curso.php&destino=rejilla_profesor_curso.php">';
+
+ 
+        if ($grupo_id == ADMINISTRADOR || $grupo_id == SECRETARIA)
+        {
+            $salida.='<a class="portfolio_item float " href="index.php?cuerpo=rejilla_profesor_curso.php&origen=app_inicio.php">';
+
             $salida.='<span>Adm&oacute;n de Profesores de un Curso</span>';
         } else {
             $salida.='<a class="portfolio_item float " href="#">';
@@ -251,8 +273,11 @@ class utilidadesIU {
 
 
         // Caja de Administración de Alumnos de un curso
-        if ($grupo_id == ADMINISTRADOR || $grupo_id == SECRETARIA) {
-            $salida.='<a class="portfolio_item float " href="index.php?cuerpo=seleccion_curso.php&destino=rejilla_alumno_curso.php">';
+
+        if ($grupo_id == ADMINISTRADOR || $grupo_id == SECRETARIA)
+        {
+            $salida.='<a class="portfolio_item float " href="index.php?cuerpo=rejilla_alumno_curso.php&origen=app_inicio.php">';
+
             $salida.='<span>Adm&oacute;n de Alumnos de un Curso</span>';
         } else {
             $salida.='<a class="portfolio_item float " href="#">';
@@ -294,14 +319,14 @@ class utilidadesIU {
 
 
         // Caja de Diario de clase de un curso
-        $salida.='<a class="portfolio_item float" href="index.php?cuerpo=seleccion_curso.php&destino=rejilla_diario.php">';
+        $salida.='<a class="portfolio_item float" href="index.php?cuerpo=rejilla_diario.php&origen=app_inicio.php">';
         $salida.='<span>Diario de clase</span>';
         $salida.='<img class="" src="images/diario.png"  alt=""/>';
         $salida.='</a>';
 
 
         // Caja de Informes y Estadísticas
-        $salida.='<a class="portfolio_item float" href="index.php?cuerpo=seleccion_curso.php&destino=rejilla_modulo_curso.php">';
+        $salida.='<a class="portfolio_item float" href="index.php?cuerpo=rejilla_modulo_curso.php&origen=app_inicio.php">';
         $salida.='<span>Programa de un Curso</span>';
         $salida.='<img class="" src="images/estadisticas.png"  alt=""/>';
         $salida.='</a>';

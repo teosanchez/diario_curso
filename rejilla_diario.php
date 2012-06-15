@@ -1,23 +1,95 @@
+<script>
+    $(document).ready(function(){
+        $("#Cursos").change(function(e){
+            $("#lista_entradas").load("cargar_entradas.php",
+            {ID_CURSO:  e.target.options[e.target.selectedIndex].value,
+             ID_GRUPO: <?php echo $grupo["Group_ID"]; ?>}); 
+         // El método load, carga lo que se le indica
+        });
+    });
+    $.ajaxSetup({
+    'beforeSend' : function(xhr) {
+    try{
+    xhr.overrideMimeType('text/html; charset=iso-8859-1');
+    }
+    catch(e){
+        
+    }
+    }});
+</script>
+
 <?php
-include ("clase_rejilla.php");
+//include ("clase_rejilla.php");
 include_once ("clase_bd.php");
+include ("clase_alumno.php");
+include ("clase_alumno_curso.php");
+include ("clase_profesor.php");
 include ("clase_profesor_curso.php");
 include ("utilidadesIU.php");
 
 $bd = new bd();
 $util = new utilidadesIU();
+$alumno = new alumno();
+$alumno_curso = new alumno_curso();
+$profesor = new profesor();
 $profesor_curso = new profesor_curso();
-if (isset($_GET["ID_PROFESOR_CURSO"])) {
-    $profesor_curso->ID = ($_GET["ID_PROFESOR_CURSO"]);
 
-    $arrayEntidad = $bd->buscar($profesor_curso);
-    if ($arrayEntidad) {
-        $profesor_curso->cargar($arrayEntidad[0]);
-    }
-
-}
+$id_curso = "";
+$id_alumno = "";
+$id_profesor = "";
 
 $grupo = $loggedInUser->groupID();
+
+$email = $loggedInUser->email;
+
+if ($grupo["Group_ID"] == ALUMNO)
+{
+    $alumno->EMAIL = $email;
+    $arrayEntidad = $bd->buscar($alumno);
+    if ($arrayEntidad) 
+    {
+        $alumno->cargar($arrayEntidad[0]);
+    }
+    $id_alumno = $alumno->ID;
+    
+    $alumno_curso->ID_ALUMNO = $id_alumno;
+    $arrayEntidad = $bd->buscar($alumno_curso);
+    if ($arrayEntidad) 
+    {
+        $alumno_curso->cargar($arrayEntidad[0]);
+    }
+    $id_curso = $alumno_curso->ID_CURSO;
+}
+
+if ($grupo["Group_ID"] == PROFESOR)
+{
+    $profesor->EMAIL = $email;
+    $arrayEntidad = $bd->buscar($profesor);
+    if ($arrayEntidad) 
+    {
+        $profesor->cargar($arrayEntidad[0]);
+    }
+    $id_profesor = $profesor->ID;
+    
+    $profesor_curso->ID_PROFESOR = $id_profesor;
+    $arrayEntidad = $bd->buscar($profesor_curso);
+    if ($arrayEntidad) 
+    {
+        $profesor_curso->cargar($arrayEntidad[0]);
+    }
+    $id_curso = $profesor_curso->ID_CURSO;
+}
+
+if (isset($_GET["ID_CURSO"])) 
+{
+    $id_curso = $_GET["ID_CURSO"];
+}
+
+//echo ("id_curso: ".$id_curso."</br>");
+//echo ("id_alumno: ".$id_alumno."</br>");
+//echo ("id_profesor: ".$id_profesor."</br>");
+//echo ("email: ".$email."</br>");
+//echo ("grupo_id: ".$grupo["Group_ID"]."</br>");
 
 ?>
 
@@ -37,18 +109,38 @@ $grupo = $loggedInUser->groupID();
 -->
 <!-- Titulo de pagina -->
 <!--<form action="index.php" method="get" onsubmit="return entrada_diario($grupo['Group_ID'])">-->
-<form action="index.php" method="get">
+<form action="index.php" id="formNuevo" method="get">
     <input type="hidden" name="cuerpo" value="form_diario.php" />
-    <input type="hidden" name="ID_PROFESOR_CURSO" ID="ID_PROFESOR_CURSO" value="<?php echo $profesor_curso->ID; ?>"/>
     <div class="titulo">
         <div class="grid_9 alpha"">
              <h2 class="caption">Entradas del curso: <span>  
-                     <?php
-                        $nombre_curso = $bd->consultarArray("select ESPECIALIDAD 
-                                from vw_curso_especialidad_profesor_curso 
-                                where ID ='" . $profesor_curso->ID . "'");
-                        echo ($nombre_curso[0]["ESPECIALIDAD"]);
-                     ?>
+                     
+                <?php
+                    if ($grupo["Group_ID"] == ADMINISTRADOR || $grupo["Group_ID"] == SECRETARIA)
+                    {
+                        $datosLista = $bd->consultar("select ESPECIALIDAD,ID 
+                                from vw_curso_especialidad ");
+                        echo $util->pinta_selection($datosLista, "Cursos", "ESPECIALIDAD", $id_curso);
+                    }
+                    
+                    if ($grupo["Group_ID"] == ALUMNO)                   
+                    {
+                        $datosLista = $bd->consultar("select Curso,ID_CURSO 
+                                from vw_nombre_alumno_nombre_especialidad 
+                                where ID_ALUMNO ='" . $id_alumno . "'");                       
+                        echo $util->pinta_selection_cursos($datosLista, "Cursos", "Curso", $id_curso);
+                    }
+                    
+                    if ($grupo["Group_ID"] == PROFESOR)                   
+                    {
+                        $datosLista = $bd->consultar("select ESPECIALIDAD,ID_CURSO 
+                                from vw_nombre_profesor_curso_especialidad 
+                                where ID_PROFESOR ='" . $id_profesor . "'");                       
+                        echo $util->pinta_selection_cursos($datosLista, "Cursos", "ESPECIALIDAD", $id_curso);
+                    }
+                    
+                ?>
+                     
             </span></h2>
         </div>
         <div class="grid_3 omega">
@@ -56,7 +148,7 @@ $grupo = $loggedInUser->groupID();
                 if ($grupo['Group_ID'] == PROFESOR)
                 {
                 echo '<div class="left boton_principal"><img alt="Nuevo" src="images/add.png"/></div>'; 
-                echo '<div class="left boton_principal"><input type="submit" name="nuevo" value="Nueva entrada"/></div>';                   
+                echo '<div class="left boton_principal"><input type="button" onClick="validarListaCursos()" name="nuevo" value="A&ntilde;adir entrada"/></div>';                   
                 }
             ?>
             <div class="clear"></div>
@@ -72,20 +164,29 @@ $grupo = $loggedInUser->groupID();
             <div class="left boton_principal">
                 <form action="index.php" method="get">
                     <input type="hidden" name="cuerpo" value="form_diario.php" />
-                    <?php
-                    $diario = $bd->consultar("select * from vw_diario_profesor_curso 
-                        where ID_PROFESOR_CURSO ='" . $profesor_curso->ID . "'");
+                    
+                    <div id="lista_entradas">
 
-                    if ($diario) {
-                        echo $util->pinta_entradas($diario,$grupo['Group_ID']);
-                    }
+                    <?php
+                        $diario = $bd->consultar("select * from vw_diario_profesor_curso 
+                            where ID_CURSO ='" . $id_curso . "'".
+                                'order by FECHA DESC');
+
+                        if ($diario) 
+                        {
+                            echo $util->pinta_entradas($diario,$grupo['Group_ID']);
+                        }
                     ?>
+                        
+                    </div>
                   
                 </form> 
             </div>
 
             <div class="clear"></div>
-   
+
+    </div> 
+
         <div class="clear"></div>        
 
 

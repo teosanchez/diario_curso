@@ -3,6 +3,7 @@
 	include_once ("clase_bd.php");
         include ("clase_direccion.php");        
       
+        $mensaje_error="";
 	$profesor=new profesor();
 	$bd=new bd();
         $direccion=new direccion();
@@ -28,64 +29,84 @@
                          $password=generateHash($_GET["password"]);                          
                          
 		if($_GET["ID"]=="")
-                 {
-                     if (isset($_GET["Municipios"])&&($_GET["Municipios"]<>0))
-                     {       
-                        $profesor->ID_DIRECCION=$bd->insertar($direccion);
-                        if (isset($_GET["ID_DIRECCION"]))
-                        {       
-                            $bd->insertar($profesor);
-                        }
-                     }
-                     $sql = "INSERT INTO `Users` (	`Username`,
-							`Username_Clean`,
-							`Password`,
-							`Email`,							
-							`LastActivationRequest`,
-							`LostPasswordRequest`, 
-							`Active`,
-							`Group_ID`,
-							`SignUpDate`,
-							`LastSignIn`
-							)
-					 		VALUES (
-							'".$username."',
-							'".$username."',
-							'".$password."',
-							'".$profesor->EMAIL."',							
-							'".time()."',
-							'0',
-							'1',
-							'".PROFESOR."',
-							'".time()."',
-							'0'
-							)";
-                   $bd->consultar($sql); 
-                 }
-                 else
-                 {
-                    if(isset($_GET["ID_DIRECCION"]))
-                    {
+                 {   
+                    try
+                        {
+                        $sql = "INSERT INTO `Users` (	`Username`,
+                                                            `Username_Clean`,
+                                                            `Password`,
+                                                            `Email`,							
+                                                            `LastActivationRequest`,
+                                                            `LostPasswordRequest`, 
+                                                            `Active`,
+                                                            `Group_ID`,
+                                                            `SignUpDate`,
+                                                            `LastSignIn`
+                                                            )
+                                                            VALUES (
+                                                            '".$username."',
+                                                            '".$username."',
+                                                            '".$password."',
+                                                            '".$profesor->EMAIL."',							
+                                                            '".time()."',
+                                                            '0',
+                                                            '1',
+                                                            '".PROFESOR."',
+                                                            '".time()."',
+                                                            '0'
+                                                            )";
+                        $bd->consultar($sql);
                         if (isset($_GET["Municipios"])&&($_GET["Municipios"]<>0))
-                        {       
-                            $profesor->ID_DIRECCION=$bd->insertar($direccion);
+                            {       
+                                $profesor->ID_DIRECCION=$bd->insertar($direccion);
+                                if (isset($_GET["ID_DIRECCION"]))
+                                {       
+                                    $bd->insertar($profesor);
+                                }
+                            }
                         }
-                        else
+                        catch (Exception $msj)
+                            {
+                            $msj="El usuario o el email ya existen";
+                            header('Location: index.php?cuerpo=form_profesor.php&msj='.$msj);                        
+                            }
+                        if($msj=="") {   
+                        header('Location: index.php?cuerpo=rejilla_profesor.php');}
+                 }                 
+                 else
+                 { 
+                    try
                         {
-                            $direccion->ID=$_GET["ID_DIRECCION"];
-                            $bd->actualizar($direccion);
+                        $bd->actualizar($profesor);
+                        $datos=$bd->consultar("select Email from users where User_ID='".$_GET["User_ID"]."'");
+                        while ($fila = mysql_fetch_array($datos)) 
+                            {
+                                $email=$fila["Email"];       //email en base de datos de usuario                   
+                            }
+                        $sql= "UPDATE `users` SET `Username`='".$username."',`Username_Clean`='".$username."',`Email`='".$profesor->EMAIL."'where Email='".$email."'";
+                        $bd->consultar($sql);
+                        if(isset($_GET["ID_DIRECCION"]))
+                            {
+                                if (isset($_GET["Municipios"])&&($_GET["Municipios"]<>0))
+                                {       
+                                    $profesor->ID_DIRECCION=$bd->insertar($direccion);
+                                }
+                                else
+                                {
+                                    $direccion->ID=$_GET["ID_DIRECCION"];
+                                    $bd->actualizar($direccion);
+                                }
+                            }                            
                         }
-                    }
-                    $bd->actualizar($profesor);
-                    $datos=$bd->consultar("select Email from users where User_ID='".$_GET["User_ID"]."'");
-                    while ($fila = mysql_fetch_array($datos)) 
-                        {
-                            $email=$fila["Email"];       //email en base de datos de usuario                   
-                        }
-                    $sql= "UPDATE `users` SET `Username`='".$username."',`Username_Clean`='".$username."',`Email`='".$profesor->EMAIL."'where Email='".$email."'";
-                    $bd->consultar($sql);
-                 }
+                        catch (Exception $msj)
+                            {
+                            $msj="El usuario o el email ya existen";
+                            header('Location: index.php?cuerpo=form_profesor.php&msj='.$msj);                        
+                            }
+                        if($msj=="") {   
+                        header('Location: index.php?cuerpo=rejilla_profesor.php&mensaje_error='.$mensaje_error);}
                 }
+            }
 	}
 	if(isset($_GET["Borrar"])) 
 		{
@@ -101,7 +122,16 @@
                     $delete="delete from users where Email='" . $email . "'";
                     $bd->consultar($delete);
                     }
-		$bd->borrar($profesor);                
-	 }
-         header('Location: index.php?cuerpo=rejilla_profesor.php');
+                try
+                {
+                    $bd->borrar($profesor);       
+                }
+                catch(Exception $e)
+                {
+                    $mensaje_error="No se puede eliminar un profesor que tiene datos asociados";                   
+                }      
+		 header('Location: index.php?cuerpo=rejilla_profesor.php&mensaje_error='.$mensaje_error);
+                }         
+	 
+
 ?>

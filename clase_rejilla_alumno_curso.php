@@ -6,12 +6,16 @@ class rejilla_alumno_curso {
     private $_formDestino; //formulario de edicion de cada fila
     private $_campoClave; // Clave primaria de la tabla
     private $_campoEnlace; //Campo que hara de enlace al form de edicion
-
-    public function __construct($datos, $formDestino, $campoClave, $campoEnlace) {
+    private $_origen; // Archivo al que tiene que va pulsando Volver en la rejilla
+    private $_grupo_id; // Perfil del usuario
+    
+    public function __construct($datos, $formDestino, $campoClave, $campoEnlace, $origen, $grupo_id) {
         $this->_datos = $datos;
         $this->_formDestino = $formDestino;
         $this->_campoClave = strtoupper($campoClave);
-        $this->_campoEnlace = strtoupper($campoEnlace);
+        $this->_campoEnlace = strtoupper($campoEnlace);   
+        $this->_origen = strtoupper($origen);
+        $this->_grupo_id = $grupo_id;
     }
 
     private function cabecera() {
@@ -23,8 +27,11 @@ class rejilla_alumno_curso {
                 $salida.="<th>" . $indice . "</th>";
             } /* Incluir en generador */
         }
-        $salida.="<th>Modificar</th>";
-        $salida.="<th>Eliminar</th>";
+        if ($this->_grupo_id == ADMINISTRADOR || $this->_grupo_id == SECRETARIA)
+        {
+            $salida.="<th>Modificar</th>";
+            $salida.="<th>Eliminar</th>";
+        }
         $salida.="</tr></thead>";
         return $salida;
     }
@@ -57,15 +64,19 @@ class rejilla_alumno_curso {
             
             
              if($fila["Suplente"]==0)
-                    {
+             {
                     $salida.="<td>Matriculado</td>";        
-                    }
-                else 
-                    {
+             }
+             else 
+             {
                     $salida.="<td>Reserva</td>";
-                    }
-            $salida.='<td class="td_imagen"><a class="img_rejilla" href="' . $this->_formDestino . 'ID=' . $clave . '"><img class="a_img_rejilla" src="images/lapiz.png"/></a></td>';
-            $salida.='<td class="td_imagen"><a class="img_rejilla" href="'.$procesar.'ID=' . $clave . '&Borrar=Borrar"><img class="a_img_rejilla" src="images/borrar.png"/></a></td>';
+             }
+             
+            if ($this->_grupo_id == ADMINISTRADOR || $this->_grupo_id == SECRETARIA)
+            {
+                $salida.='<td class="td_imagen"><a class="img_rejilla" href="' . $this->_formDestino . 'ID=' . $clave . '&origen='.$this->_origen .'"><img class="a_img_rejilla" src="images/lapiz.png"/></a></td>';
+                $salida.='<td class="td_imagen"><a class="img_rejilla" href="'.$procesar.'ID=' . $clave .'&origen='.$this->_origen . '&Borrar=Borrar"><img class="a_img_rejilla" src="images/borrar.png"/></a></td>';                    
+            }
             $salida.="</tr>";
         }
 

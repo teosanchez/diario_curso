@@ -3,8 +3,9 @@
 	include_once ("clase_bd.php");
         include ("clase_direccion.php");        
         
-        print_r($_GET);
+        //print_r($_GET);
         
+        $mensaje_error="";
 	$alumno=new alumno();
         $direccion=new direccion();
 	$bd=new bd();        
@@ -43,65 +44,88 @@
                  $password=  generateHash($_GET["password"]);                                  
                  
                  if($_GET["ID"]=="")
-                 {
-                     if (isset($_GET["Municipios"])&&($_GET["Municipios"]<>0))
-                     {       
-                        $alumno->ID_DIRECCION=$bd->insertar($direccion);
-                        if (isset($_GET["ID_SITUACION"])&&isset($_GET["ID_NACIONALIDAD"])&&isset($_GET["ID_NIVEL_ESTUDIOS"])&&isset($_GET["ID_DIRECCION"]))
-                        {       
-                            $bd->insertar($alumno);
-                        }
-                     }                     
-                     $sql = "INSERT INTO `Users` (	`Username`,
-							`Username_Clean`,
-							`Password`,
-							`Email`,							
-							`LastActivationRequest`,
-							`LostPasswordRequest`, 
-							`Active`,
-							`Group_ID`,
-							`SignUpDate`,
-							`LastSignIn`
-							)
-					 		VALUES (
-							'".$username."',
-							'".$username."',
-							'".$password."',
-							'".$alumno->EMAIL."',							
-							'".time()."',
-							'0',
-							'1',
-							'".ALUMNO."',
-							'".time()."',
-							'0'
-							)";
-                   $bd->consultar($sql);  
-                 }
-                 else
-                 {
-                    if(isset($_GET["ID_DIRECCION"]))
-                    {
+                    {  
+                      try
+                        { 
+                        $sql = "INSERT INTO `Users` (	`Username`,
+                                                            `Username_Clean`,
+                                                            `Password`,
+                                                            `Email`,							
+                                                            `LastActivationRequest`,
+                                                            `LostPasswordRequest`, 
+                                                            `Active`,
+                                                            `Group_ID`,
+                                                            `SignUpDate`,
+                                                            `LastSignIn`
+                                                            )
+                                                            VALUES (
+                                                            '".$username."',
+                                                            '".$username."',
+                                                            '".$password."',
+                                                            '".$alumno->EMAIL."',							
+                                                            '".time()."',
+                                                            '0',
+                                                            '1',
+                                                            '".ALUMNO."',
+                                                            '".time()."',
+                                                            '0'
+                                                            )";
+                        $bd->consultar($sql);
                         if (isset($_GET["Municipios"])&&($_GET["Municipios"]<>0))
-                        {       
-                            $alumno->ID_DIRECCION=$bd->insertar($direccion);
+                            {       
+                                $alumno->ID_DIRECCION=$bd->insertar($direccion);
+                                if (isset($_GET["ID_SITUACION"])&&isset($_GET["ID_NACIONALIDAD"])&&isset($_GET["ID_NIVEL_ESTUDIOS"])&&isset($_GET["ID_DIRECCION"]))
+                                {       
+                                $bd->insertar($alumno);                                
+                                }
+                            }                                     
                         }
-                        else
+                    catch (Exception $msj)
                         {
-                            $direccion->ID=$_GET["ID_DIRECCION"];
-                            $bd->actualizar($direccion);
+                        $msj="El usuario o el email ya existen";
+                        header('Location: index.php?cuerpo=form_alumno.php&msj='.$msj);                        
                         }
+                    if($msj=="") {   
+                    header('Location: index.php?cuerpo=rejilla_alumno.php&mensaje_error='.$mensaje_error);}    
                     }
-                    $bd->actualizar($alumno);
-                    $datos=$bd->consultar("select Email from users where User_ID='".$_GET["User_ID"]."'");
-                    while ($fila = mysql_fetch_array($datos)) 
-                        {
-                        $email=$fila["Email"];  //email en base de datos de usuario                      
+                    
+                    else
+                    {
+                        try
+                        {              
+                            $bd->actualizar($alumno);
+                            $datos=$bd->consultar("select Email from users where User_ID='".$_GET["User_ID"]."'");
+                            while ($fila = mysql_fetch_array($datos)) 
+                                {
+                                $email=$fila["Email"];  //email en base de datos de usuario                      
+                                }
+                            $sql= "UPDATE `users` SET `Username`='".$username."',`Username_Clean`='".$username."',`Email`='".$alumno->EMAIL."'where Email='".$email."'";
+                            $bd->consultar($sql);
+                            header('Location: index.php?cuerpo=rejilla_alumno.php');
+                            if(isset($_GET["ID_DIRECCION"]))
+                            {
+                                if (isset($_GET["Municipios"])&&($_GET["Municipios"]<>0))
+                                {       
+                                    $alumno->ID_DIRECCION=$bd->insertar($direccion);
+                                }
+                                else
+                                {
+                                    $direccion->ID=$_GET["ID_DIRECCION"];
+                                    $bd->actualizar($direccion);
+                                }
+                            }
                         }
-                    $sql= "UPDATE `users` SET `Username`='".$username."',`Username_Clean`='".$username."',`Email`='".$alumno->EMAIL."'where Email='".$email."'";
-                    $bd->consultar($sql);
-                }
-            }
-	}
+                        catch (Exception $msj)
+                            {
+                            $msj="El usuario o el email ya existen";
+                            header('Location: index.php?cuerpo=form_alumno.php&msj='.$msj);                        
+                            }
+                        if($msj=="") {   
+                        header('Location: index.php?cuerpo=rejilla_alumno.php&mensaje_error='.$mensaje_error);}    
+                    }
+                        
+            }                    
+        }
         
 	if(isset($_GET["Borrar"])) 
 	{
@@ -109,23 +133,31 @@
             
             $datos=$bd->consultar("select EMAIL from alumno where ID='".$alumno->ID."'");
             while ($fila = mysql_fetch_array($datos)) 
-                        {
-                        $email=$fila["EMAIL"];                        
-                        }                                
+            {
+                $email=$fila["EMAIL"];                        
+            }                                
            
             if(isset($email))
                 {
-                $delete="delete from users where Email='" . $email . "'";
-                $bd->consultar($delete);
+                    $delete="delete from users where Email='" . $email . "'";
+                    $bd->consultar($delete);
                 } 
-                
-            $bd->borrar($alumno);
+                try
+                {
+                    $bd->borrar($alumno);       
+                }
+                catch(Exception $e)
+                {
+                    $mensaje_error="No se puede eliminar un alumno que tiene un curso asociado.";
+                }
             if (isset($_GET["ID_DIRECCION"]))
             {
                 $direccion->ID=$_GET["ID_DIRECCION"];
                 $bd->borrar($direccion);
             }
+        header('Location: index.php?cuerpo=rejilla_alumno.php&mensaje_error='.$mensaje_error);    
 	}
-        
-	header('Location: index.php?cuerpo=rejilla_alumno.php');
+
 ?>
+
+

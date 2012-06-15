@@ -3,6 +3,7 @@
     <?php 
 	include("clase_bd.php");
 	require_once("userCake/models/config.php");
+       // if(!isUserLoggedIn()) { header("Location: index.php?cuerpo=bienvenida.php"); die(); }
 	if (isUserLoggedIn())   //Si el usuario está identificado
         {
                 $bd=new bd();
@@ -13,15 +14,15 @@
                 $fila2= array('texto'=>'Administraci&oacute;n',
                             'enlace'=>'index.php?cuerpo=menu.php');
                 $fila3= array('texto'=>'Diario',
-                            'enlace'=>'index.php?cuerpo=seleccion_curso.php&destino=rejilla_diario.php');
+                            'enlace'=>'index.php?cuerpo=rejilla_diario.php&origen=app_inicio.php');
                 $fila4= array('texto'=>'Curso',
                             'enlace'=>'index.php?cuerpo=rejilla_curso.php');
                 $fila5= array('texto'=>'Alumno_Curso',
-                            'enlace'=>'index.php?cuerpo=seleccion_curso.php&destino=rejilla_alumno_curso.php');
+                            'enlace'=>'index.php?cuerpo=rejilla_alumno_curso.php&origen=app_inicio.php');
                 $fila6= array('texto'=>'Profesor_Curso',
-                            'enlace'=>'index.php?cuerpo=seleccion_curso.php&destino=rejilla_profesor_curso.php');
+                            'enlace'=>'index.php?cuerpo=rejilla_profesor_curso.php&origen=app_inicio.php');
                 $fila7= array('texto'=>'Programa',
-                            'enlace'=>'index.php?cuerpo=seleccion_curso.php&destino=rejilla_modulo_curso.php');
+                            'enlace'=>'index.php?cuerpo=rejilla_modulo_curso.php&origen=app_inicio.php');
 
                 if ($grupo["Group_ID"]==ADMINISTRADOR)    // Administración
                 {

@@ -7,8 +7,13 @@ include_once ("clase_bd.php");
 $bd = new bd();
 $util = new utilidadesIU();
 $profesor_curso = new profesor_curso();
-if (isset($_GET["ID_CURSO"])) {
+if (isset($_GET["ID_CURSO"])) 
+    {
     $profesor_curso->ID_CURSO = ($_GET["ID_CURSO"]);
+    }
+if (isset($_GET["Cursos"])) 
+    {
+    $profesor_curso->ID_CURSO = ($_GET["Cursos"]);
     }
 
 $c="";

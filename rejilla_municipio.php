@@ -24,6 +24,10 @@ $result = $bd->consultarArray("select * from vw_municipios");
 <!-- Fin Titulo de pÃ¡gina -->
 
 <?php
+    if(isset($_GET['mensaje_error']))
+    {
+        echo "<div>".$_GET['mensaje_error']."</div>";
+    }
 if ($result)
     $rejilla = new rejilla($result, "index.php?cuerpo=form_municipio.php&", "ID", "MUNICIPIO");
     echo $rejilla->pintar();
