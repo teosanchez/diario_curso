@@ -3,8 +3,9 @@
 	include_once ("clase_bd.php");
         include ("clase_direccion.php");        
         
-        print_r($_GET);
+        //print_r($_GET);
         
+        $mensaje_error="";
 	$alumno=new alumno();
         $direccion=new direccion();
 	$bd=new bd();        
@@ -85,7 +86,7 @@
                         header('Location: index.php?cuerpo=form_alumno.php&msj='.$msj);                        
                         }
                     if($msj=="") {   
-                    header('Location: index.php?cuerpo=rejilla_alumno.php');}    
+                    header('Location: index.php?cuerpo=rejilla_alumno.php&mensaje_error='.$mensaje_error);}    
                     }
                     
                     else
@@ -120,7 +121,7 @@
                             header('Location: index.php?cuerpo=form_alumno.php&msj='.$msj);                        
                             }
                         if($msj=="") {   
-                        header('Location: index.php?cuerpo=rejilla_alumno.php');}    
+                        header('Location: index.php?cuerpo=rejilla_alumno.php&mensaje_error='.$mensaje_error);}    
                     }
                         
             }                    
@@ -132,24 +133,31 @@
             
             $datos=$bd->consultar("select EMAIL from alumno where ID='".$alumno->ID."'");
             while ($fila = mysql_fetch_array($datos)) 
-                        {
-                        $email=$fila["EMAIL"];                        
-                        }                                
+            {
+                $email=$fila["EMAIL"];                        
+            }                                
            
             if(isset($email))
                 {
-                $delete="delete from users where Email='" . $email . "'";
-                $bd->consultar($delete);
+                    $delete="delete from users where Email='" . $email . "'";
+                    $bd->consultar($delete);
                 } 
-                
-            $bd->borrar($alumno);
+                try
+                {
+                    $bd->borrar($alumno);       
+                }
+                catch(Exception $e)
+                {
+                    $mensaje_error="No se puede eliminar un alumno que tiene un curso asociado.";
+                }
             if (isset($_GET["ID_DIRECCION"]))
             {
                 $direccion->ID=$_GET["ID_DIRECCION"];
                 $bd->borrar($direccion);
             }
-        header('Location: index.php?cuerpo=rejilla_alumno.php');    
+        header('Location: index.php?cuerpo=rejilla_alumno.php&mensaje_error='.$mensaje_error);    
 	}
-        
-	//
+
 ?>
+
+

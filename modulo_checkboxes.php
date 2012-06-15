@@ -11,6 +11,11 @@ if (isset($_GET["ID_CURSO"]))
     {
         $modulo_curso->ID_CURSO = ($_GET["ID_CURSO"]);
     }
+if (isset($_GET["Cursos"])) 
+    {
+    $modulo_curso->ID_CURSO = ($_GET["Cursos"]);
+    }
+
     
 $c="";
 if (isset($_GET["c"])&&($_GET["c"]<>""))
@@ -42,6 +47,7 @@ if (isset($_GET["c"])&&($_GET["c"]<>""))
         <input type="hidden" name="ID_CURSO" id="ID_CURSO" value="<?php echo $modulo_curso->ID_CURSO; ?>"/>
         <input type="hidden" name="ID" id="ID" value="<?php echo $modulo_curso->ID; ?>"/>
         <input type="hidden" name="c" id="c" value="<?php echo $c; ?>"/>
+        <input type="hidden" name="origen" ID="origen" value="<?php echo $_GET["origen"]; ?>"/>
         <table>
             <tr>
                 <!--<td>M&oacute;dulos</td>-->
@@ -60,8 +66,8 @@ if (isset($_GET["c"])&&($_GET["c"]<>""))
                 </td>
                 <td><input type="button" 
                             onClick="parent.location=
-                'index.php?cuerpo=procesar_modulo_checkboxes.php&Cancelar=Cancelar&ID_CURSO=<?php echo $modulo_curso->ID_CURSO;?>&c=<?php echo $c; ?>'"
-                name="Cancelar" value="Cancelar"></td>
+                'index.php?cuerpo=procesar_modulo_checkboxes.php&Cancelar=Cancelar&ID_CURSO=<?php echo $modulo_curso->ID_CURSO;?>&c=<?php echo $c; ?>&origen=<?php echo $_GET["origen"]; ?>'"
+                name="Cancelar" value="Cancelar"/></td>
             </tr>
         </table>
     </form>

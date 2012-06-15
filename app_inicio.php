@@ -11,13 +11,11 @@
         <!-- Scripts -->
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
     
-
     </head>
 
     <body class="portfolio">
         
         <!-- Login User -->
-   
         
         <div id="wrapper" class="container_12 clearfix">
             <!-- Text Logo -->
@@ -32,38 +30,18 @@
                 <!-- Row 1 -->
 
                 <div class="grid_12">
-                    <a class="portfolio_item float alpha" href="index.php?cuerpo=rejilla_curso.php">
-                        <span>Administración de Cursos</span>
-                        <img class="" src="images/curso.png"  alt=""/>
-                    </a>
-                    <a class="portfolio_item float " href="index.php?cuerpo=rejilla_profesor.php">
-                        <span>Administración de Profesores</span>
-                        <img class="" src="images/profesor.png"  alt=""/>
-                    </a>
-                    <a class="portfolio_item float " href="index.php?cuerpo=rejilla_alumno.php">
-                        <span>Administración de Alumnos</span>
-                        <img class="" src="images/alumno.png"  alt=""/>
-                    </a>
-                    <a class="portfolio_item float omega" href="portfolio_single.html">
-                        <span>Admin. de Calendarios y Horarios</span>
-                        <img class="" src="images/calendario.png"  alt=""/>
-                    </a>
-                    <a class="portfolio_item float alpha" href="index.php?cuerpo=menu.php">
-                        <span>Administración General</span>
-                        <img class="" src="images/admin.png"  alt=""/>
-                    </a>
-                    <a class="portfolio_item float " href="index.php?cuerpo=seleccion_curso.php">
-                        <span>Diario de clase</span>
-                        <img class="" src="images/diario.png"  alt=""/>
-                    </a>
-                    <a class="portfolio_item float " href="portfolio_single.html">
-                        <span>Informes y Estadisticas</span>
-                        <img class="" src="images/estadisticas.png"  alt=""/>
-                    </a>
-                    <a class="portfolio_item float omega" href="portfolio_single.html">
-                        <span>Perfil de usuario</span>
-                        <img class="" src="images/conf_cuenta.png"  alt=""/>
-                    </a>              
+                    
+                    <?php
+                        include ("utilidadesIU.php");
+                        $util = new utilidadesIU();
+
+                        $grupo = $loggedInUser->groupID();
+                        //echo $grupo['Group_Name']; 
+                        //echo $grupo['Group_ID'];
+                        
+                        echo $util->pinta_inicio($grupo['Group_ID']);
+                    ?>
+               
                 </div>
             </div>
 

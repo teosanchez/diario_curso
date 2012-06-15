@@ -11,6 +11,11 @@ if (isset($_GET["c"])&&($_GET["c"]<>""))
     $c="nuevo"; // Se viene de form_curso con un curso nuevo (sin módulos)
 }
 
+if (isset($_GET["origen"]))
+{
+    $origen = $_GET["origen"];
+}
+
 if (isset($_GET["Enviar"])) 
 {
     if (isset($_GET["ID_CURSO"])) 
@@ -32,7 +37,7 @@ if (isset($_GET["Enviar"]))
             }
         }
         
-        header('Location: index.php?cuerpo=rejilla_modulo_curso.php&ID='.$modulo_curso->ID_CURSO); //Incluir en Generador
+        header('Location: index.php?cuerpo=rejilla_modulo_curso.php&ID='.$modulo_curso->ID_CURSO.'&origen='.$origen); //Incluir en Generador
     }
 }
 if (isset($_GET["Cancelar"]))
@@ -47,7 +52,7 @@ if (isset($_GET["Cancelar"]))
         }
         else
         {
-            header('Location: index.php?cuerpo=rejilla_modulo_curso.php&ID='.$modulo_curso->ID_CURSO); 
+            header('Location: index.php?cuerpo=rejilla_modulo_curso.php&ID='.$modulo_curso->ID_CURSO.'&origen='.$origen); 
         }
     }
 }

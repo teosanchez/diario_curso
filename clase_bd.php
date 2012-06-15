@@ -107,16 +107,20 @@ class bd {
     }
 
     public function consultar($consulta) {
-        try {
+        try 
+        {
             $link = mysql_connect($this->servidor, $this->usuario, $this->clave);
             mysql_select_db($this->bd, $link);
             $result = mysql_query($consulta, $link);
-            if (!$result) {
+            if(!$result) 
+            {
                 throw new Exception(mysql_error($link));
             }
             mysql_close();
             return $result;
-        } catch (Exception $e) {
+        } 
+        catch (Exception $e) 
+        {  
             throw new Exception("Error de base de datos.<br>" . $e->getMessage());
         }
     }

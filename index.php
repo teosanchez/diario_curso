@@ -59,6 +59,7 @@
         
 
         <script type="text/javascript" src="js/validaciones.js"></script>
+        <script type="text/javascript" src="js/permisos_grupos.js"></script>
         <?php header( 'Content-type: text/html; charset=iso-8859-1' );?>     
 
     </head>

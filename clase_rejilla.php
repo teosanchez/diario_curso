@@ -59,7 +59,7 @@ class rejilla {
         $salida.="</tbody>";
         $salida.=$this->pie();
         return $salida;
-    }
+    }  
 
     private function pie() {
         $salida = "</table>";

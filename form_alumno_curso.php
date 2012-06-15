@@ -33,7 +33,7 @@ if (isset($_GET["nuevo"])) {
 <form name="form_alumno_curso" id="MyForm" method="get" action="procesar_alumno_curso.php">
     <input type="hidden" name="ID" ID="ID" value="<?php echo $alumno_curso->ID; ?>"/>
     <input type="hidden" name="ID_CURSO" ID="ID_CURSO" value="<?php echo $alumno_curso->ID_CURSO; ?>"/>
-    <input type="hidden" name="ID_ALUMNO" id="ID_ALUMNO" value="<?php echo $alumno_curso->ID_ALUMNO; ?>"/>
+    <input type="hidden" name="origen" id="origen" value="<?php echo $_GET["origen"]; ?>"/>
     <table>
         <tr>
             <td>Curso</td>
@@ -93,8 +93,8 @@ if (isset($_GET["nuevo"])) {
             <td><input type="submit" name="Enviar" value="Enviar"/></td>
             <td><input type="button" 
             onClick="parent.location=
-                    'index.php?cuerpo=procesar_alumno_curso.php&Cancelar=Cancelar&ID_CURSO=<?php echo $alumno_curso->ID_CURSO;?>'"
-            name="Cancelar" value="Cancelar"></td>
+                    'index.php?cuerpo=procesar_alumno_curso.php&Cancelar=Cancelar&ID_CURSO=<?php echo $alumno_curso->ID_CURSO;?>&origen=<?php echo $_GET["origen"];?>'"
+            name="Cancelar" value="Cancelar"/></td>
         </tr>
     </table>
 </form>

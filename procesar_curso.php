@@ -2,6 +2,7 @@
     include ("clase_curso.php");
     include_once ("clase_bd.php");
 
+    $mensaje_error="";
     $curso=new curso();
     $bd=new bd();
     $c="";
@@ -36,11 +37,18 @@
     if(isset($_GET["Borrar"])) 
     {
             $curso->ID=$_GET["ID"];
-            $bd->borrar($curso);
+            try
+            {
+                $bd->borrar($curso);       
+            }
+            catch(Exception $e)
+            {
+                $mensaje_error="No se puede eliminar un curso que tiene datos asociados.";
+            }
     }
     if (isset($_GET["Borrar"]) || isset($_GET["Enviar"]))
     {
-        header('Location: index.php?cuerpo=rejilla_curso.php');
+        header('Location: index.php?cuerpo=rejilla_curso.php&mensaje_error='.$mensaje_error);
     }
     else
     {
@@ -48,11 +56,11 @@
         {
             if ($c=="nuevo")
             {
-                header('Location: index.php?cuerpo=modulo_checkboxes.php&ID_CURSO='.$curso->ID.'&c='.$c);
+                header('Location: index.php?cuerpo=modulo_checkboxes.php&ID_CURSO='.$curso->ID.'&c='.$c.'&origen=form_curso.php');
             }
             else
             {
-                header('Location: index.php?cuerpo=rejilla_modulo_curso.php&ID='.$curso->ID);
+                header('Location: index.php?cuerpo=rejilla_modulo_curso.php&ID='.$curso->ID.'&origen=form_curso.php');
             }
         }
         else
@@ -61,11 +69,11 @@
             {
                 if ($c=="nuevo")
                     {
-                        header('Location: index.php?cuerpo=form_profesor_curso2.php&ID_CURSO='.$curso->ID.'&c='.$c);
+                        header('Location: index.php?cuerpo=form_profesor_curso2.php&ID_CURSO='.$curso->ID.'&c='.$c.'&origen=form_curso.php');
                     }
                   else
                     {
-                        header('Location: index.php?cuerpo=rejilla_profesor_curso.php&ID='.$curso->ID);
+                        header('Location: index.php?cuerpo=rejilla_profesor_curso.php&ID='.$curso->ID.'&origen=form_curso.php');
                     }
             }
             else 
@@ -74,11 +82,11 @@
                 {
                     if ($c=="nuevo")
                     {
-                        header('Location: index.php?cuerpo=form_alumno_curso2.php&ID_CURSO='.$curso->ID.'&c='.$c);
+                        header('Location: index.php?cuerpo=form_alumno_curso2.php&ID_CURSO='.$curso->ID.'&c='.$c.'&origen=form_curso.php');
                     }
                     else
                     {
-                        header('Location: index.php?cuerpo=rejilla_alumno_curso.php&ID='.$curso->ID);
+                        header('Location: index.php?cuerpo=rejilla_alumno_curso.php&ID='.$curso->ID.'&origen=form_curso.php');
                     }
                 }
             }

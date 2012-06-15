@@ -1,6 +1,6 @@
 <?php
 
-class rejilla_alumno_curso {
+class rejilla_xx {
 
     private $_datos; //array de datos a mostrar
     private $_formDestino; //formulario de edicion de cada fila
@@ -16,6 +16,7 @@ class rejilla_alumno_curso {
         $this->_campoEnlace = strtoupper($campoEnlace);   
         $this->_origen = strtoupper($origen);
         $this->_grupo_id = $grupo_id;
+        
     }
 
     private function cabecera() {
@@ -55,23 +56,9 @@ class rejilla_alumno_curso {
             foreach ($fila as $indice => $valor) {
                 if ($indice <> "ID") /* Incluir en generador */ { /* Incluir en generador */
                     $clave = $fila[$this->_campoClave];
-                    if($indice!="Suplente"){
                     $salida.="<td>" . $this->enlazar($indice, $valor, $clave) . "</td>";
-            
-                    }
-                }/* Incluir en generador */
+                } /* Incluir en generador */
             }
-            
-            
-             if($fila["Suplente"]==0)
-             {
-                    $salida.="<td>Matriculado</td>";        
-             }
-             else 
-             {
-                    $salida.="<td>Reserva</td>";
-             }
-             
             if ($this->_grupo_id == ADMINISTRADOR || $this->_grupo_id == SECRETARIA)
             {
                 $salida.='<td class="td_imagen"><a class="img_rejilla" href="' . $this->_formDestino . 'ID=' . $clave . '&origen='.$this->_origen .'"><img class="a_img_rejilla" src="images/lapiz.png"/></a></td>';
@@ -93,4 +80,3 @@ class rejilla_alumno_curso {
 }
 
 ?>
-

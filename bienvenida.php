@@ -55,12 +55,15 @@
 						$loggedInUser->hash_pw = $userdetails["Password"];
 						$loggedInUser->display_username = $userdetails["Username"];
 						$loggedInUser->clean_username = $userdetails["Username_Clean"];
-						
+                                              
+                                                
 						//Update last sign in
 						$loggedInUser->updateLastSignIn();
 		
 						$_SESSION["userCakeUser"] = $loggedInUser;
+                                                
 						
+                                                
 						//Redirect to user account page
 						header("Location: index.php?cuerpo=app_inicio.php");
 						die();
@@ -73,6 +76,7 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
 
         <!-- Stylesheets -->
         <link rel="stylesheet" href="css/reset.css" />
@@ -115,7 +119,6 @@
             <!-- Portfolio Items -->
             
             <!-- Section 1 -->
-
             <!-- Section 3 -->
                 <div class="grid_12">
                     <div class="login_form">                        
